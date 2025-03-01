@@ -78,6 +78,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* GOOGLE SAYS TO ADD THIS */
 #map {
-  height: 800px;
-  width: 800px;
+  height: 95vh;
+  width: 50vw;
 }
