@@ -80,10 +80,10 @@ body {
   border: 2px solid black;
 }
 
-.Nav {
+.nav {
   height: 30px; /* Adjust as needed */
   width: 100%;
-  background-color: #333;
+  background-color: #000000;
   color: white;
   display: flex;
   align-items: center;
@@ -99,24 +99,30 @@ body {
   display: flex;
   flex: 1;
   width: 100%;
-  margin-top: 30px; /* Push down below Nav */
-  height: calc(100vh - 30px); /* Fill remaining space */
+  margin-top: 20px; /* Push down below Nav */
+  height: calc(100vh - 20px); /* Fill remaining space */
   border: 2px solid blue;
   background-color: #f0f0f0;
 }
 
 .artistsAndResults-container {
-  width: 50%;
+  width: 60%;
   height: 100%;
-  display: flex;
+  display: flexbox;
   flex-direction: column;
   border: 2px solid red;
   background-color: #ffe6e6;
 }
 
-.Artist {
+.artist-box {
+  display: flex;
   width: 100%;
   height: 50%;
+}
+
+.artist {
+  width: 100%;
+  height: 100%;
   background-color: lightgreen;
   display: flex;
   align-items: center;
@@ -124,7 +130,7 @@ body {
   border-bottom: 2px solid black;
 }
 
-.Intersect {
+.intersect {
   width: 100%;
   height: 50%;
   background-color: lightcoral;
@@ -135,8 +141,8 @@ body {
 }
 
 /* Fix Map placement - should be on the right */
-.Map {
-  width: 50%;
+.map {
+  width: 40%;
   height: 100%;
   background-color: lightblue;
   display: flex;

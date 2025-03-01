@@ -8,16 +8,16 @@ import Nav from './components/Nav';
 function App() {
   return (
     <div>
-      <Nav className='Nav'></Nav>
+      <Nav />
       <div className='subMain-container'>
-        SUB MAIN CONTAINER
-        <Map className='Map'></Map>
         <div className='artistsAndResults-container'>
-          ARTISTS AND RESULTS
-          <Artists className='Artist'></Artists>
-          <Artists className='Artist'></Artists>
-          <Intersect className='Intersect'></Intersect>
+          <div className='artist-box'>
+            <Artists />
+            <Artists />
+          </div>
+          <Intersect />
         </div>
+        <Map />
       </div>
     </div>
   );
