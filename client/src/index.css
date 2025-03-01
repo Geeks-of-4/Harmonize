@@ -75,3 +75,9 @@ h1, h2, h3, h4, h5, h6 {
 .Intersect{
   background-color: #ffb6b6;
 }
+
+/* GOOGLE SAYS TO ADD THIS */
+#map {
+  height: 95vh;
+  width: 50vw;
+}
