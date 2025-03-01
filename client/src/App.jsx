@@ -6,24 +6,21 @@ import Map from './components/Map';
 import Nav from './components/Nav';
 
 function App() {
-
-
   return (
-   <div className='main-container'>
-      <Nav className='Nav'/>
+    <div>
+      <Nav className='Nav'></Nav>
       <div className='subMain-container'>
-        <Map className='Map'/>
+        SUB MAIN CONTAINER
+        <Map className='Map'></Map>
         <div className='artistsAndResults-container'>
-          <div className='artists-container'>
-            ARTISTS
-            <Artists className='Artist'/>
-            <Artists className='Artist'/>
-          </div>
-          <Intersect className='Intersect' />
+          ARTISTS AND RESULTS
+          <Artists className='Artist'></Artists>
+          <Artists className='Artist'></Artists>
+          <Intersect className='Intersect'></Intersect>
         </div>
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default App
+export default App;

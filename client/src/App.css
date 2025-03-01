@@ -1,5 +1,7 @@
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -16,18 +18,31 @@ body {
 }
 
 /* 5. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 6. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -35,43 +50,97 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   9. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 /* END OF RESET -> BEGIN CSS */
 
-.main-container{
-  background-color: #ffe2e2;
-  min-height: calc(100vh - 60px);
+html,
+body {
+  height: 100%;
 }
-.subMain-container{
-  background-color: #ffeab6;
-  min-height: 80vh;
-}
-.artistsAndResults-container{
-  background-color: #c5ffb6; 
-  display: flex;
 
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 2px solid black;
 }
-.artists-container{
-  background-color: #b6eaff;
+
+.Nav {
+  height: 30px; /* Adjust as needed */
+  width: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 2px solid black;
 }
-.Nav{
-  background-color: #e0b6ff;
+
+.subMain-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  margin-top: 30px; /* Push down below Nav */
+  height: calc(100vh - 30px); /* Fill remaining space */
+  border: 2px solid blue;
+  background-color: #f0f0f0;
 }
-.Map{
-  background-color: #b6ffe3;
+
+.artistsAndResults-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  background-color: #ffe6e6;
 }
-.Artist{
-  background-color: #ffd7b6;
+
+.Artist {
+  width: 100%;
+  height: 50%;
+  background-color: lightgreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
 }
-.Intersect{
-  background-color: #ffb6b6;
+
+.Intersect {
+  width: 100%;
+  height: 50%;
+  background-color: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid black;
+}
+
+/* Fix Map placement - should be on the right */
+.Map {
+  width: 50%;
+  height: 100%;
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid black;
 }
