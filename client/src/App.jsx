@@ -20,21 +20,20 @@ function App() {
 
 
   return (
-   <div className='main-container'>
-      <Nav className='Nav'/>
+    <div>
+      <Nav />
       <div className='subMain-container'>
-        <Map className='Map'/>
         <div className='artistsAndResults-container'>
-          <div className='artists-container'>
-            ARTISTS
-            <Artists className='Artist'/>
-            <Artists className='Artist'/>
+          <div className='artist-box'>
+            <Artists />
+            <Artists />
           </div>
-          <Intersect className='Intersect' />
+          <Intersect />
         </div>
+        <Map />
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default App
+export default App;

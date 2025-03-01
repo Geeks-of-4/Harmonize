@@ -1,6 +1,6 @@
 function Intersect() {
     return (
-     
+     <div className='intersect'>INTERSECT</div>
     )
   }
   

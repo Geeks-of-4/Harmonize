@@ -47,31 +47,3 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* END OF RESET -> BEGIN CSS */
 
-.main-container{
-  background-color: #ffe2e2;
-  min-height: calc(100vh - 60px);
-}
-.subMain-container{
-  background-color: #ffeab6;
-  min-height: 80vh;
-}
-.artistsAndResults-container{
-  background-color: #c5ffb6; 
-  display: flex;
-
-}
-.artists-container{
-  background-color: #b6eaff;
-}
-.Nav{
-  background-color: #e0b6ff;
-}
-.Map{
-  background-color: #b6ffe3;
-}
-.Artist{
-  background-color: #ffd7b6;
-}
-.Intersect{
-  background-color: #ffb6b6;
-}
