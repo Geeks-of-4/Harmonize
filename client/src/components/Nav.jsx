@@ -1,12 +1,13 @@
 
-const Nav = ( setDays, setMiles ) => {
+const Nav = ({ setDays, setMiles }) => {
 
     return (
 
      <div className='nav'>
       <img id='logo' src='../assets/harmonizeLogo.png'/>
-      <h2>Harmonize Turn Every City into a Festival</h2>
+      <h2>Harmonize    Turn Every City into a Festival</h2>
       <select id='days' onChange={(event) => setDays(event.target.value)}>
+        <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
         <option value='4'>4</option>
