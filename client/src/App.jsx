@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Artists from './components/Artists';
 import Intersect from './components/Intersect';
 import Map from './components/Map';
 import Nav from './components/Nav';
+import axios from 'axios';
 import apiResponseJSON from '../../ApiResponseExample.json';
-// const axios = require ('axios');
+import { extractDatesFromApiResponse } from './helpers/extractDatesFromApiResponse';
+import { findMatchingEvents } from './helpers/findMatchingEvents';
 
 // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
 const testUrl =
