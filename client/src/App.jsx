@@ -7,14 +7,20 @@ import Nav from './components/Nav';
 
 function App() {
   return (
-   <div>
-  
-    <Artists></Artists>
-    <Intersect></Intersect>
-    <Map></Map>
-    <Nav></Nav>
-   </div>
-  )
+    <div className='main-container'>
+      <Nav className='Nav' />
+      <div className='subMain-container'>
+        <Map className='Map' />
+        <div className='artistsAndResults-container'>
+          <div className='artists-container'>
+            <Artists className='Artist' />
+            <Artists className='Artist' />
+          </div>
+          <Intersect className='Intersect' />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
