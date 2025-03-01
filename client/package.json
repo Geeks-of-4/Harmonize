@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
+    "axios": "^1.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "axios": "^1.8.1",
     "@eslint/js": "^9.21.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

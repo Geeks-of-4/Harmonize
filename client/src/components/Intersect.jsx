@@ -1,8 +1,5 @@
 const Intersect = () => {
     return (
-     <div>
-      
-     </div>
      <div className='intersect'>INTERSECT</div>
     )
   }
