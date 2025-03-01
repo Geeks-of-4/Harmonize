@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 function App() {
   return (
    <div>
+  
     <Artists></Artists>
     <Intersect></Intersect>
     <Map></Map>

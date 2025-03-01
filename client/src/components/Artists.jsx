@@ -1,6 +1,8 @@
-function Artists() {
+const Artists = () => {
     return (
-     
+     <div>
+      
+     </div>
     )
   }
   

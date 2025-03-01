@@ -66,3 +66,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* GOOGLE SAYS TO ADD THIS */
+#map {
+  height: 800px;
+  width: 800px;
+}
