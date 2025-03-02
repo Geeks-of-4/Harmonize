@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* END OF RESET -> BEGIN CSS */
 
-.main-container{
+/* .main-container{
   background-color: #ffe2e2;
   min-height: calc(100vh - 60px);
 }
@@ -74,10 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .Intersect{
   background-color: #ffb6b6;
-}
+} */
 
 /* GOOGLE SAYS TO ADD THIS */
-#map {
+/* #map {
   height: 95vh;
   width: 50vw;
-}
+} */

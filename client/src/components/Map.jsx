@@ -38,10 +38,43 @@ const Map = ({ tours, siblingIntersect }) => {
         'marker'
       );
       const { LatLngBounds } = await window.google.maps.importLibrary('core');
+      // Dark Mode Style
+      const darkModeStyle = [
+        { elementType: 'geometry', stylers: [{ color: '#212121' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#212121' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#757575' }] },
+        {
+          featureType: 'administrative.locality',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#bdbdbd' }],
+        },
+        {
+          featureType: 'road',
+          elementType: 'geometry',
+          stylers: [{ color: '#373737' }],
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#8a8a8a' }],
+        },
+        {
+          featureType: 'water',
+          elementType: 'geometry',
+          stylers: [{ color: '#000000' }],
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#3d3d3d' }],
+        },
+      ];
+
       // then update the map to show this spot by default (sydney aus, atm)
       mapInstance.current = new Map(mapRef.current, {
         center: { lat: 39.66118664405381, lng: -95.69956654456912 }, // center of US to start
         zoom: 4, // show all of USA
+        styles: darkModeStyle,
         mapId: '30b4a168fe464cbe',
       });
 
