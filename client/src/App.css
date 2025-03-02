@@ -93,7 +93,7 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: #19002e;
+  background-color: #000000;
   background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
@@ -138,8 +138,8 @@ body {
   /* position: relative; */
   /* object-fit: fill; */
   /* border-radius: 50%; */
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
   /* border: 4px solid #19002e; */
   overflow: hidden;
   display: flex;
@@ -171,11 +171,11 @@ body {
 
 .artistContainer.left img {
   /* object-position: 100% center; */
-  animation: shiftLeft 90s ease-out infinite;
+  animation: shiftLeft 120s ease-out forwards;
 }
 .artistContainer.right img {
   /* object-position: 0% center; */
-  animation: shiftRight 90s ease-out infinite;
+  animation: shiftRight 120s ease-out forwards;
 }
 
 .intersect {
@@ -253,6 +253,8 @@ body {
   /* border-radius: 8px; */
   position: absolute;
   transition: transform 0.3s ease-in-out;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .harmonizer-text {
@@ -261,6 +263,7 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center; */
+  color: #19002e;
 }
 /* ANIMATION STUFF DOWN HERE */
 .harmonizer-button .bar1 {

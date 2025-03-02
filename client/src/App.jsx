@@ -117,14 +117,6 @@ function App() {
               onClick={() => {harmonizeClickHandler()}}
               isToggled={harmonizerButtonActive}
             />
-            {/* <button
-            className='harmonizer-button'
-              onClick={() => {
-                harmonizeClickHandler();
-              }}
-            >
-              HARMONIZE
-            </button> */}
             <Artists
               artistId={0}
               setInputArtist={setInputArtist}
