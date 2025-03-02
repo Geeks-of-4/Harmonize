@@ -1,64 +1,103 @@
+// Import Libraries
 import { useState, useEffect } from 'react';
-import './App.css';
+import axios from 'axios';
+// Import Components & CSS
 import Artists from './components/Artists';
 import Intersect from './components/Intersect';
 import Map from './components/Map';
 import Nav from './components/Nav';
-import axios from 'axios';
-import apiResponseJSON from '../../ApiResponseExample.json';
-import { extractDatesFromApiResponse } from './helpers/extractDatesFromApiResponse';
+import './App.css';
+// Import Helper Functions
+import { extractDataFromApiResponse } from './helpers/extractDatesFromApiResponse';
 import { findMatchingEvents } from './helpers/findMatchingEvents';
-
-// const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
-const testUrl =
-  'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Kendrick+Lamar&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
-
-  //2025-03-01T00:00:00Z
-// takes time in ms, this should give the time in the correct format
-// const timestamp = Date.now();
-// const date = new Date(timestamp);
-//const currentTime = date.toISOString();
-//date.setMonth(date.getMonth() + 6)
-//const sixMonthsLater = date.toISOString();
-// const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=Eagles&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
-// Build API fetch for ticketmaster
-// const artist1='';
-// const artist2='';
-// const date1 = ;
-// const date2 = ;
-
-// TODO:
-// Pass props to Nav
-// Add date range filter
-// Pass props to artist
-// Add distance filter
-// Change artist props to real values
-// Add artist image prop
-// Build Intersect Logic
-// create an array of objects that have dates
+// Import our test data (remove this when the SPI is fixed)
+import apiResponseJSON from '../../ApiResponseExample.json';
 
 function App() {
-  // const [artist1, setArtist1] = useState('');
-  // const [artist2, setArtist2] = useState('');
-  // const [artistImage1, setArtistImage1] = useState('');
-  // const [artistImage2, setArtistImage2] = useState('');
-  const [artist, setInputArtist] = useState([]);
-  const [imageSrc, setImageSrc] = useState([]);
-  const [eventData, setEventData] = useState('');
-  const [miles, setMiles] = useState(0);
-  const [days, setDays] = useState(0);
-  // setInputArtist(****DATA FETCHED WITH API****);
-  // setImageSrc(****DATA FETCHED WITH API****);
-
-
+  // console.log('⛰️ Mounting App Component!');
+  // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
+  const [artist, setInputArtist] = useState(['Bob', 'Joe']); // fake placeholder data, we should remove this
+  // This array contains the two artist images, for right now, I am putting placeholders from picsum.
+  const [imageSrc, setImageSrc] = useState([
+    'https://picsum.photos/200',
+    'https://picsum.photos/200',
+  ]);
+  // This array contains the API responses from the ticketmaster API call
+  const [eventData, setEventData] = useState([ //This is dummy data, empty this when ready
+    apiResponseJSON,
+    apiResponseJSON,
+  ]);
+  // This contains the miles limit specified by the user. Ive set the default to 50.
+  const [miles, setMiles] = useState(50);
+  // This contains the time limit in days specified by the user. Ive set the default to 3 days.
+  const [days, setDays] = useState(3);
+  // This array of arrays of objects contains the full set of matched tours that the matching function has returned.
+  const [tours, setTours] = useState([]);
+  // This contains the specific set of results the user wants to view on the map, this only tells the map to zoom to a spot.
+  const [siblingIntersect, setSiblingIntersect] = useState([ // This is dummy data, empty this when ready
+    { lat: 32.782368, lng: -96.783813, title: 'Bomb Factory Deep Ellum' },
+    { lat: 32.78511, lng: -96.808182, title: 'HOB Dallas' },
+    { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
+  ]);
   useEffect(() => {
-    const apiFetch = async () => {
-      try {
-        const response = await axios.get(testUrl);
-        const filteredEvents = response.data;
-      } catch {}
-    };
-  });
+    // const apiFetch = async () => {
+    //   try {
+    //     const response = await axios.get(testUrl);
+    //     const filteredEvents = response.data;
+    //   } catch {}
+    // };
+  }, []);
+
+  function harmonizeClickHandler() {
+    console.log('👆 The Harmonizerizer has been Clickety Clacked.');
+    // ! >>> PUT API HERE<<< 
+    // ! The eventData useState should be updated after the API calls in here
+    // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
+    // const testUrl =
+    //   'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Kendrick+Lamar&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
+    // 2025-03-01T00:00:00Z
+    // takes time in ms, this should give the time in the correct format
+    // const timestamp = Date.now();
+    // const date = new Date(timestamp);
+    // const currentTime = date.toISOString();
+    // date.setMonth(date.getMonth() + 6)
+    // const sixMonthsLater = date.toISOString();
+    // const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=Eagles&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    // Build API fetch for ticketmaster
+    // const artist1='';
+    // const artist2='';
+    // const date1 = ;
+    // const date2 = ;
+    // *After the API CALL for both artists, you should run this line below: 
+    // *setEventData([apiResults1, apiResults2])
+
+    // Simulate two separate API responses
+    const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
+    const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
+    const response1Image = 'https://picsum.photos/200'; // the response image for artist 1 would go here
+    const response2Image = 'https://picsum.photos/200'; // the response image for artist 2 would go here
+    console.log('🫨 API Response Data Loaded.');
+    // Update the images for both artists (you could put the API's image location here instead)
+    setImageSrc([[response1Image], [response2Image]]);
+    console.log('📷 Artist Images Updated.');
+    // Extract event dates
+    const response1ExtractedData = extractDataFromApiResponse(response1);
+    const response2ExtractedData = extractDataFromApiResponse(response2);
+    // console.log('Response 1 Extract: ',extractDataFromApiResponse(response1))
+    // console.log('Response 2 Extract: ',extractDataFromApiResponse(response1))
+    // Trigger matching events function... to find the matching events
+    const matchingEvents = findMatchingEvents(
+      response1ExtractedData,
+      response2ExtractedData,
+      days,
+      miles
+    );
+    // ! The output of this function is an array of arrays full of objects
+    // With test data, it looks like there are shitloads of duplicates. We need to check this console log w/ real data
+    console.log('👑 Proximal Events: ', matchingEvents);
+    // Update the list of tours with those matching events
+    setTours(matchingEvents);
+  }
 
   return (
     <div>
@@ -66,14 +105,29 @@ function App() {
       <div className='subMain-container'>
         <div className='artistsAndResults-container'>
           <div className='artist-box'>
-            <Artist artistNumber={1} artistName={artist1} setArtistName={setArtist1} artistImage={artistImage1} />
-            <Artist artistNumber={2} artistName={artist2} setArtistName={setArtist2} artistImage={artistImage2} />
-            <Artists artist={setInputArtist[0]} artistImage={setImageSrc[0]} />
-            <Artists artist={setInputArtist[1]} artistImage={setImageSrc[1]}/>
+            <button
+              onClick={() => {
+                harmonizeClickHandler();
+              }}
+            >
+              HARMONIZE
+            </button>
+            <Artists
+              artistId={0}
+              setInputArtist={setInputArtist}
+              imageSrc={imageSrc}
+              artist={artist}
+            />
+            <Artists
+              artistId={1}
+              setInputArtist={setInputArtist}
+              imageSrc={imageSrc}
+              artist={artist}
+            />
           </div>
-          <Intersect />
+          <Intersect setSiblingIntersect={setSiblingIntersect} />
         </div>
-        <Map />
+        <Map siblingIntersect={siblingIntersect} tours={tours} />
       </div>
     </div>
   );
