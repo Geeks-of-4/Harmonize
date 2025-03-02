@@ -1,6 +1,8 @@
-function Intersect() {
+const Intersect = () => {
     return (
-     <div className='intersect'>INTERSECT</div>
+     <div>
+      
+     </div>
     )
   }
   

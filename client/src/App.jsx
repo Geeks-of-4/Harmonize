@@ -15,22 +15,18 @@ const artist1='';
 const artist2='';
 
 function App() {
-
-
-
-
   return (
-    <div>
-      <Nav />
+    <div className='main-container'>
+      <Nav className='Nav' />
       <div className='subMain-container'>
+        <Map className='Map' />
         <div className='artistsAndResults-container'>
-          <div className='artist-box'>
-            <Artists />
-            <Artists />
+          <div className='artists-container'>
+            <Artists className='Artist' />
+            <Artists className='Artist' />
           </div>
-          <Intersect />
+          <Intersect className='Intersect' />
         </div>
-        <Map />
       </div>
     </div>
   );
