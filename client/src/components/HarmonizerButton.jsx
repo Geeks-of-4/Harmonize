@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { MicVocal } from 'lucide-react';
+import harmonizeButton from '../assets/Harmonize.png'
 
 const HarmonizerButton = ({ onClick, isToggled }) => {
   // I am storing the creating interval here
@@ -87,7 +87,7 @@ const HarmonizerButton = ({ onClick, isToggled }) => {
         onMouseEnter={startGeneratingNotes}
         onMouseLeave={stopGeneratingNotes}
       >
-        <MicVocal className='harmonizer-button'/>
+        <img src={harmonizeButton} alt='Harmonize Button' className='harmonizer-button'/>
       </button>
       <div id='notes-container'></div>
     </div>

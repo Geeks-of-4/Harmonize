@@ -237,7 +237,19 @@ body {
 
 /* jesus fuck what the hell am I doing */
 .harmonizer-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   position: absolute;
+  top:50%;
+  left: 50%;
+  z-index: 2;
+  /* position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 40%;
   left: 40%;
   background: none;
@@ -245,8 +257,8 @@ body {
   cursor: pointer;
   z-index: 2;
   color: #19002e;
-  height: 80px;
-  width: 80px;
+  height: 400px;
+  width: 400px; */
 }
 
 /* .harmonizer-button div {
