@@ -28,8 +28,6 @@ const testUrl =
 // const date2 = ;
 
 // TODO:
-// Pass props to map
-// Change map props to real values
 // Pass props to Nav
 // Add date range filter
 // Pass props to artist
@@ -40,8 +38,12 @@ const testUrl =
 // create an array of objects that have dates
 
 function App() {
-  const [artist, setInputArtist] = useState('');
-  const [imageSrc, setImageSrc] = useState('');
+  // const [artist1, setArtist1] = useState('');
+  // const [artist2, setArtist2] = useState('');
+  // const [artistImage1, setArtistImage1] = useState('');
+  // const [artistImage2, setArtistImage2] = useState('');
+  const [artist, setInputArtist] = useState([]);
+  const [imageSrc, setImageSrc] = useState([]);
   const [eventData, setEventData] = useState('');
   const [miles, setMiles] = useState(0);
   const [days, setDays] = useState(0);
@@ -64,8 +66,10 @@ function App() {
       <div className='subMain-container'>
         <div className='artistsAndResults-container'>
           <div className='artist-box'>
-            <Artists artist={artist} artistImage={imageSrc} />
-            <Artists />
+            <Artist artistNumber={1} artistName={artist1} setArtistName={setArtist1} artistImage={artistImage1} />
+            <Artist artistNumber={2} artistName={artist2} setArtistName={setArtist2} artistImage={artistImage2} />
+            <Artists artist={setInputArtist[0]} artistImage={setImageSrc[0]} />
+            <Artists artist={setInputArtist[1]} artistImage={setImageSrc[1]}/>
           </div>
           <Intersect />
         </div>
