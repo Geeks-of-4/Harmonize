@@ -1,0 +1,3062 @@
+{
+  "_embedded": {
+    "events": [
+      {
+        "name": "Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZB5jVKdeOc7ZFiUoV9wPxHy",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-19",
+            "localTime": "18:00:00",
+            "dateTime": "2025-04-19T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-19",
+            "localTime": "22:00:00",
+            "dateTime": "2025-04-20T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Chicago",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZB5jVKdeOc7ZFiUoV9wPxHy?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "U.S. Bank Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "55415",
+              "timezone": "America/Chicago",
+              "city": {
+                "name": "Minneapolis"
+              },
+              "state": {
+                "name": "Minnesota",
+                "stateCode": "MN"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "801 South 4th Street"
+              },
+              "location": {
+                "longitude": "-93.2577999999999881",
+                "latitude": "44.973799999999994"
+              },
+              "upcomingEvents": {
+                "archtics": 11,
+                "ticketmaster": 38,
+                "_total": 49,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZB6h8NhmFAAwQvux7TXlrHW",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-19",
+            "localTime": "18:00:00",
+            "dateTime": "2025-04-19T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-19",
+            "localTime": "22:00:00",
+            "dateTime": "2025-04-20T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Chicago",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZB6h8NhmFAAwQvux7TXlrHW?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "U.S. Bank Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "55415",
+              "timezone": "America/Chicago",
+              "city": {
+                "name": "Minneapolis"
+              },
+              "state": {
+                "name": "Minnesota",
+                "stateCode": "MN"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "801 South 4th Street"
+              },
+              "location": {
+                "longitude": "-93.2577999999999881",
+                "latitude": "44.973799999999994"
+              },
+              "upcomingEvents": {
+                "archtics": 11,
+                "ticketmaster": 38,
+                "_total": 49,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZDd1EgKzuRovFBFuGRgZob7H",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-19",
+            "localTime": "18:00:00",
+            "dateTime": "2025-04-19T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-19",
+            "localTime": "22:00:00",
+            "dateTime": "2025-04-20T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Chicago",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDd1EgKzuRovFBFuGRgZob7H?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "U.S. Bank Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "55415",
+              "timezone": "America/Chicago",
+              "city": {
+                "name": "Minneapolis"
+              },
+              "state": {
+                "name": "Minnesota",
+                "stateCode": "MN"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "801 South 4th Street"
+              },
+              "location": {
+                "longitude": "-93.2577999999999881",
+                "latitude": "44.973799999999994"
+              },
+              "upcomingEvents": {
+                "archtics": 11,
+                "ticketmaster": 38,
+                "_total": 49,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvnFEySIZ_vhbwGHIa7us3y?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Handling - Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZBXnWyeuNadEB1jc30Eb2oD",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-03",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-03T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-03",
+            "localTime": "23:00:00",
+            "dateTime": "2025-05-04T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZBXnWyeuNadEB1jc30Eb2oD?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Bank of America Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "28202",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Charlotte"
+              },
+              "state": {
+                "name": "North Carolina",
+                "stateCode": "NC"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "800 South Mint Street"
+              },
+              "location": {
+                "longitude": "-80.8527399999999881",
+                "latitude": "35.225629"
+              },
+              "upcomingEvents": {
+                "archtics": 171,
+                "ticketmaster": 25,
+                "_total": 196,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "2025 Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZDegcAXktqvCKDDppcDRcww5",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-03",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-03T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-03",
+            "localTime": "23:00:00",
+            "dateTime": "2025-05-04T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDegcAXktqvCKDDppcDRcww5?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Bank of America Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "28202",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Charlotte"
+              },
+              "state": {
+                "name": "North Carolina",
+                "stateCode": "NC"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "800 South Mint Street"
+              },
+              "location": {
+                "longitude": "-80.8527399999999881",
+                "latitude": "35.225629"
+              },
+              "upcomingEvents": {
+                "archtics": 171,
+                "ticketmaster": 25,
+                "_total": 196,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvPAHVDtf_A3nQEChrxj0sz?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Suites: Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZDdqdQEOrcWA3tk65tsuCi3k",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-17",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-18T02:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-18",
+            "localTime": "00:00:00",
+            "dateTime": "2025-05-18T07:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Los_Angeles",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDdqdQEOrcWA3tk65tsuCi3k?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZBbv1kAhtskLQB7rEazyRnC?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Seahawks Suite",
+              "type": "venue",
+              "id": "Za5ju3rKuqZBbv1kAhtskLQB7rEazyRnC",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/Los_Angeles",
+              "upcomingEvents": {
+                "archtics": 9,
+                "_total": 9,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZBbv1kAhtskLQB7rEazyRnC?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Concert",
+        "type": "event",
+        "id": "Za5ju3rKuqZBzqKkNimgeUz9zMy5KlTy5",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-06",
+            "localTime": "19:30:00",
+            "dateTime": "2025-06-07T00:30:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-06",
+            "localTime": "23:30:00",
+            "dateTime": "2025-06-07T04:30:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Chicago",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZBzqKkNimgeUz9zMy5KlTy5?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZBDAg_Pb7PFpIW0CtvbhovB?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Suites GA",
+              "type": "venue",
+              "id": "Za5ju3rKuqZBDAg_Pb7PFpIW0CtvbhovB",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/Chicago",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 16,
+                "_total": 16,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZBDAg_Pb7PFpIW0CtvbhovB?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Processing",
+        "type": "event",
+        "id": "Za5ju3rKuqZDe2uNcGLtyuTlgSiFtQi3VU",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-16",
+            "localTime": "19:00:00",
+            "dateTime": "2025-06-16T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-16",
+            "localTime": "23:00:00",
+            "dateTime": "2025-06-17T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDe2uNcGLtyuTlgSiFtQi3VU?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDepf_Vu0F-dZhk3lb56YKNW?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "GIANT CENTER",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDepf_Vu0F-dZhk3lb56YKNW",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "17033",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Hershey"
+              },
+              "state": {
+                "name": "Pennsylvania",
+                "stateCode": "PA"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "550 Hersheypark Drive"
+              },
+              "location": {
+                "longitude": "-76.6691",
+                "latitude": "40.2864"
+              },
+              "upcomingEvents": {
+                "archtics": 163,
+                "ticketmaster": 39,
+                "_total": 202,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDepf_Vu0F-dZhk3lb56YKNW?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Vault Access - Kendrick Lamar",
+        "type": "event",
+        "id": "Za5ju3rKuqZDvMiM_qH4uGMlQJnmDrl7K6",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-03",
+            "localTime": "17:45:00",
+            "dateTime": "2025-05-03T21:45:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-04",
+            "localTime": "01:45:00",
+            "dateTime": "2025-05-04T05:45:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDvMiM_qH4uGMlQJnmDrl7K6?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDd9JzExMpcdQtSLPThYaLh3?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Bank of America Stad - GEN ADM",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDd9JzExMpcdQtSLPThYaLh3",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 83,
+                "_total": 83,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDd9JzExMpcdQtSLPThYaLh3?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "2025 Kendrick Lamar Suites",
+        "type": "event",
+        "id": "Za5ju3rKuqZBPDexOiIq7754p2TstdfA4",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-05",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-05T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-05",
+            "localTime": "23:00:00",
+            "dateTime": "2025-05-06T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZBPDexOiIq7754p2TstdfA4?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvoUPX2K3WCUIYJQeYVmHiK?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Lincoln Financial Field",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvoUPX2K3WCUIYJQeYVmHiK",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "location": {
+                "longitude": "-75.1675000000000119",
+                "latitude": "39.9008"
+              },
+              "upcomingEvents": {
+                "archtics": 5,
+                "_total": 5,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvoUPX2K3WCUIYJQeYVmHiK?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "2025 Kendrick Lamar Suite",
+        "type": "event",
+        "id": "Za5ju3rKuqZDdEojGDoSck4ITXV6kpKKmL",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-12",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-12T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-12",
+            "localTime": "23:00:00",
+            "dateTime": "2025-05-13T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDdEojGDoSck4ITXV6kpKKmL?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvGrvWGAFuFbltPqaU16ELy?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Gillette Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvGrvWGAFuFbltPqaU16ELy",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "02035",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Foxborough"
+              },
+              "state": {
+                "name": "Massachusetts",
+                "stateCode": "MA"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "1 Patriot Place"
+              },
+              "location": {
+                "longitude": "-71.2643",
+                "latitude": "42.0909"
+              },
+              "upcomingEvents": {
+                "archtics": 40,
+                "ticketmaster": 35,
+                "_total": 75,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvGrvWGAFuFbltPqaU16ELy?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar LN Fee",
+        "type": "event",
+        "id": "Za5ju3rKuqZBfb6ToMw_76QFBsF8bT5gh",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-17",
+            "localTime": "19:00:00",
+            "dateTime": "2025-05-18T02:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-17",
+            "localTime": "23:00:00",
+            "dateTime": "2025-05-18T06:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Los_Angeles",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZBfb6ToMw_76QFBsF8bT5gh?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDv_0mMH45uAvbhAbvC-6olz?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "General Adm",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDv_0mMH45uAvbhAbvC-6olz",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/Los_Angeles",
+              "upcomingEvents": {
+                "archtics": 11,
+                "_total": 11,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDv_0mMH45uAvbhAbvC-6olz?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Suite Deposit",
+        "type": "event",
+        "id": "Za5ju3rKuqZDvilxHEqIaCFar6dOIHVWGb",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-05-31",
+            "localTime": "19:00:00",
+            "dateTime": "2025-06-01T02:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-05-31",
+            "localTime": "23:00:00",
+            "dateTime": "2025-06-01T06:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/Los_Angeles",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDvilxHEqIaCFar6dOIHVWGb?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDdtXAq-u5u2rhUNjiuKx1BH?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "General",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDdtXAq-u5u2rhUNjiuKx1BH",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/Los_Angeles",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 31,
+                "_total": 31,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDdtXAq-u5u2rhUNjiuKx1BH?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Suite Tickets",
+        "type": "event",
+        "id": "Za5ju3rKuqZDd0BU1WKu-aQ1S016z_buA9",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-10",
+            "localTime": "19:01:00",
+            "dateTime": "2025-06-10T23:01:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-10",
+            "localTime": "23:01:00",
+            "dateTime": "2025-06-11T03:01:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDd0BU1WKu-aQ1S016z_buA9?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDv6I7SsWVquPt3UkCQl7_7G?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Ford Field",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDv6I7SsWVquPt3UkCQl7_7G",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "48226",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Detroit"
+              },
+              "state": {
+                "name": "Michigan",
+                "stateCode": "MI"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "2000 Brush Street"
+              },
+              "location": {
+                "longitude": "-83.045556",
+                "latitude": "42.34"
+              },
+              "upcomingEvents": {
+                "archtics": 18,
+                "ticketmaster": 16,
+                "_total": 34,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDv6I7SsWVquPt3UkCQl7_7G?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Suite Insurance",
+        "type": "event",
+        "id": "Za5ju3rKuqZDdBUnN9gG4ecnu_tdofltmU",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-10",
+            "localTime": "19:00:00",
+            "dateTime": "2025-06-10T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-10",
+            "localTime": "23:00:00",
+            "dateTime": "2025-06-11T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDdBUnN9gG4ecnu_tdofltmU?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Deposit & RSVP- No Event Entry",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 24,
+                "_total": 24,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Suite Bank",
+        "type": "event",
+        "id": "Za5ju3rKuqZDv_VOSOqUu60h1k6f9rKJzV",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-10",
+            "localTime": "19:00:00",
+            "dateTime": "2025-06-10T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-10",
+            "localTime": "23:00:00",
+            "dateTime": "2025-06-11T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDv_VOSOqUu60h1k6f9rKJzV?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Deposit & RSVP- No Event Entry",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 24,
+                "_total": 24,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar Suite Premium",
+        "type": "event",
+        "id": "Za5ju3rKuqZyj7o6rhq1ZDIm7IJv7Moe",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-06-10",
+            "localTime": "19:00:00",
+            "dateTime": "2025-06-10T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-06-10",
+            "localTime": "23:00:00",
+            "dateTime": "2025-06-11T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZyj7o6rhq1ZDIm7IJv7Moe?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Deposit & RSVP- No Event Entry",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "upcomingEvents": {
+                "archtics": 24,
+                "_total": 24,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDvfBhi0-gAe4IEWodhxKHJQ?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar and SZA : Suites",
+        "type": "event",
+        "id": "Za5ju3rKuqZDdnBKHCD14dk_hWnVegrhWi",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-29",
+            "localTime": "19:00:00",
+            "dateTime": "2025-04-29T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-29",
+            "localTime": "23:00:00",
+            "dateTime": "2025-04-30T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": true
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDdnBKHCD14dk_hWnVegrhWi?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Mercedes-Benz Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "30313",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Atlanta"
+              },
+              "state": {
+                "name": "Georgia",
+                "stateCode": "GA"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "1 AMB Drive NW"
+              },
+              "location": {
+                "longitude": "-84.400823",
+                "latitude": "33.755389"
+              },
+              "upcomingEvents": {
+                "archtics": 38,
+                "ticketmaster": 30,
+                "_total": 68,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar  Suite Rental Event",
+        "type": "event",
+        "id": "Za5ju3rKuqZDexfFDywDtaIbVCW0DdmT1b",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-29",
+            "localTime": "18:00:00",
+            "dateTime": "2025-04-29T22:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-29",
+            "localTime": "22:00:00",
+            "dateTime": "2025-04-30T02:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDexfFDywDtaIbVCW0DdmT1b?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Mercedes-Benz Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL",
+              "test": false,
+              "locale": "en-us",
+              "postalCode": "30313",
+              "timezone": "America/New_York",
+              "city": {
+                "name": "Atlanta"
+              },
+              "state": {
+                "name": "Georgia",
+                "stateCode": "GA"
+              },
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "address": {
+                "line1": "1 AMB Drive NW"
+              },
+              "location": {
+                "longitude": "-84.400823",
+                "latitude": "33.755389"
+              },
+              "upcomingEvents": {
+                "archtics": 38,
+                "ticketmaster": 30,
+                "_total": 68,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDdi1Zcgkig51nC7it0Yj7WL?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Kendrick Lamar & SZA Suite Pass",
+        "type": "event",
+        "id": "Za5ju3rKuqZDvS4ENIO-c6Bl0Zlk2xCtRJ",
+        "test": false,
+        "locale": "en-us",
+        "images": [
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_LANDSCAPE_16_9.jpg",
+            "width": 1136,
+            "height": 639,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_16_9.jpg",
+            "width": 640,
+            "height": 360,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RECOMENDATION_16_9.jpg",
+            "width": 100,
+            "height": 56,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+            "width": 2048,
+            "height": 1152,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_ARTIST_PAGE_3_2.jpg",
+            "width": 305,
+            "height": 203,
+            "fallback": true
+          },
+          {
+            "ratio": "4_3",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_CUSTOM.jpg",
+            "width": 305,
+            "height": 225,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_3_2.jpg",
+            "width": 1024,
+            "height": 683,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_TABLET_LANDSCAPE_16_9.jpg",
+            "width": 1024,
+            "height": 576,
+            "fallback": true
+          },
+          {
+            "ratio": "3_2",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_RETINA_PORTRAIT_3_2.jpg",
+            "width": 640,
+            "height": 427,
+            "fallback": true
+          },
+          {
+            "ratio": "16_9",
+            "url": "https://s1.ticketm.net/dam/c/8cf/a6653880-7899-4f67-8067-1f95f4d158cf_124761_EVENT_DETAIL_PAGE_16_9.jpg",
+            "width": 205,
+            "height": 115,
+            "fallback": true
+          }
+        ],
+        "dates": {
+          "start": {
+            "localDate": "2025-04-29",
+            "localTime": "19:00:00",
+            "dateTime": "2025-04-29T23:00:00Z",
+            "dateTBD": false,
+            "dateTBA": false,
+            "timeTBA": false,
+            "noSpecificTime": false
+          },
+          "end": {
+            "localDate": "2025-04-29",
+            "localTime": "23:00:00",
+            "dateTime": "2025-04-30T03:00:00Z",
+            "approximate": false,
+            "noSpecificTime": false
+          },
+          "timezone": "America/New_York",
+          "status": {
+            "code": "offsale"
+          },
+          "spanMultipleDays": false
+        },
+        "ticketing": {
+          "safeTix": {
+            "enabled": false
+          },
+          "id": "ticketing"
+        },
+        "_links": {
+          "self": {
+            "href": "/discovery/v2/events/Za5ju3rKuqZDvS4ENIO-c6Bl0Zlk2xCtRJ?locale=en-us"
+          },
+          "venues": [
+            {
+              "href": "/discovery/v2/venues/Za5ju3rKuqZDdhvhUcm4o5Sz8NL3hO-71B?locale=en-us"
+            }
+          ]
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Mercedes Benz Stadium",
+              "type": "venue",
+              "id": "Za5ju3rKuqZDdhvhUcm4o5Sz8NL3hO-71B",
+              "test": false,
+              "locale": "en-us",
+              "timezone": "America/New_York",
+              "country": {
+                "name": "United States Of America",
+                "countryCode": "US"
+              },
+              "location": {
+                "longitude": "-84.4008",
+                "latitude": "33.7554"
+              },
+              "upcomingEvents": {
+                "archtics": 27,
+                "_total": 27,
+                "_filtered": 0
+              },
+              "_links": {
+                "self": {
+                  "href": "/discovery/v2/venues/Za5ju3rKuqZDdhvhUcm4o5Sz8NL3hO-71B?locale=en-us"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "_links": {
+    "first": {
+      "href": "/discovery/v2/events.json?startDateTime=2025-03-01T00%3A00%3A00Z&endDateTime=2025-08-31T00%3A00%3A00Z&keyword=Kendrick+Lamar&page=0&size=20"
+    },
+    "self": {
+      "href": "/discovery/v2/events.json?startDateTime=2025-03-01T00%3A00%3A00Z&endDateTime=2025-08-31T00%3A00%3A00Z&keyword=Kendrick+Lamar"
+    },
+    "next": {
+      "href": "/discovery/v2/events.json?startDateTime=2025-03-01T00%3A00%3A00Z&endDateTime=2025-08-31T00%3A00%3A00Z&keyword=Kendrick+Lamar&page=1&size=20"
+    },
+    "last": {
+      "href": "/discovery/v2/events.json?startDateTime=2025-03-01T00%3A00%3A00Z&endDateTime=2025-08-31T00%3A00%3A00Z&keyword=Kendrick+Lamar&page=3&size=20"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 76,
+    "totalPages": 4,
+    "number": 0
+  }
+}
