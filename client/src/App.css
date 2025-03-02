@@ -251,7 +251,10 @@ body {
 
 .harmonizer-button img {
   display: block;
-  width: 100%
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  clip-path: inset(5% 5% 5% 5%); /* Crops edges */
 }
 
 .harmonizer-text {
