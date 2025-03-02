@@ -16,13 +16,15 @@ import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
 
-
 function App() {
   // console.log('⛰️ Mounting App Component!');
   // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
   const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
-  const [imageSrc, setImageSrc] = useState([placeholderImage1, placeholderImage2]);
+  const [imageSrc, setImageSrc] = useState([
+    placeholderImage1,
+    placeholderImage2,
+  ]);
   // This array contains the API responses from the ticketmaster API call
   const [eventData, setEventData] = useState([
     //This is dummy data, empty this when ready
@@ -55,7 +57,9 @@ function App() {
   function harmonizeClickHandler() {
     console.log('👆 The Harmonizerizer has been Clickety Clacked.');
     // make the button do a cool animation
-    setHarmonizerButtonActive(!harmonizerButtonActive)
+    setHarmonizerButtonActive(!harmonizerButtonActive);
+    // scroll the user below the nav bar
+    window.scrollBy({ top: 40, behavior: 'smooth' });
     // ! >>> PUT API HERE<<<
     // ! The eventData useState should be updated after the API calls in here
     // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
@@ -109,32 +113,38 @@ function App() {
 
   return (
     <div>
+      {/* This content should occupy 80% of the viewable area */}
       <Nav daysWindow={setDays} milesWindow={setMiles} />
       <div className='subMain-container'>
-        <div className='artistsAndResults-container'>
-          <div className='artist-box'>
-            <HarmonizerButton
-              onClick={() => {harmonizeClickHandler()}}
-              isToggled={harmonizerButtonActive}
-            />
-            <Artists
-              artistId={0}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-              className='left'
-            />
-            <Artists
-              artistId={1}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-              className='right'
-            />
-          </div>
-          <Intersect setSiblingIntersect={setSiblingIntersect} />
+        <div className='artist-box'>
+          <HarmonizerButton
+            onClick={() => {
+              harmonizeClickHandler();
+            }}
+            isToggled={harmonizerButtonActive}
+          />
+          <Artists
+            artistId={0}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='left'
+          />
+          <Artists
+            artistId={1}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='right'
+          />
         </div>
-        <Map siblingIntersect={siblingIntersect} tours={tours} />
+        {/* this lil guy should occupy a static 20% */}
+        <Intersect setSiblingIntersect={setSiblingIntersect} />
+
+        {/* and then if you scroll down, this should occupy another 80% */}
+        <div className='map-container'>
+          <Map siblingIntersect={siblingIntersect} tours={tours} />
+        </div>
       </div>
     </div>
   );
