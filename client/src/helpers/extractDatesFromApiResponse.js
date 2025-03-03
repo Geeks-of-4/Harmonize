@@ -1,6 +1,6 @@
 // Extract the venues, dates, and artist name from the api response
 export function extractDataFromApiResponse(eventData) {
-  console.log('⌛ Date Extraction from API Response Initiated');
+  // console.log('⌛ Date Extraction from API Response Initiated');
   // create an array of events from the api response's embedded events object
   const events = eventData?._embedded.events || [];
   // return the object in the correct format, pulling out the venue, location, and lat/long
@@ -15,6 +15,7 @@ export function extractDataFromApiResponse(eventData) {
         artist: event.name,
         event_date: event_date,
         venue_name: venue.name || 'Unknown Venue',
+        city: venue.city?.name || 'Unknown City',
         lat: location.latitude,
         lng: location.longitude,
       };
