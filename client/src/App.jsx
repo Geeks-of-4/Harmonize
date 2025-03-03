@@ -12,8 +12,8 @@ import placeholderImage2 from './assets/Placeholder2.webp';
 
 function App() {
   const [artist, setInputArtist] = useState([
-    'Walker & Royce',
-    'Sullivan King',
+    '',
+    '',
   ]);
   const [imageSrc, setImageSrc] = useState([
     placeholderImage1,
@@ -27,14 +27,19 @@ function App() {
 
   async function harmonizeClickHandler() {
     try {
-      const response = await axios.post(
+      const tmResponse = await axios.post(
         'http://localhost:9001/api/TM',
+        [artist[0], artist[1]],
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      const spotifyResponse = await axios.post(
+        'http://localhost:9001/api/spotify',
         [artist[0], artist[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
 
       //* response data should have images as well that we will need to reference to pull into setImageSrc 
-      const data = response.data;
+      const data = tmResponse.data;
       const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
       const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
       const matchingEvents = findMatchingEvents(
@@ -51,11 +56,11 @@ function App() {
         inline: 'nearest',
       });
 
-      //extract artist1 and artist2 from response.data
-      const {image1, image2}= response.data;
-
       //* this should be good to go, once apiController is successfully receiving images
+      // extract artist1 and artist2 from response.data
+      const {image1, image2}= spotifyResponse.data;
       setImageSrc([image1, image2])
+
     } catch (err) {
       console.error('unable to fetch api from one or both artist', err);
     }
@@ -68,24 +73,20 @@ function App() {
       <div className='subMain-container'>
         <div className='artist-box'>
           <HarmonizerButton
-            onClick={() => {
-        
-              harmonizeClickHandler();
-             
-            }}
+            onClick={() => {harmonizeClickHandler()}}
           />
           <Artists
             artistId={0}
             setInputArtist={setInputArtist}
             imageSrc={imageSrc[0]}
-            artist={artist}
+            artist={artist[0]}
             className='left'
           />
           <Artists
             artistId={1}
             setInputArtist={setInputArtist}
             imageSrc={imageSrc[1]}
-            artist={artist}
+            artist={artist[1]}
             className='right'
           />
         </div>
