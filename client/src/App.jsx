@@ -1,119 +1,59 @@
-// Import Libraries
-import { useState, useEffect } from 'react';
-//import axios from 'axios';
-// Import Components & CSS
+import { useState } from 'react';
+import axios from 'axios';
 import Artists from './components/Artists';
 import Map from './components/Map';
 import Nav from './components/Nav';
 import './App.css';
-// Import Helper Functions
 import { extractDataFromApiResponse } from './helpers/extractDatesFromApiResponse';
 import { findMatchingEvents } from './helpers/findMatchingEvents';
-// Import our test data (remove this when the SPI is fixed)
-import apiResponseJSON from '../../ApiResponseExample.json';
 import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
 
+
+
 function App() {
-  // console.log('⛰️ Mounting App Component!');
-  // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
-  const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
-  // This array contains the two artist images, for right now, I am putting placeholders from picsum.
-  const [imageSrc, setImageSrc] = useState([
-    placeholderImage1,
-    placeholderImage2,
-  ]);
-  // This array contains the API responses from the ticketmaster API call
-  const [eventData, setEventData] = useState([
-    //This is dummy data, empty this when ready
-    apiResponseJSON,
-    apiResponseJSON,
-  ]);
-  // This contains the miles limit specified by the user. Ive set the default to 50.
+  const [artist, setInputArtist] = useState(['', '']); 
+  const [imageSrc, setImageSrc] = useState([placeholderImage1,placeholderImage2]);
   const [miles, setMiles] = useState(50);
-  // This contains the time limit in days specified by the user. Ive set the default to 3 days.
   const [days, setDays] = useState(3);
-  // This array of arrays of objects contains the full set of matched tours that the matching function has returned.
   const [tours, setTours] = useState([]);
-  // This contains the specific set of results the user wants to view on the map, this only tells the map to zoom to a spot.
-  const [siblingIntersect, setSiblingIntersect] = useState([
-    // This is dummy data, empty this when ready
-    { lat: 32.782368, lng: -96.783813, title: 'Bomb Factory Deep Ellum' },
-    { lat: 32.78511, lng: -96.808182, title: 'HOB Dallas' },
-    { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
-  ]);
-  const [harmonizerButtonActive, setHarmonizerButtonActive] = useState(false);
-  useEffect(() => {
-    // const apiFetch = async () => {
-    //   try {
-    //     const response = await axios.get(testUrl);
-    //     const filteredEvents = response.data;
-    //   } catch {}
-    // };
-  }, []);
+  const [siblingIntersect, setSiblingIntersect] = useState([]);
 
-  function harmonizeClickHandler() {
-    console.log('👆 The Harmonizerizer has been Clickety Clacked.');
-    // make the button do a cool animation
-    setHarmonizerButtonActive(!harmonizerButtonActive);
-    // scroll the user below the nav bar
-    window.scrollBy({ top: 60, behavior: 'smooth' });
-    // ! >>> PUT API HERE<<<
-    // ! The eventData useState should be updated after the API calls in here
-    // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
-    // const testUrl =
-    //   'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Kendrick+Lamar&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
-    // 2025-03-01T00:00:00Z
-    // takes time in ms, this should give the time in the correct format
-    // const timestamp = Date.now();
-    // const date = new Date(timestamp);
-    // const currentTime = date.toISOString();
-    // date.setMonth(date.getMonth() + 6)
-    // const sixMonthsLater = date.toISOString();
-    // const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=Eagles&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
-    // Build API fetch for ticketmaster
-    // const artist1='';
-    // const artist2='';
-    // const date1 = ;
-    // const date2 = ;
-    // *After the API CALL for both artists, you should run this line below:
-    // *setEventData([apiResults1, apiResults2])
-
-    // Simulate two separate API responses
-    const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
-    const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
-    const response1Image =
-      'https://variety.com/wp-content/uploads/2017/11/kendrick-lamar-variety-hitmakers.jpg?w=1000&h=562&crop=1&resize=910%2C511'; // the response image for artist 1 would go here
-    const response2Image =
-      'https://www.billboard.com/wp-content/uploads/2024/06/Eminem-press-credit-Travis-Shinn-2024-billboard-1548.jpg?w=942&h=623&crop=1&resize=942%2C623'; // the response image for artist 2 would go here
-    console.log('🫨 API Response Data Loaded.');
-    // Update the images for both artists (you could put the API's image location here instead)
-    setImageSrc([[response1Image], [response2Image]]);
-    console.log('📷 Artist Images Updated.');
-    // Extract event dates
-    const response1ExtractedData = extractDataFromApiResponse(response1);
-    const response2ExtractedData = extractDataFromApiResponse(response2);
-    // console.log('Response 1 Extract: ',extractDataFromApiResponse(response1))
-    // console.log('Response 2 Extract: ',extractDataFromApiResponse(response1))
-    // Trigger matching events function... to find the matching events
-    const matchingEvents = findMatchingEvents(
-      response1ExtractedData,
-      response2ExtractedData,
-      days,
-      miles
-    );
-    // ! The output of this function is an array of arrays full of objects
-    // With test data, it looks like there are shitloads of duplicates. We need to check this console log w/ real data
-    // console.log('👑 Proximal Events: ', matchingEvents);
-    // Update the list of tours with those matching events
-    setTours(matchingEvents);
-    console.log(tours);
+  async function harmonizeClickHandler() {
+    const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
+    const artist1= artist[0];
+    const artist2= artist[1];
+    const timestamp = Date.now();
+    const date = new Date(timestamp);
+    const currentTime = date.toISOString();
+    date.setMonth(date.getMonth() + 6)
+    const sixMonthsLater = date.toISOString();
+    const url1 = `https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist1}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    const url2 = `https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist2}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    try {
+      const [response1,response2] = await Promise.all([
+        axios.get(url1),
+        axios.get(url2),
+      ]);
+      const response1ExtractedData = extractDataFromApiResponse(response1.data);
+      const response2ExtractedData = extractDataFromApiResponse(response2.data);
+      const matchingEvents = findMatchingEvents(
+        response1ExtractedData,
+        response2ExtractedData,
+        days,
+        miles
+      );
+      setTours(matchingEvents);
+      window.scrollBy({ top: 40, behavior: 'smooth' });
+    }
+    catch (err) {
+      console.error("unable to fetch api from one or both artist",err);
+    }
   }
 
   return (
     <div>
-      {/* This content should occupy 80% of the viewable area */}
       <Nav daysWindow={setDays} milesWindow={setMiles} />
       <div className='subMain-container'>
         <div className='artist-box'>
@@ -121,7 +61,6 @@ function App() {
             onClick={() => {
               harmonizeClickHandler();
             }}
-            isToggled={harmonizerButtonActive}
           />
           <Artists
             artistId={0}
@@ -138,7 +77,6 @@ function App() {
             className='right'
           />
         </div>
-        {/* this lil guy should occupy a static 20% */}
         <div className='intersect'>
           {tours.map((group, index) => (
             <button
@@ -150,8 +88,6 @@ function App() {
             </button>
           ))}
         </div>
-
-        {/* and then if you scroll down, this should occupy another 80% */}
         <div className='map-container'>
           <Map siblingIntersect={siblingIntersect} tours={tours} />
         </div>
@@ -161,152 +97,3 @@ function App() {
 }
 
 export default App;
-
-/*
-import dotenv from 'dotenv'; // Load API token
-import path from 'path';
-dotenv.config({ path: path.resolve('../server', '.env') });
-
-import axios from 'axios'; // API requests
-import Bottleneck from 'bottleneck'; // Rate limiting
-import Repo from '../db.js'; // Database connection
-import { getDateNDaysAgo } from './getDateNDaysAgo.js';
-
-! Bottleneck rate limiter setup
-console.log('⏳ Initializing rate limiter...');
-const limiter = new Bottleneck({
-  reservoir: 5000, // Available tokens
-  reservoirRefreshAmount: 5000, // Tokens per reset
-  reservoirRefreshInterval: 3600000, // Refresh interval (1 hour)
-  minTime: 1000, // Min time between requests
-  maxConcurrent: 1, // One request at a time
-});
-console.log('✅ Rate limiter configured.');
-
-! Helper function for exponential backoff
-function sleep(ms) {
-  console.log(`⏸️ Sleeping for ${ms / 1000} seconds...`);
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-! Helper function to update the limiter settings based on rate limit headers
-function updateLimiterSettings(response) {
-  console.log('🔄 Updating rate limiter settings based on API headers...');
-
-  const remaining = parseInt(response.headers['x-ratelimit-remaining'], 10); // Extracts the number of remaining API calls
-  const reset = parseInt(response.headers['x-ratelimit-reset'], 10) * 1000; // Retrieves the Unix timestamp (in seconds) when the rate limit resets
-  const retryAfter = parseInt(response.headers['retry-after'], 10) * 1000 || 0; // Checks if GitHub enforces a temporary block due
-  const now = Date.now();
-  const timeUntilReset = reset - now; // Determines how long (in milliseconds) until GitHub resets
-
-  console.log(
-    `🛑 Remaining API calls: ${remaining}, Time until reset: ${
-      timeUntilReset / 1000
-    }s, Retry-After: ${retryAfter / 1000}s`
-  );
-
-  limiter.updateSettings({
-    reservoir: remaining, // Limits the number of available API requests to whatever is remaining
-    reservoirRefreshAmount: 5000, // We get 5k back on refresh
-    reservoirRefreshInterval: timeUntilReset, // Resume after refresh
-    minTime: retryAfter > 0 ? retryAfter : limiter.minTime, // Adjust minTime dynamically
-  });
-}
-
-export async function fetchGitHubTrendingData(number) {
-  console.log(
-    `🚀 Fetching GitHub trending data from the past ${number} days...`
-  );
-
-  const startDate = getDateNDaysAgo(number);
-  let page = 1;
-  let rank = 1;
-
-  while (true) {
-    const url = `https://api.github.com/search/repositories?q=created:>${startDate}&sort=stars&order=desc&per_page=100&page=${page}`;
-    console.log(`📡 Fetching data from: ${url}`);
-
-    try {
-      ! Make request with rate limiting
-      const response = await limiter.schedule(() =>
-        axios.get(url, {
-          headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
-        })
-      );
-
-      ! Update the limiter settings based on rate limit headers
-      updateLimiterSettings(response);
-
-      ! Process data
-      console.log(`📊 Processing page ${page}...`);
-      const parsedGitHubData = response.data.items.map((repo, index) => ({
-        id: repo.id,
-        rank: rank + index,
-        name: repo.name,
-        full_name: repo.full_name,
-        html_url: repo.html_url,
-        owner: {
-          login: repo.owner.login,
-          avatar_url: repo.owner.avatar_url,
-          html_url: repo.owner.html_url,
-        },
-        stargazers_count: repo.stargazers_count,
-        forks_count: repo.forks_count,
-        open_issues_count: repo.open_issues_count,
-        language: repo.language,
-        created_at: repo.created_at,
-        updated_at: repo.updated_at,
-        description: repo.description,
-      }));
-
-      ! Increment rank for next batch
-      rank += parsedGitHubData.length;
-
-      console.log(
-        `📦 Page ${page}: Processed ${parsedGitHubData.length} repositories.`
-      );
-
-      ! Save to database
-      console.log(
-        `🏪 Page ${page}: Updating database with ${parsedGitHubData.length} results.`
-      );
-
-      ! TODO we are only writing to the database, at some point we need to clear old data
-      await Repo.bulkWrite(
-        parsedGitHubData.map((repo) => ({
-          updateOne: {
-            filter: { id: repo.id },
-            update: { $set: repo },
-            upsert: true,
-          },
-        }))
-      );
-
-      ! Stop if fewer than 100 results
-      if (parsedGitHubData.length < 100 || page === 10) {
-        console.log(
-          '🔚 Fewer than 100 results returned OR page 10 reached. Stopping pagination.'
-        );
-        break;
-      }
-      page++;
-    } catch (error) {
-      if (error.response && error.response.status === 403) {
-        console.error('⏳ Rate limit exceeded. Retrying...');
-        const retryAfter =
-          parseInt(error.response.headers['retry-after'], 10) * 1000 || 60000; // Default to 60s
-        await sleep(retryAfter);
-      } else {
-        console.error('☠️ API Error:', {
-          Status: error.response?.status || 'Unknown',
-          Code: error.code || 'Unknown',
-        });
-        break; // Exit if it's not a rate limit error
-      }
-    }
-  }
-
-  console.log('✅ GitHub trending data fetch complete.');
-}
-
-*/
