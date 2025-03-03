@@ -54,12 +54,124 @@ function App() {
     // };
   }, []);
 
+
+  // Spotify API Post Request for access token
+  const client_id = 'b22f740260554be69bfbf430b78c5bdf';
+  const client_secret = '8bf82ad9bdd948aab49569b15374f424';
+
+  async function getToken() {
+    try {
+      const response = await axios.post('https://accounts.spotify.com/api/token',
+        new URLSearchParams({
+          'grant_type': 'client_credentials',
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
+          },
+        });
+
+      const accessToken = response.body.access_token;
+      console.log('Access Token:', accessToken);
+      return accessToken;
+    
+    } catch (error) {
+      console.error('Error fetching POST request:', error.message);
+    }
+
+  }
+  async function getArtistBySearch(accessToken, artistName) {
+    try {
+      const response = await axios.get('https://api.spotify.com/v1/search?q={artist1}&type=artist', {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      });
+  
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error getting images:', error.message);
+    }
+  }
+
+
   function harmonizeClickHandler() {
     console.log('👆 The Harmonizerizer has been Clickety Clacked.');
     // make the button do a cool animation
     setHarmonizerButtonActive(!harmonizerButtonActive);
     // scroll the user below the nav bar
     window.scrollBy({ top: 40, behavior: 'smooth' });
+
+    const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
+    const artist1= artist[0];
+    const artist2= artist[1];
+    const timestamp = Date.now();
+    const date = new Date(timestamp);
+    const currentTime = date.toISOString();
+    date.setMonth(date.getMonth() + 6)
+    const sixMonthsLater = date.toISOString();
+    //need to put artist string in url
+
+    const url1 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist1}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    const url2 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist2}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    // ! The eventData useState should be updated after the API calls in here
+    //chatgpt said to use promise.all since it only returns when both are fulfilled.
+    try {
+      const [response1,response2] = await Promise.all([
+        axios.get(url1),
+        axios.get(url2),
+      ]);
+
+      // console.log ("res1: " + res1.data)
+      // console.log ("res2: " + res2.data)
+       //use .data provided by axioswhich contains a res body (axios methods includes .stats .statusText .headers .config .data)
+      // const res1Data = extractDataFromApiResponse(res1.data);
+      // const res2Data = extractDataFromApiResponse(res2.data);
+      //const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
+      //const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
+      const response1ExtractedData = extractDataFromApiResponse(response1.data);
+      const response2ExtractedData = extractDataFromApiResponse(response2.data);
+      
+      
+      console.log('👑 Proximal Events: ', matchingEvents);
+      // Update the list of tours with those matching events
+      
+      const matchingEvents = findMatchingEvents(
+        response1ExtractedData,
+        response2ExtractedData,
+        days,
+        miles
+      );
+
+      setTours(matchingEvents);
+      
+      // const matchingEvents = findMatchingEvents(res1Data, res2Data);
+       setEventData([response1.data,response2.data]);
+    }
+    catch (err){
+      console.error("unable to fetch api from one or both artist",err);
+    }
+
+    // Build API fetch for ticketmaster
+    // const date1 = ;
+    // const date2 = ;
+    // *After the API CALL for both artists, you should run this line below:
+    // *setEventData([apiResults1, apiResults2])
+
+    // Simulate two separate API responses
+    const response1Image = 'https://picsum.photos/200'; // the response image for artist 1 would go here
+    const response2Image = 'https://picsum.photos/200'; // the response image for artist 2 would go here
+    console.log('🫨 API Response Data Loaded.');
+    // Update the images for both artists (you could put the API's image location here instead)
+    setImageSrc([[response1Image], [response2Image]]);
+    console.log('📷 Artist Images Updated.');
+    // Extract event dates
+
+
+
+
     // ! >>> PUT API HERE<<<
     // ! The eventData useState should be updated after the API calls in here
     // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
