@@ -27,7 +27,7 @@ function App() {
   async function harmonizeClickHandler() {
     try {
       const response = await axios.post(
-        'http://localhost:9001/api',
+        'http://localhost:9001/api/TM',
         [artist[0], artist[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
