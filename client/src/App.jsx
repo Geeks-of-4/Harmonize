@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Artists from './components/Artists';
 import Map from './components/Map';
@@ -20,24 +20,19 @@ function App() {
   const [tours, setTours] = useState([]);
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
+
   async function harmonizeClickHandler() {
-    const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
-    const artist1= artist[0];
-    const artist2= artist[1];
-    const timestamp = Date.now();
-    const date = new Date(timestamp);
-    const currentTime = date.toISOString();
-    date.setMonth(date.getMonth() + 6)
-    const sixMonthsLater = date.toISOString();
-    const url1 = `https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist1}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
-    const url2 = `https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist2}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
     try {
-      const [response1,response2] = await Promise.all([
-        axios.get(url1),
-        axios.get(url2),
-      ]);
-      const response1ExtractedData = extractDataFromApiResponse(response1.data);
-      const response2ExtractedData = extractDataFromApiResponse(response2.data);
+      const response = await axios.post('http://localhost:9001/api', 
+        [artist[0], artist[1]],
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      console.log(response.data)
+      
+      const data = response.data;
+      const response1ExtractedData = extractDataFromApiResponse(data.artist1);
+      const response2ExtractedData = extractDataFromApiResponse(data.artist2);
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
@@ -54,7 +49,7 @@ function App() {
 
   return (
     <div>
-      <Nav daysWindow={setDays} milesWindow={setMiles} />
+      <Nav setDays={setDays} setMiles={setMiles} />
       <div className='subMain-container'>
         <div className='artist-box'>
           <HarmonizerButton
