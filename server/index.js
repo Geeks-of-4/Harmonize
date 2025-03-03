@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import apiRouter from 'apiRouter.js';
+import apiRouter from './apiRouter.js';
 
 const app = express();
 const PORT = process.env.PORT || 9001;
@@ -8,10 +8,7 @@ app.use(express.json()); // Parse JSON request bodies
 
 app.use(cors()); // Allow cross-origin requests (useful for React frontend)
 // http://localhost:5173/
-app.use('/', (req, res, next) => {
-  console.log('🔎 API accessed:', req.method, req.originalUrl);
-  apiRouter(req, res, next);
-});
+app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => {

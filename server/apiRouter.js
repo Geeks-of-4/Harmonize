@@ -1,11 +1,11 @@
 import express from 'express';
-import apiController from 'apiController.js';
+import apiController from './apiController.js';
 
 const apiRouter = express.Router();
 
 // Route to fetch GitHub trending repositories
-apiRouter.get('api', (req, res, next) => {
-    console.log('📡 Incoming request: GET');
+apiRouter.post('/', (req, res, next) => {
+    console.log('📡 Incoming POST request!');
     next();
   },
   apiController.getTicketMasterData, 
