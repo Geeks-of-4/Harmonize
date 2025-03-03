@@ -1,0 +1,38 @@
+import Token from './db.js'
+import axios from'axios'
+
+export async function getToken(){
+  const client_id = 'b22f740260554be69bfbf430b78c5bdf';
+  const client_secret = '8bf82ad9bdd948aab49569b15374f424';
+  const existingToken = await Token.find()
+    // this checks if one exists, if so, it returns a token
+    if (existingToken.tokenExpiry > Date.now()) return existingToken.access_token
+    // if we do not fine a token, we do this:
+    try {
+      const response = await axios.post('https://accounts.spotify.com/api/token',
+        new URLSearchParams({
+          'grant_type': 'client_credentials',
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
+          },
+        });
+      // Stores token in MongoDB (Update if exists, Insert if new)
+      await Token.deleteMany({})
+      const updatedToken = await Token.create(
+        {
+          access_token: response.data.access_token,
+          token_type: response.data.token_type,
+          expires_in: response.data.expires_in,
+          token_expiry: Math.floor(Date.now() / 1000) + response.data.expires_in,
+        },
+      );
+    
+      return updatedToken;
+    
+    } catch (error) {
+      console.error('Failed to fetch token:', error.message);
+    }
+  };

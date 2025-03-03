@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { response } from 'express';
+import { getToken } from './helperFunctions.js'
 
 const apiController = {};
 
@@ -29,8 +29,8 @@ apiController.getTicketMasterData = async (req, res, next) => {
       axios.get(url1),
       axios.get(url2),
     ]);
-    console.log(response1.headers);
-    console.log(response2.headers);
+    // console.log(response1.headers);
+    // console.log(response2.headers);
     return res.status(200).json({
       artist1: response1.data,
       artist2: response2.data,
@@ -49,6 +49,13 @@ apiController.getTicketMasterData = async (req, res, next) => {
 };
 
 apiController.getSpotifyImageData = async (req, res, next) => {
+  // Spotify API Post Request for access token
+  const [artist1, artist2] = req.body;
+  const baseUrl = 'https://api.spotify.com/v1/search?q=';
+  const url1 = `${baseUrl}${artist1}&type=artist`;
+  const url2 = `${baseUrl}${artist2}&type=artist`;
+
+  // const accessToken = {"access_token": "BQAap0nXlZH_CEGMKLCjupPuBHqyZ8rI9IDY50scVTAROUvw44Vl5D684mEET-CRM-nCjuSy0CZGk_RjNKI6T82IBBGaRNeSUu32tZxGyTHyAg6gq7Q5zCYSwzFZ-AroqafYzSCi6hM", "token_type": "Bearer", "expires_in": 3600}
   if (!Array.isArray(req.body) || req.body.length < 2) {
     return next({
       log: 'Invalid request body: Expected an array with two artist names',
@@ -57,17 +64,32 @@ apiController.getSpotifyImageData = async (req, res, next) => {
     });
   }
   try {
+    console.log(url1)
+    console.log(url2)
+    // get our access code
+    const accessToken = await getToken()
+    console.log(accessToken)
+    console.log(accessToken.access_token)
+    // make a request to spotify
+    const [response1, response2] = await Promise.all([
+      axios.get(url1, {headers: {Authorization: 'Bearer ' + accessToken.access_token}}),
+      axios.get(url2, {headers: {Authorization: 'Bearer ' + accessToken.access_token}})
+      ]);
+    console.log(artist1.images[0].url);
+    console.log(artist2.images[0].url);
+    const imageSrc1 = response1.data.artist1.images[0].url || '';  // Replace empty string with default image1
+    const imageSrc2 = response2.data.artist2.images[0].url || '';
+    
+    // send the response back to the client
+    return res.status(200).json({image1: imageSrc1, image2: imageSrc2,});
   } catch (error) {
-    console.error(
-      '☠️ getSpotifyImageData Controller API Error:',
-      error.message
-    );
     return next({
-      log: `getSpotifyImageData Controller API Error: ${error.message}`,
-      status: 500,
-      message: { error: 'Failed to fetch Spotify Image data!' },
-    });
+        log: `getSpotifyImageData Controller API Error: ${error.message}`,
+        status: 500,
+        message: { error: 'Failed to fetch Spotify Image data!' },
+      });
+    }
   }
-};
+
 
 export default apiController;
