@@ -1,0 +1,54 @@
+.nav {
+    height: 60px; /* Adjust as needed */
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #141414;
+    background-image: url('https://www.transparenttextures.com/patterns/black-thread.png');
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  }
+h2 {
+    background: linear-gradient(90deg, #7FDBFF, #8E44AD, #4B0082); /* Light blue → Violet → Purple */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+#logo {
+ height: 150%;
+}
+
+.daysAndDistance{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#days{
+width: 40%;
+background-color: rgba(255, 255, 255, 0.60);
+}
+
+#miles{
+width: 40%;
+background-color: rgba(255, 255, 255, 0.60);
+}
+
+.navButtons{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+   
+}
+
+#login{
+background-color: rgba(255, 255, 255, 0.800);
+}
+
+#signUp{
+    background-color: rgba(255, 255, 255, 0.800);
+    }

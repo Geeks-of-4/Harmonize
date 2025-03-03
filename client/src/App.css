@@ -77,21 +77,7 @@ body {
   font-family: 'Anton', sans-serif;
 }
 
-.nav {
-  height: 40px; /* Adjust as needed */
-  width: 100%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  z-index: 10;
-  background-color: #000000;
-  background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
+
 
 /* .subMain-container {
   display: flex;
@@ -107,8 +93,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #000000;
-  background-color: #19002e;
-  background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
+  background-color: #6d3782;
+  background-image: url('https://www.transparenttextures.com/patterns/black-thread.png');
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
@@ -154,7 +140,7 @@ body {
 
 .intersect {
   width: 100%;
-  height: calc(20vh + 40px);
+  height: calc(20vh + 60px);
   display: flex;
   align-items: center;
   justify-content: center;
