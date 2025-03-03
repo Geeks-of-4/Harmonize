@@ -32,8 +32,8 @@ function App() {
         { headers: { 'Content-Type': 'application/json' } }
       );
       const data = response.data;
-      const response1ExtractedData = extractDataFromApiResponse(data.artist1);
-      const response2ExtractedData = extractDataFromApiResponse(data.artist2);
+      const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
+      const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
