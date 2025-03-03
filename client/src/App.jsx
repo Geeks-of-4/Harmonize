@@ -22,6 +22,7 @@ function App() {
   const [miles, setMiles] = useState(100);
   const [days, setDays] = useState(7);
   const [tours, setTours] = useState([]);
+
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
   async function harmonizeClickHandler() {
@@ -31,6 +32,8 @@ function App() {
         [artist[0], artist[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
+
+      //* response data should have images as well that we will need to reference to pull into setImageSrc 
       const data = response.data;
       const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
       const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
@@ -39,6 +42,7 @@ function App() {
         response2ExtractedData,
         days,
         miles
+
       );
       setTours(matchingEvents);
       document.querySelector('.subMain-container').scrollIntoView({
@@ -46,10 +50,18 @@ function App() {
         block: 'start',
         inline: 'nearest',
       });
+
+      //extract artist1 and artist2 from response.data
+      const {image1, image2}= response.data;
+
+      //* this should be good to go, once apiController is successfully receiving images
+      setImageSrc([image1, image2])
     } catch (err) {
       console.error('unable to fetch api from one or both artist', err);
     }
+  
   }
+
   return (
     <div>
       <Nav setDays={setDays} setMiles={setMiles} />
@@ -57,20 +69,22 @@ function App() {
         <div className='artist-box'>
           <HarmonizerButton
             onClick={() => {
+        
               harmonizeClickHandler();
+             
             }}
           />
           <Artists
             artistId={0}
             setInputArtist={setInputArtist}
-            imageSrc={imageSrc}
+            imageSrc={imageSrc[0]}
             artist={artist}
             className='left'
           />
           <Artists
             artistId={1}
             setInputArtist={setInputArtist}
-            imageSrc={imageSrc}
+            imageSrc={imageSrc[1]}
             artist={artist}
             className='right'
           />
