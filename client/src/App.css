@@ -144,6 +144,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intersect-button {
+  background-color: #19002e;
+  color: #ccc;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 5px;
+}
+
+.intersect-button:hover {
+  background-color: #4a0072;
 }
 
 .map-container {
