@@ -30,7 +30,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
       axios.get(url1),
       axios.get(url2),
     ]);
-    // console.log(response1.headers);
+    console.log(response1);
     // console.log(response2.headers);
     console.log('📫 Sending ticket master response!');
     return res.status(200).json({
