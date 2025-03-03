@@ -21,10 +21,7 @@ function App() {
   // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
   const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
-  const [imageSrc, setImageSrc] = useState([
-    placeholderImage1,
-    placeholderImage2,
-  ]);
+  const [imageSrc, setImageSrc] = useState(['', '']);
   // This array contains the API responses from the ticketmaster API call
   const [eventData, setEventData] = useState([
     //This is dummy data, empty this when ready
@@ -51,6 +48,54 @@ function App() {
   // Spotify API Post Request for access token
   const client_id = 'b22f740260554be69bfbf430b78c5bdf';
   const client_secret = '8bf82ad9bdd948aab49569b15374f424';
+  const accessToken = {
+    "access_token": "BQAap0nXlZH_CEGMKLCjupPuBHqyZ8rI9IDY50scVTAROUvw44Vl5D684mEET-CRM-nCjuSy0CZGk_RjNKI6T82IBBGaRNeSUu32tZxGyTHyAg6gq7Q5zCYSwzFZ-AroqafYzSCi6hM",
+    "token_type": "Bearer",
+    "expires_in": 3600
+  }
+
+const isTokenExpired = () => {
+  const expiresAt = localStorage.getItem('token_expiry');
+  const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+  return !expiresAt || currentTime > expiresAt;  // Token is expired if expiresAt is null or currentTime > expiresAt
+};
+  // First-time load or when there's no valid token, call getToken
+  if (!localStorage.getItem('access_token') || isTokenExpired()) {
+    getToken();  // This will fetch and store a new token if it doesn't exist or has expired
+  }
+  
+  // Axios interceptor to check if the token is expired or missing and refresh if necessary
+axios.interceptors.request.use(
+  async (config) => {
+    let accessToken = localStorage.getItem('access_token');
+    
+    // If there's no access token or the token is expired
+    if (!accessToken || isTokenExpired()) {
+      console.log('Token expired or not found, fetching a new token...');
+      
+      try {
+        // If the token is missing, get a new one
+        if (!accessToken) {
+          accessToken = await getToken();
+        } else {
+          // If the token expired, refresh it
+          accessToken = await refreshAccessToken();
+        }
+      } catch (error) {
+        console.error('Failed to refresh the access token:', error);
+        throw error; // Stop request if token cannot be retrieved
+      }
+    }
+    
+    // Attach the valid token to the request
+    config.headers['Authorization'] = 'Bearer ' + accessToken;
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
   async function getToken() {
     try {
@@ -65,25 +110,77 @@ function App() {
           },
         });
 
-      const accessToken = response.body.access_token;
-      console.log('Access Token:', accessToken);
+      const accessToken = response.data.access_token;
+      const tokenType = response.data.token_type;
+      const expiresIn = response.data.expires_in;
+    
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('token_type', tokenType);
+      localStorage.setItem('expires_in', expiresIn);
+
+       // Set the expiration time in localStorage (current time + expiresIn)
+      localStorage.setItem('token_expiry', Math.floor(Date.now() / 1000) + expiresIn);
+
       return accessToken;
     
     } catch (error) {
-      console.error('Error fetching POST request:', error.message);
+      console.error('Failed to fetch token:', error.message);
     }
+  };
 
-  }
-  async function getArtistBySearch(accessToken, artistName) {
-    try {
-      const response = await axios.get('https://api.spotify.com/v1/search?q={artist1}&type=artist', {
+  // Function to refresh the token
+const refreshAccessToken = async () => {
+  try {
+    const response = await axios.post('https://accounts.spotify.com/api/token',
+      new URLSearchParams({
+        'grant_type': 'client_credentials',
+      }),
+      {
         headers: {
-          Authorization: 'Bearer ' + accessToken
-        }
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
+        },
       });
+
+    const accessToken = response.data.access_token;
+    const tokenType = response.data.token_type;
+    const expiresIn = response.data.expires_in;
+
+    // Store the new token and its expiry time
+    localStorage.setItem('access_token', accessToken);
+    localStorage.setItem('token_type', tokenType);
+    localStorage.setItem('expires_in', expiresIn);
+    
+    // Set the expiration time in localStorage
+    localStorage.setItem('token_expiry', Math.floor(Date.now() / 1000) + expiresIn);
+
+    return accessToken;
+  } catch (error) {
+    console.error('Error refreshing access token:', error.message);
+    throw error;
+  }
+};
   
-      const data = await response.json();
-      console.log(data);
+  async function getArtistBySearch(accessToken, artist1 , artist2) {
+    //const accessToken = localStorage.getItem('access_token');
+    try {
+      const [response1, response2] = await Promise.all([
+        axios.get(`https://api.spotify.com/v1/search?q=${artist1}&type=artist`, {
+          headers: {
+            Authorization: 'Bearer ' + accessToken
+          }
+        }),
+        axios.get(`https://api.spotify.com/v1/search?q=${artist2}&type=artist`, {
+          headers: {
+            Authorization: 'Bearer ' + accessToken
+          }
+        })
+      ]);
+      
+      console.log(artist.images[0].url);
+      const imageSrc1 = response1.data.artist.images[0].url || '';  // fallback to empty string if no image is found
+      const imageSrc2 = response2.data.artist.images[0].url || '';
+      setImageSrc([[imageSrc1], [imageSrc2]]);
     } catch (error) {
       console.error('Error getting images:', error.message);
     }
@@ -223,21 +320,23 @@ function App() {
         <div className='artist-box'>
           <HarmonizerButton
             onClick={() => {
+              getToken();
               harmonizeClickHandler();
+              getArtistBySearch();
             }}
             isToggled={harmonizerButtonActive}
           />
           <Artists
             artistId={0}
             setInputArtist={setInputArtist}
-            imageSrc={imageSrc}
+            imageSrc={imageSrc[0]}
             artist={artist}
             className='left'
           />
           <Artists
             artistId={1}
             setInputArtist={setInputArtist}
-            imageSrc={imageSrc}
+            imageSrc={imageSrc[1]}
             artist={artist}
             className='right'
           />
