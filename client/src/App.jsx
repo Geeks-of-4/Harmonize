@@ -109,6 +109,7 @@ function App() {
     // console.log('👑 Proximal Events: ', matchingEvents);
     // Update the list of tours with those matching events
     setTours(matchingEvents);
+    console.log(tours)
   }
 
   return (
@@ -139,7 +140,14 @@ function App() {
           />
         </div>
         {/* this lil guy should occupy a static 20% */}
-        <Intersect setSiblingIntersect={setSiblingIntersect} />
+        <div className='intersect'>
+          {tours.map((group, index) => (
+            <Intersect 
+            key={index}
+            events={group}
+            setSiblingIntersect={setSiblingIntersect} />
+          ))}
+        </div>
 
         {/* and then if you scroll down, this should occupy another 80% */}
         <div className='map-container'>
