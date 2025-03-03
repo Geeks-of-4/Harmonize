@@ -1,5 +1,5 @@
 // Import Libraries
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 //import axios from 'axios';
 // Import Components & CSS
 import Artists from './components/Artists';
@@ -45,14 +45,7 @@ function App() {
     { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
   ]);
   const [harmonizerButtonActive, setHarmonizerButtonActive] = useState(false);
-  useEffect(() => {
-    // const apiFetch = async () => {
-    //   try {
-    //     const response = await axios.get(testUrl);
-    //     const filteredEvents = response.data;
-    //   } catch {}
-    // };
-  }, []);
+
 
 
   // Spotify API Post Request for access token
@@ -97,7 +90,7 @@ function App() {
   }
 
 
-  function harmonizeClickHandler() {
+  async function harmonizeClickHandler() {
     console.log('👆 The Harmonizerizer has been Clickety Clacked.');
     // make the button do a cool animation
     setHarmonizerButtonActive(!harmonizerButtonActive);
@@ -116,7 +109,6 @@ function App() {
 
     const url1 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist1}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
     const url2 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist2}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
-    // ! The eventData useState should be updated after the API calls in here
     //chatgpt said to use promise.all since it only returns when both are fulfilled.
     try {
       const [response1,response2] = await Promise.all([
