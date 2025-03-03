@@ -29,10 +29,10 @@ const Nav = ({ setDays, setMiles }) => {
           <option value='10'>10 miles</option>
         </select>
       </div>
-      <div className='navButtons'>
+      {/* <div className='navButtons'>
         <button id='login'>Login</button>
         <button id='signUp'>SignUp</button>
-      </div>
+      </div> */}
     </div>
   );
 };
