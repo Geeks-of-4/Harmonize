@@ -15,6 +15,7 @@ export function extractDataFromApiResponse(eventData) {
         artist: event.name,
         event_date: event_date,
         venue_name: venue.name || 'Unknown Venue',
+        city: venue.city?.name || 'Unknown City',
         lat: location.latitude,
         lng: location.longitude,
       };

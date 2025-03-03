@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 //import axios from 'axios';
 // Import Components & CSS
 import Artists from './components/Artists';
-import Intersect from './components/Intersect';
 import Map from './components/Map';
 import Nav from './components/Nav';
 import './App.css';
@@ -59,7 +58,7 @@ function App() {
     // make the button do a cool animation
     setHarmonizerButtonActive(!harmonizerButtonActive);
     // scroll the user below the nav bar
-    window.scrollBy({ top: 40, behavior: 'smooth' });
+    window.scrollBy({ top: 60, behavior: 'smooth' });
     // ! >>> PUT API HERE<<<
     // ! The eventData useState should be updated after the API calls in here
     // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
@@ -109,7 +108,7 @@ function App() {
     // console.log('👑 Proximal Events: ', matchingEvents);
     // Update the list of tours with those matching events
     setTours(matchingEvents);
-    console.log(tours)
+    console.log(tours);
   }
 
   return (
@@ -142,10 +141,13 @@ function App() {
         {/* this lil guy should occupy a static 20% */}
         <div className='intersect'>
           {tours.map((group, index) => (
-            <Intersect 
-            key={index}
-            events={group}
-            setSiblingIntersect={setSiblingIntersect} />
+            <button
+              key={index}
+              className='intersect-button'
+              onClick={() => setSiblingIntersect(group)}
+            >
+              {`${group.length} events in ${group[0].city}`}
+            </button>
           ))}
         </div>
 
