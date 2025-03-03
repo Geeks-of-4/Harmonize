@@ -25,6 +25,7 @@ function App() {
 
   async function harmonizeClickHandler() {
     if (!artist[0] || !artist[1]) return;
+    setClickStatus(true);
 
     try {
       const tmResponse = await axios.post(
@@ -63,7 +64,6 @@ function App() {
       // extract artist1 and artist2 from response.data
       const { image1, image2 } = spotifyResponse.data;
       setImageSrc([image1, image2]);
-      setClickStatus(true);
     } catch (err) {
       console.error('unable to fetch api from one or both artist', err);
     }
