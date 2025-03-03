@@ -1,11 +1,8 @@
-
 const Nav = ({ setDays, setMiles }) => {
-
-    return (
-
-     <div className='nav'>
-      <img id='logo' src='../assets/harmonizeLogo.png'/>
-      <h2>Harmonize    Turn Every City into a Festival</h2>
+  return (
+    <div className='nav'>
+      <img id='logo' src='../assets/harmonizeLogo.png' />
+      <h2>Harmonize Turn Every City into a Festival</h2>
       <select id='days' onChange={(event) => setDays(event.target.value)}>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -24,8 +21,8 @@ const Nav = ({ setDays, setMiles }) => {
       <a href='http://google.com'>About</a>
       <button>Login</button>
       <button>SignUp</button>
-     </div>
-    )
-  }
-  
-  export default Nav
+    </div>
+  );
+};
+
+export default Nav;

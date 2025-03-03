@@ -16,11 +16,11 @@ import { findMatchingEvents } from './helpers/findMatchingEvents';
 function App() {
   // console.log('⛰️ Mounting App Component!');
   // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
-  const [artist, setInputArtist] = useState(['Bob', 'Joe']); // fake placeholder data, we should remove this
+  const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
   const [imageSrc, setImageSrc] = useState([
-    'https://picsum.photos/200',
-    'https://picsum.photos/200',
+    placeholderImage1,
+    placeholderImage2,
   ]);
   // This array contains the API responses from the ticketmaster API call
   const [eventData, setEventData] = useState([]);
@@ -33,7 +33,8 @@ function App() {
   // This array of arrays of objects contains the full set of matched tours that the matching function has returned.
   const [tours, setTours] = useState([]);
   // This contains the specific set of results the user wants to view on the map, this only tells the map to zoom to a spot.
-  const [siblingIntersect, setSiblingIntersect] = useState([ // This is dummy data, empty this when ready
+  const [siblingIntersect, setSiblingIntersect] = useState([
+    // This is dummy data, empty this when ready
     { lat: 32.782368, lng: -96.783813, title: 'Bomb Factory Deep Ellum' },
     { lat: 32.78511, lng: -96.808182, title: 'HOB Dallas' },
     { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
@@ -139,7 +140,7 @@ function App() {
     // Build API fetch for ticketmaster
     // const date1 = ;
     // const date2 = ;
-    // *After the API CALL for both artists, you should run this line below: 
+    // *After the API CALL for both artists, you should run this line below:
     // *setEventData([apiResults1, apiResults2])
 
     // Simulate two separate API responses
@@ -159,33 +160,38 @@ function App() {
 
   return (
     <div>
+      {/* This content should occupy 80% of the viewable area */}
       <Nav daysWindow={setDays} milesWindow={setMiles} />
       <div className='subMain-container'>
-        <div className='artistsAndResults-container'>
-          <div className='artist-box'>
-            <button
-              onClick={() => {
-                harmonizeClickHandler();
-              }}
-            >
-              HARMONIZE
-            </button>
-            <Artists
-              artistId={0}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-            />
-            <Artists
-              artistId={1}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-            />
-          </div>
-          <Intersect setSiblingIntersect={setSiblingIntersect} />
+        <div className='artist-box'>
+          <HarmonizerButton
+            onClick={() => {
+              harmonizeClickHandler();
+            }}
+            isToggled={harmonizerButtonActive}
+          />
+          <Artists
+            artistId={0}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='left'
+          />
+          <Artists
+            artistId={1}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='right'
+          />
         </div>
-        <Map siblingIntersect={siblingIntersect} tours={tours} />
+        {/* this lil guy should occupy a static 20% */}
+        <Intersect setSiblingIntersect={setSiblingIntersect} />
+
+        {/* and then if you scroll down, this should occupy another 80% */}
+        <div className='map-container'>
+          <Map siblingIntersect={siblingIntersect} tours={tours} />
+        </div>
       </div>
     </div>
   );

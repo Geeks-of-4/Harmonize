@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Music&display=swap');
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -71,82 +74,220 @@ h6 {
 html,
 body {
   height: 100%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  border: 2px solid black;
+  font-family: 'Anton', sans-serif;
 }
 
 .nav {
-  height: 30px; /* Adjust as needed */
+  height: 40px; /* Adjust as needed */
   width: 100%;
-  background-color: #000000;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: fixed;
+  justify-content: space-between;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 10;
-  border-bottom: 2px solid black;
+  background-color: #000000;
+  background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-.subMain-container {
+/* .subMain-container {
   display: flex;
   flex: 1;
   width: 100%;
-  margin-top: 20px; /* Push down below Nav */
-  height: calc(100vh - 20px); /* Fill remaining space */
-  border: 2px solid blue;
-  background-color: #f0f0f0;
-}
+  height: calc(100vh - 40px);
+} */
 
-.artistsAndResults-container {
-  width: 60%;
-  height: 100%;
-  display: flexbox;
+.subMain-container {
+  display: flex;
+  width: 100%;
+  height: 180vh;
+  display: flex;
   flex-direction: column;
-  border: 2px solid red;
-  background-color: #ffe6e6;
+  background-color: #000000;
+  background-color: #19002e;
+  background-image: url('https://www.transparenttextures.com/patterns/gplay.png');
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .artist-box {
   display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  position: relative;
   width: 100%;
-  height: 50%;
+  height: 80vh;
 }
 
-.artist {
+.artistContainer {
+  flex: 1;
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.artistContainer img {
+  /* position: relative; */
+  /* object-fit: fill; */
+  /* border-radius: 50%; */
   width: 100%;
   height: 100%;
-  background-color: lightgreen;
+  /* border: 4px solid #19002e; */
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 2px solid black;
+  z-index: 0;
+}
+
+/* making a fucking triangle here, this one is LEFT */
+.artistContainer.left {
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+/* the other triangle RIGHT */
+.artistContainer.right {
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.artistContainer img {
+  /* width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  I tried this stuff above, it was oke, now trying stuff below*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artistContainer.left img {
+  /* object-position: 100% center; */
+  animation: shiftLeft 120s ease-out forwards;
+}
+.artistContainer.right img {
+  /* object-position: 0% center; */
+  animation: shiftRight 120s ease-out forwards;
 }
 
 .intersect {
   width: 100%;
-  height: 50%;
-  background-color: lightcoral;
+  height: calc(20vh + 40px);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 2px solid black;
+}
+
+.map-container {
+  height: 80vh;
+  width: 100%;
 }
 
 /* Fix Map placement - should be on the right */
-.map {
-  width: 40%;
+#map {
+  width: 100%;
   height: 100%;
-  background-color: lightblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 2px solid black;
 }
+
+/* this is from Wing and I like it */
+.input {
+  padding: 5px; /* Optional: Add padding to make the input look nicer */
+  font-size: 15px; /* Optional: Adjust font size */
+  border: 1px solid #ccc; /* Optional: Add a border to the input field */
+  outline: none; /* Optional: Remove the outline when the input is focused */
+  z-index: 1;
+  transform: translateX(-50%);
+  width: 50%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  opacity: 0.6;
+  font-size: 2rem;
+}
+
+.input.left {
+  bottom: 5%;
+  z-index: 2;
+}
+.input.right {
+  top: 5%;
+  z-index: 2;
+}
+
+.input:focus {
+  border-color: #19002e; /* Optional: Change border color when focused */
+}
+
+.harmonizer-container {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.harmonizer-button {
+  clip-path: inset(18% 22% 21% 27%);
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
+  object-fit: contain;
+  position: relative;
+  background: none;
+  transition: transform 3s ease-in-out;
+}
+.harmonizer-button:hover {
+  transform: scale(1.25);
+}
+
+/* <<< ANIMATION STUFF DOWN HERE >>> */
+
+@keyframes shiftLeft {
+  0% {
+    object-position: 0% center;
+  }
+  2% {
+    object-position: 70% center;
+  }
+  5% {
+    object-position: 80% center;
+  }
+  20% {
+    object-position: 90% center;
+  }
+  50% {
+    object-position: 97% center;
+  }
+  100% {
+    object-position: 100% center;
+  }
+}
+
+@keyframes shiftRight {
+  0% {
+    object-position: 100% center;
+  }
+  2% {
+    object-position: 30% center;
+  }
+  5% {
+    object-position: 20% center;
+  }
+  20% {
+    object-position: 10% center;
+  }
+  50% {
+    object-position: 3% center;
+  }
+  100% {
+    object-position: 0% center;
+  }
+}
+

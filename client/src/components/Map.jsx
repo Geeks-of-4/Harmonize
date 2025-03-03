@@ -38,11 +38,13 @@ const Map = ({ tours, siblingIntersect }) => {
         'marker'
       );
       const { LatLngBounds } = await window.google.maps.importLibrary('core');
+    
+
       // then update the map to show this spot by default (sydney aus, atm)
       mapInstance.current = new Map(mapRef.current, {
         center: { lat: 39.66118664405381, lng: -95.69956654456912 }, // center of US to start
         zoom: 4, // show all of USA
-        mapId: '30b4a168fe464cbe',
+        mapId: 'c9801136fa90cb36',
       });
 
       // * This sections is used to center the map on the results from the API fetch.
