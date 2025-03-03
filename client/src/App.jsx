@@ -1,6 +1,6 @@
 // Import Libraries
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 // Import Components & CSS
 import Artists from './components/Artists';
 import Intersect from './components/Intersect';
