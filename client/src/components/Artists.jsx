@@ -1,6 +1,6 @@
 //import { useEffect } from 'react';
 
-const Artists = ({ artistId, setInputArtist, imageSrc, artist }) => {
+const Artists = ({ artistId, setInputArtist, imageSrc, artist, className }) => {
   // console.log('🧑‍🎨 Mounting Artist Component!');
   // Example artists data (awaiting fetched artist and image data from API)
   // const artistsList = [
@@ -40,7 +40,7 @@ const Artists = ({ artistId, setInputArtist, imageSrc, artist }) => {
 
   return (
     <div>
-      <div className='artistContainer'>
+      <div className={`artistContainer ${className}`}>
         <img
           src={imageSrc[artistId]} //📸
           alt='Artist'
@@ -57,7 +57,7 @@ const Artists = ({ artistId, setInputArtist, imageSrc, artist }) => {
             });
           }}
           placeholder="Enter artist's name"
-          className='input'
+          className={`input ${className}`}
         />
       </div>
     </div>
