@@ -87,6 +87,7 @@ function App() {
                 key={index}
                 className='intersect-button'
                 onClick={() => {
+                  console.log(group);
                   setSiblingIntersect(group);
                   window.scrollTo({
                     top: document.body.scrollHeight,

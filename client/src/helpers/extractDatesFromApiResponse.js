@@ -9,6 +9,7 @@ export function extractDataFromApiResponse(eventData) {
       const venue = event._embedded.venues[0];
       const location = venue.location || {};
       const event_date = event.dates.start.localDate;
+      const ticketUrl = `https://www.ticketmaster.com${event._links.self.href}`;
       // make sure lat/long exist, if not, return nothing early
       if (!location.latitude || !location.longitude) return null;
       const returnData = {
@@ -18,6 +19,7 @@ export function extractDataFromApiResponse(eventData) {
         city: venue.city?.name || 'Unknown City',
         lat: location.latitude,
         lng: location.longitude,
+        ticketUrl: ticketUrl
       };
       return returnData;
     })
