@@ -7,6 +7,7 @@ export function findMatchingEvents(
   // console.log('🧩 Find Matching Events Invoked.');
   // create an empty storage array for results
   const matches = [];
+  const seen = new Set();
 
   function isNearby(lat1, lon1, lat2, lon2, rangeMaximum) {
     // console.log('😚 Is Nearby Invoked.');
@@ -61,10 +62,18 @@ export function findMatchingEvents(
           matchingGroup.push(artist2Event);
           // } else {console.log('❌ Rejected Match (Distance): ', artist1Event, artist2Event);
         }
+        // else {console.log('❌ Rejected Match (Date): ', artist1Event, artist2Event);}
+        // for each time a group is created, push the whole group to the results
       }
-      // else {console.log('❌ Rejected Match (Date): ', artist1Event, artist2Event);}
-      // for each time a group is created, push the whole group to the results
-      if (matchingGroup.length > 1) {
+    }
+    if (matchingGroup.length > 1) {
+      const sortedGroup = matchingGroup
+        .map((event) => JSON.stringify(event))
+        .sort()
+        .join('|');
+
+      if (!seen.has(sortedGroup)) {
+        seen.add(sortedGroup);
         matches.push(matchingGroup);
       }
     }
