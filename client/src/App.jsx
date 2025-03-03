@@ -12,18 +12,22 @@ import { extractDataFromApiResponse } from './helpers/extractDatesFromApiRespons
 import { findMatchingEvents } from './helpers/findMatchingEvents';
 // Import our test data (remove this when the SPI is fixed)
 import apiResponseJSON from '../../ApiResponseExample.json';
+import HarmonizerButton from './components/HarmonizerButton';
+import placeholderImage1 from './assets/Placeholder1.webp';
+import placeholderImage2 from './assets/Placeholder2.webp';
 
 function App() {
   // console.log('⛰️ Mounting App Component!');
   // This array contains two artist names, position 0 would be artist 1, while position 1 is artist 2
-  const [artist, setInputArtist] = useState(['Bob', 'Joe']); // fake placeholder data, we should remove this
+  const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
   const [imageSrc, setImageSrc] = useState([
-    'https://picsum.photos/200',
-    'https://picsum.photos/200',
+    placeholderImage1,
+    placeholderImage2,
   ]);
   // This array contains the API responses from the ticketmaster API call
-  const [eventData, setEventData] = useState([ //This is dummy data, empty this when ready
+  const [eventData, setEventData] = useState([
+    //This is dummy data, empty this when ready
     apiResponseJSON,
     apiResponseJSON,
   ]);
@@ -34,11 +38,13 @@ function App() {
   // This array of arrays of objects contains the full set of matched tours that the matching function has returned.
   const [tours, setTours] = useState([]);
   // This contains the specific set of results the user wants to view on the map, this only tells the map to zoom to a spot.
-  const [siblingIntersect, setSiblingIntersect] = useState([ // This is dummy data, empty this when ready
+  const [siblingIntersect, setSiblingIntersect] = useState([
+    // This is dummy data, empty this when ready
     { lat: 32.782368, lng: -96.783813, title: 'Bomb Factory Deep Ellum' },
     { lat: 32.78511, lng: -96.808182, title: 'HOB Dallas' },
     { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
   ]);
+  const [harmonizerButtonActive, setHarmonizerButtonActive] = useState(false);
   useEffect(() => {
     // const apiFetch = async () => {
     //   try {
@@ -50,7 +56,11 @@ function App() {
 
   function harmonizeClickHandler() {
     console.log('👆 The Harmonizerizer has been Clickety Clacked.');
-    // ! >>> PUT API HERE<<< 
+    // make the button do a cool animation
+    setHarmonizerButtonActive(!harmonizerButtonActive);
+    // scroll the user below the nav bar
+    window.scrollBy({ top: 40, behavior: 'smooth' });
+    // ! >>> PUT API HERE<<<
     // ! The eventData useState should be updated after the API calls in here
     // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
     // const testUrl =
@@ -68,14 +78,16 @@ function App() {
     // const artist2='';
     // const date1 = ;
     // const date2 = ;
-    // *After the API CALL for both artists, you should run this line below: 
+    // *After the API CALL for both artists, you should run this line below:
     // *setEventData([apiResults1, apiResults2])
 
     // Simulate two separate API responses
     const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
     const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
-    const response1Image = 'https://picsum.photos/200'; // the response image for artist 1 would go here
-    const response2Image = 'https://picsum.photos/200'; // the response image for artist 2 would go here
+    const response1Image =
+      'https://variety.com/wp-content/uploads/2017/11/kendrick-lamar-variety-hitmakers.jpg?w=1000&h=562&crop=1&resize=910%2C511'; // the response image for artist 1 would go here
+    const response2Image =
+      'https://www.billboard.com/wp-content/uploads/2024/06/Eminem-press-credit-Travis-Shinn-2024-billboard-1548.jpg?w=942&h=623&crop=1&resize=942%2C623'; // the response image for artist 2 would go here
     console.log('🫨 API Response Data Loaded.');
     // Update the images for both artists (you could put the API's image location here instead)
     setImageSrc([[response1Image], [response2Image]]);
@@ -94,40 +106,45 @@ function App() {
     );
     // ! The output of this function is an array of arrays full of objects
     // With test data, it looks like there are shitloads of duplicates. We need to check this console log w/ real data
-    console.log('👑 Proximal Events: ', matchingEvents);
+    // console.log('👑 Proximal Events: ', matchingEvents);
     // Update the list of tours with those matching events
     setTours(matchingEvents);
   }
 
   return (
     <div>
+      {/* This content should occupy 80% of the viewable area */}
       <Nav daysWindow={setDays} milesWindow={setMiles} />
       <div className='subMain-container'>
-        <div className='artistsAndResults-container'>
-          <div className='artist-box'>
-            <button
-              onClick={() => {
-                harmonizeClickHandler();
-              }}
-            >
-              HARMONIZE
-            </button>
-            <Artists
-              artistId={0}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-            />
-            <Artists
-              artistId={1}
-              setInputArtist={setInputArtist}
-              imageSrc={imageSrc}
-              artist={artist}
-            />
-          </div>
-          <Intersect setSiblingIntersect={setSiblingIntersect} />
+        <div className='artist-box'>
+          <HarmonizerButton
+            onClick={() => {
+              harmonizeClickHandler();
+            }}
+            isToggled={harmonizerButtonActive}
+          />
+          <Artists
+            artistId={0}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='left'
+          />
+          <Artists
+            artistId={1}
+            setInputArtist={setInputArtist}
+            imageSrc={imageSrc}
+            artist={artist}
+            className='right'
+          />
         </div>
-        <Map siblingIntersect={siblingIntersect} tours={tours} />
+        {/* this lil guy should occupy a static 20% */}
+        <Intersect setSiblingIntersect={setSiblingIntersect} />
+
+        {/* and then if you scroll down, this should occupy another 80% */}
+        <div className='map-container'>
+          <Map siblingIntersect={siblingIntersect} tours={tours} />
+        </div>
       </div>
     </div>
   );
