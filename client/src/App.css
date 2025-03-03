@@ -191,24 +191,12 @@ body {
 #map {
   width: 100%;
   height: 100%;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;*/
 }
-/* !trying out a complicated component as a button */
-/* .harmonizer-button {
-  position: fixed;
-  top: 40vh;
-  left: 35vh;
-  z-index: 1;
-} */
 
 /* this is from Wing and I like it */
 .input {
   padding: 5px; /* Optional: Add padding to make the input look nicer */
   font-size: 15px; /* Optional: Adjust font size */
-  /* border-radius: 50px;  */
-  /* This makes the corners rounded */
   border: 1px solid #ccc; /* Optional: Add a border to the input field */
   outline: none; /* Optional: Remove the outline when the input is focused */
   z-index: 1;
@@ -234,49 +222,32 @@ body {
   border-color: #19002e; /* Optional: Change border color when focused */
 }
 
-/* jesus fuck what the hell am I doing */
-.harmonizer-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+.harmonizer-container {
   position: absolute;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  height: 400px;
-  width: 400px;
-  padding: 0;
-}
-
-.harmonizer-button img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  clip-path: inset(5% 5% 5% 5%); /* Crops edges */
-}
-
-.harmonizer-text {
-  z-index: 2;
-  /* display:flex;
-  text-align: center;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  color: #19002e;
+  align-items: center;
 }
-/* <<< ANIMATION STUFF DOWN HERE >>> */
 
-.fizzy {
-  position: absolute;
-  font-size: 2rem;
-  font-family: 'Noto Music', sans-serif;
-  color: hsl(calc(360 * var(--hue)), 100%, 50%);
-  font-size: 10px;
-  opacity: 1;
-  animation: floatUp 1.5s ease-out forwards;
-  z-index: 3;
+.harmonizer-button {
+  clip-path: inset(18% 22% 21% 27%);
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
+  object-fit: contain;
+  position: relative;
+  background: none;
+  transition: transform 3s ease-in-out;
 }
+.harmonizer-button:hover {
+  transform: scale(1.25);
+}
+
+/* <<< ANIMATION STUFF DOWN HERE >>> */
 
 @keyframes shiftLeft {
   0% {
@@ -319,3 +290,4 @@ body {
     object-position: 0% center;
   }
 }
+
