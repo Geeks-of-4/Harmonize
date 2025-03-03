@@ -11,10 +11,8 @@ import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
 
 function App() {
-  const [artist, setInputArtist] = useState([
-    '',
-    '',
-  ]);
+  const [clickStatus, setClickStatus] = useState(false);
+  const [artist, setInputArtist] = useState(['', '']);
   const [imageSrc, setImageSrc] = useState([
     placeholderImage1,
     placeholderImage2,
@@ -26,6 +24,8 @@ function App() {
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
   async function harmonizeClickHandler() {
+    if (!artist[0] || !artist[1]) return;
+
     try {
       const tmResponse = await axios.post(
         'http://localhost:9001/api/TM',
@@ -38,16 +38,19 @@ function App() {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      //* response data should have images as well that we will need to reference to pull into setImageSrc 
+      //* response data should have images as well that we will need to reference to pull into setImageSrc
       const data = tmResponse.data;
-      const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
-      const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
+      const response1ExtractedData = await extractDataFromApiResponse(
+        data.artist1
+      );
+      const response2ExtractedData = await extractDataFromApiResponse(
+        data.artist2
+      );
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
         days,
         miles
-
       );
       setTours(matchingEvents);
       document.querySelector('.subMain-container').scrollIntoView({
@@ -58,13 +61,12 @@ function App() {
 
       //* this should be good to go, once apiController is successfully receiving images
       // extract artist1 and artist2 from response.data
-      const {image1, image2}= spotifyResponse.data;
-      setImageSrc([image1, image2])
-
+      const { image1, image2 } = spotifyResponse.data;
+      setImageSrc([image1, image2]);
+      setClickStatus(true);
     } catch (err) {
       console.error('unable to fetch api from one or both artist', err);
     }
-  
   }
 
   return (
@@ -73,7 +75,9 @@ function App() {
       <div className='subMain-container'>
         <div className='artist-box'>
           <HarmonizerButton
-            onClick={() => {harmonizeClickHandler()}}
+            onClick={() => {
+              harmonizeClickHandler();
+            }}
           />
           <Artists
             artistId={0}
@@ -91,10 +95,14 @@ function App() {
           />
         </div>
         <div className='intersect'>
-          {tours.length === 0 ? (
+          {tours.length === 0 && clickStatus === false ? (
             <div>
-              <p>See your two favorite artists in one city... </p>
+              <p>See your two favorite artists in one city...</p>
               <p>Pick two artists and let's see if they meet up anywhere.</p>
+            </div>
+          ) : tours.length === 0 && clickStatus === true ? (
+            <div>
+              <p>💀 No results found...</p>
             </div>
           ) : (
             tours.map((group, index) => (
