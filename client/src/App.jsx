@@ -23,15 +23,16 @@ function App() {
 
   async function harmonizeClickHandler() {
     try {
-      const response = await axios.post('http://localhost:9001/api', {
-        artists: [artist[0], artist[1]]
-      });
-        
-        
+      const response = await axios.post('http://localhost:9001/api', 
+        [artist[0], artist[1]],
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+
+      console.log(response.data)
       
-      
-      const response1ExtractedData = extractDataFromApiResponse(response.data[0]);
-      const response2ExtractedData = extractDataFromApiResponse(response.data[1]);
+      const data = response.data;
+      const response1ExtractedData = extractDataFromApiResponse(data.artist1);
+      const response2ExtractedData = extractDataFromApiResponse(data.artist2);
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <div>
-      <Nav daysWindow={setDays} milesWindow={setMiles} />
+      <Nav setDays={setDays} setMiles={setMiles} />
       <div className='subMain-container'>
         <div className='artist-box'>
           <HarmonizerButton
