@@ -114,8 +114,6 @@ body {
 
 .artist-box {
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
   position: relative;
   width: 100%;
   height: 80vh;
@@ -126,37 +124,17 @@ body {
   position: absolute;
   width: 100%;
   height: 80vh;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-}
-.artistContainer img {
-  /* position: relative; */
-  /* object-fit: fill; */
-  /* border-radius: 50%; */
-  width: 100%;
-  height: 100%;
-  /* border: 4px solid #19002e; */
-  overflow: hidden;
-  display: flex;
-  z-index: 0;
 }
 
-/* making a fucking triangle here, this one is LEFT */
 .artistContainer.left {
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 30% 0, 70% 100%, 0 100%);
 }
 
-/* the other triangle RIGHT */
 .artistContainer.right {
-  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 70% 100%);
 }
 
 .artistContainer img {
-  /* width: 100%;
-  height: 100%;
-  object-fit: cover;  
-  I tried this stuff above, it was oke, now trying stuff below*/
   position: absolute;
   top: 0;
   left: 0;
@@ -166,12 +144,12 @@ body {
 }
 
 .artistContainer.left img {
-  /* object-position: 100% center; */
-  animation: shiftLeft 120s ease-out forwards;
+  animation: shiftRight 120s ease-out forwards;
+  transform: translateX(-20%);
 }
 .artistContainer.right img {
-  /* object-position: 0% center; */
-  animation: shiftRight 120s ease-out forwards;
+  animation: shiftLeft 120s ease-out forwards;
+  transform: translateX(20%);
 }
 
 .intersect {
@@ -219,7 +197,7 @@ body {
 }
 
 .input:focus {
-  border-color: #19002e; /* Optional: Change border color when focused */
+  border-color: #19002e;
 }
 
 .harmonizer-container {
@@ -246,48 +224,3 @@ body {
 .harmonizer-button:hover {
   transform: scale(1.25);
 }
-
-/* <<< ANIMATION STUFF DOWN HERE >>> */
-
-@keyframes shiftLeft {
-  0% {
-    object-position: 0% center;
-  }
-  2% {
-    object-position: 70% center;
-  }
-  5% {
-    object-position: 80% center;
-  }
-  20% {
-    object-position: 90% center;
-  }
-  50% {
-    object-position: 97% center;
-  }
-  100% {
-    object-position: 100% center;
-  }
-}
-
-@keyframes shiftRight {
-  0% {
-    object-position: 100% center;
-  }
-  2% {
-    object-position: 30% center;
-  }
-  5% {
-    object-position: 20% center;
-  }
-  20% {
-    object-position: 10% center;
-  }
-  50% {
-    object-position: 3% center;
-  }
-  100% {
-    object-position: 0% center;
-  }
-}
-
