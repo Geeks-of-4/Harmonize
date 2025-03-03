@@ -1,6 +1,6 @@
 // Import Libraries
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+//import axios from 'axios';
 // Import Components & CSS
 import Artists from './components/Artists';
 import Intersect from './components/Intersect';
@@ -11,7 +11,10 @@ import './App.css';
 import { extractDataFromApiResponse } from './helpers/extractDatesFromApiResponse';
 import { findMatchingEvents } from './helpers/findMatchingEvents';
 // Import our test data (remove this when the SPI is fixed)
-//import apiResponseJSON from '../../ApiResponseExample.json';
+import apiResponseJSON from '../../ApiResponseExample.json';
+import HarmonizerButton from './components/HarmonizerButton';
+import placeholderImage1 from './assets/Placeholder1.webp';
+import placeholderImage2 from './assets/Placeholder2.webp';
 
 function App() {
   // console.log('⛰️ Mounting App Component!');
@@ -19,14 +22,16 @@ function App() {
   const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
   const [imageSrc, setImageSrc] = useState([
-     './client/src/assets/Placeholder1.webp',
-     './client/src/assets/Placeholder2.webp',
+    placeholderImage1,
+    placeholderImage2,
   ]);
   // This array contains the API responses from the ticketmaster API call
-  const [eventData, setEventData] = useState([]);
+  const [eventData, setEventData] = useState([
+    //This is dummy data, empty this when ready
+    apiResponseJSON,
+    apiResponseJSON,
+  ]);
   // This contains the miles limit specified by the user. Ive set the default to 50.
-  // apiResponseJSON,
-  // apiResponseJSON,
   const [miles, setMiles] = useState(50);
   // This contains the time limit in days specified by the user. Ive set the default to 3 days.
   const [days, setDays] = useState(3);
@@ -39,123 +44,71 @@ function App() {
     { lat: 32.78511, lng: -96.808182, title: 'HOB Dallas' },
     { lat: 32.955978, lng: -96.768181, title: 'Stereo Live' },
   ]);
+  const [harmonizerButtonActive, setHarmonizerButtonActive] = useState(false);
+  useEffect(() => {
+    // const apiFetch = async () => {
+    //   try {
+    //     const response = await axios.get(testUrl);
+    //     const filteredEvents = response.data;
+    //   } catch {}
+    // };
+  }, []);
 
-  // Spotify API Post Request for access token
-  const client_id = 'b22f740260554be69bfbf430b78c5bdf';
-  const client_secret = '8bf82ad9bdd948aab49569b15374f424';
-
-  async function getToken() {
-    try {
-      const response = await axios.post('https://accounts.spotify.com/api/token',
-        new URLSearchParams({
-          'grant_type': 'client_credentials',
-        }),
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
-          },
-        });
-
-      const accessToken = response.body.access_token;
-      console.log('Access Token:', accessToken);
-      return accessToken;
-    
-    } catch (error) {
-      console.error('Error fetching POST request:', error.message);
-    }
-
-  }
-  // Get Artist usign Search with Spotify API:
-  async function getArtistBySearch(accessToken, artistName) {
-    try {
-      const response = await axios.get('https://api.spotify.com/v1/search?q={artist1}&type=artist', {
-        headers: {
-          Authorization: 'Bearer ' + accessToken
-        }
-      });
-  
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error getting images:', error.message);
-    }
-  }
-
-// const testUrl1 = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Kendrick+Lamar&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
-// const testUrl2 = 'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Eminem&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
-  async function harmonizeClickHandler() {
+  function harmonizeClickHandler() {
     console.log('👆 The Harmonizerizer has been Clickety Clacked.');
-    //* ✅ const complete
-    const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
-    const artist1= artist[0];
-    const artist2= artist[1];
-    const timestamp = Date.now();
-    const date = new Date(timestamp);
-    const currentTime = date.toISOString();
-    date.setMonth(date.getMonth() + 6)
-    const sixMonthsLater = date.toISOString();
-    //need to put artist string in url
-
-    const url1 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist1}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
-    const url2 = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${artist2}&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
+    // make the button do a cool animation
+    setHarmonizerButtonActive(!harmonizerButtonActive);
+    // scroll the user below the nav bar
+    window.scrollBy({ top: 40, behavior: 'smooth' });
+    // ! >>> PUT API HERE<<<
     // ! The eventData useState should be updated after the API calls in here
-    //chatgpt said to use promise.all since it only returns when both are fulfilled.
-    try {
-      const [response1,response2] = await Promise.all([
-        axios.get(url1),
-        axios.get(url2),
-      ]);
-
-      // console.log ("res1: " + res1.data)
-      // console.log ("res2: " + res2.data)
-       //use .data provided by axioswhich contains a res body (axios methods includes .stats .statusText .headers .config .data)
-      // const res1Data = extractDataFromApiResponse(res1.data);
-      // const res2Data = extractDataFromApiResponse(res2.data);
-      //const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
-      //const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
-      const response1ExtractedData = extractDataFromApiResponse(response1.data);
-      const response2ExtractedData = extractDataFromApiResponse(response2.data);
-      
-      
-      console.log('👑 Proximal Events: ', matchingEvents);
-      // Update the list of tours with those matching events
-      
-      const matchingEvents = findMatchingEvents(
-        response1ExtractedData,
-        response2ExtractedData,
-        days,
-        miles
-      );
-
-      setTours(matchingEvents);
-      
-      // const matchingEvents = findMatchingEvents(res1Data, res2Data);
-       setEventData([response1.data,response2.data]);
-    }
-    catch (err){
-      console.error("unable to fetch api from one or both artist",err);
-    }
-
+    // const apiKey = "K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB"
+    // const testUrl =
+    //   'https://app.ticketmaster.com/discovery/v2/events.json?keyword=Kendrick+Lamar&startDateTime=2025-03-01T00:00:00Z&endDateTime=2025-05-31T00:00:00Z&apikey=K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
+    // 2025-03-01T00:00:00Z
+    // takes time in ms, this should give the time in the correct format
+    // const timestamp = Date.now();
+    // const date = new Date(timestamp);
+    // const currentTime = date.toISOString();
+    // date.setMonth(date.getMonth() + 6)
+    // const sixMonthsLater = date.toISOString();
+    // const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=Eagles&startDateTime=${currentTime}&endDateTime=${sixMonthsLater}&apikey=${apiKey}`
     // Build API fetch for ticketmaster
+    // const artist1='';
+    // const artist2='';
     // const date1 = ;
     // const date2 = ;
     // *After the API CALL for both artists, you should run this line below:
     // *setEventData([apiResults1, apiResults2])
 
     // Simulate two separate API responses
-    const response1Image = 'https://picsum.photos/200'; // the response image for artist 1 would go here
-    const response2Image = 'https://picsum.photos/200'; // the response image for artist 2 would go here
+    const response1 = eventData[0]; // Swap this static JSON response out for the actual API response for artist 1
+    const response2 = eventData[1]; // Swap this static JSON response out for the actual API response for artist 2
+    const response1Image =
+      'https://variety.com/wp-content/uploads/2017/11/kendrick-lamar-variety-hitmakers.jpg?w=1000&h=562&crop=1&resize=910%2C511'; // the response image for artist 1 would go here
+    const response2Image =
+      'https://www.billboard.com/wp-content/uploads/2024/06/Eminem-press-credit-Travis-Shinn-2024-billboard-1548.jpg?w=942&h=623&crop=1&resize=942%2C623'; // the response image for artist 2 would go here
     console.log('🫨 API Response Data Loaded.');
     // Update the images for both artists (you could put the API's image location here instead)
     setImageSrc([[response1Image], [response2Image]]);
     console.log('📷 Artist Images Updated.');
     // Extract event dates
+    const response1ExtractedData = extractDataFromApiResponse(response1);
+    const response2ExtractedData = extractDataFromApiResponse(response2);
     // console.log('Response 1 Extract: ',extractDataFromApiResponse(response1))
     // console.log('Response 2 Extract: ',extractDataFromApiResponse(response1))
     // Trigger matching events function... to find the matching events
+    const matchingEvents = findMatchingEvents(
+      response1ExtractedData,
+      response2ExtractedData,
+      days,
+      miles
+    );
     // ! The output of this function is an array of arrays full of objects
     // With test data, it looks like there are shitloads of duplicates. We need to check this console log w/ real data
+    // console.log('👑 Proximal Events: ', matchingEvents);
+    // Update the list of tours with those matching events
+    setTours(matchingEvents);
   }
 
   return (
