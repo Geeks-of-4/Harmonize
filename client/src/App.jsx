@@ -23,15 +23,15 @@ function App() {
 
   async function harmonizeClickHandler() {
     try {
-      await axios.post('http://localhost:9001/api', {
+      const response = await axios.post('http://localhost:9001/api', {
         artists: [artist[0], artist[1]]
       });
         
         
       
       
-      const response1ExtractedData = extractDataFromApiResponse(response1.data);
-      const response2ExtractedData = extractDataFromApiResponse(response2.data);
+      const response1ExtractedData = extractDataFromApiResponse(response.data[0]);
+      const response2ExtractedData = extractDataFromApiResponse(response.data[1]);
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
