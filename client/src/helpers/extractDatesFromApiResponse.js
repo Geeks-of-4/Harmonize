@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Extract the venues, dates, and artist name from the api response
 export async function extractDataFromApiResponse(eventData) {
@@ -12,7 +12,7 @@ export async function extractDataFromApiResponse(eventData) {
       const venue = event._embedded?.venues?.[0] || {};
       const location = venue.location || {};
       const event_date = event.dates?.start?.localDate || 'Unknown Date';
-      const ticketUrl = `https://www.ticketmaster.com${event._links?.self?.href || ''}`;
+      const ticket_url = event.url;
 
       let lat = location.latitude;
       let lng = location.longitude;
@@ -21,7 +21,9 @@ export async function extractDataFromApiResponse(eventData) {
       // ! i have a feeling this will make the api response unbearably slow... maybe
       if (!lat || !lng) {
         // so google will accept some pretty trashy address lines, so we are appending whatever we have
-        const formattedAddress = `${venue.address?.line1 || ''}, ${venue.city?.name || ''}, ${venue.state?.stateCode || ''} ${venue.postalCode || ''}`;
+        const formattedAddress = `${venue.address?.line1 || ''}, ${
+          venue.city?.name || ''
+        }, ${venue.state?.stateCode || ''} ${venue.postalCode || ''}`;
         console.log(`📍 Fetching lat/lng for: ${formattedAddress}`);
 
         const decodedAddress = await getLatLngFromAddress(formattedAddress);
@@ -29,7 +31,9 @@ export async function extractDataFromApiResponse(eventData) {
           lat = decodedAddress.lat;
           lng = decodedAddress.lng;
         } else {
-          console.warn(`⚠️ Unable to fetch coordinates for ${formattedAddress}`);
+          console.warn(
+            `⚠️ Unable to fetch coordinates for ${formattedAddress}`
+          );
           return null; // Skip this event if we can't get a valid location
         }
       }
@@ -41,7 +45,7 @@ export async function extractDataFromApiResponse(eventData) {
         city: venue.city?.name || 'Unknown City',
         lat,
         lng,
-        ticketUrl,
+        ticket_url,
       };
     })
   );
@@ -57,16 +61,16 @@ async function getLatLngFromAddress(address) {
 
   try {
     const response = await axios.get(url);
-    const data = response.data
-    if (data.status === "OK") {
-      console.log('🗺️ We dun geocoded a thing...')
+    const data = response.data;
+    if (data.status === 'OK') {
+      console.log('🗺️ We dun geocoded a thing...');
       return data.results[0].geometry.location;
     } else {
-      console.error("Geocoding API error:", data);
+      console.error('Geocoding API error:', data);
       return null;
     }
   } catch (error) {
-    console.error("Error fetching geocode:", error);
+    console.error('Error fetching geocode:', error);
     return null;
   }
 }
