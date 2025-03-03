@@ -19,8 +19,8 @@ function App() {
   const [artist, setInputArtist] = useState(['', '']); // fake placeholder data, we should remove this
   // This array contains the two artist images, for right now, I am putting placeholders from picsum.
   const [imageSrc, setImageSrc] = useState([
-    placeholderImage1,
-    placeholderImage2,
+     './client/src/assets/Placeholder1.webp',
+     './client/src/assets/Placeholder2.webp',
   ]);
   // This array contains the API responses from the ticketmaster API call
   const [eventData, setEventData] = useState([]);
