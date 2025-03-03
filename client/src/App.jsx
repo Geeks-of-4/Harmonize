@@ -35,11 +35,8 @@ function App() {
 
       //* response data should have images as well that we will need to reference to pull into setImageSrc 
       const data = response.data;
-      if (!artist[0] || !artist[1]) {
-        alert ("Please enter both artists before submitting")
-      }
-      const response1ExtractedData = extractDataFromApiResponse(data.artist1);
-      const response2ExtractedData = extractDataFromApiResponse(data.artist2);
+      const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
+      const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
       const matchingEvents = findMatchingEvents(
         response1ExtractedData,
         response2ExtractedData,
@@ -104,6 +101,7 @@ function App() {
                 key={index}
                 className='intersect-button'
                 onClick={() => {
+                  console.log(group);
                   setSiblingIntersect(group);
                   window.scrollTo({
                     top: document.body.scrollHeight,

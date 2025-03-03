@@ -235,3 +235,34 @@ body {
 .harmonizer-button:hover {
   transform: scale(1.25);
 }
+
+/* ! <<< WE ARE HACKING THE MATRIX WITH THIS SHIT >>> */
+/* * Since google map markers are rendered to our dom, we overwrite the settings they have  */
+/* * with our own shit after they get their google map's official styles. */
+/* * We need to use the !Important tag to get them to stick */
+/* * if you use the inspect mode, you can find out what the css element is called */
+/* Change InfoWindow background and text */
+.gm-style-iw .gm-style-iw-d {
+  background-color: #19002e !important;
+  color: #ccc !important;
+  font-family: 'Anton', sans-serif !important;
+  border-radius: 8px;
+  overflow: hidden !important;
+}
+.gm-style-iw-ch .gm-style-iw-chr {
+  max-height: 10px !important;
+  padding: 3px !important;
+}
+
+/* Remove default white background shadow */
+.gm-style .gm-style-iw-c {
+  background: #19002e !important;
+}
+.gm-style-iw-tc:after {
+  background: #19002e !important;
+}
+
+/* Style the close button */
+.gm-ui-hover-effect {
+  filter: invert(1); /* Make the close button white */
+}
