@@ -9,8 +9,8 @@
 
 ### **Initial Setup**
 - **[`server/apiController.js`](./server/apiController)**: Need to setup TicketMaster API
-- **[`server/helperFunctions.js`](./server/helperFunctions)**: Need to setup TicketMaster API
-- **[`client/index.html`](./client/index.html)**: Need to setup TicketMaster API
+- **[`server/helperFunctions.js`](./server/helperFunctions)**: Need to setup Spotify API
+- **[`client/index.html`](./client/index.html)**: Need to setup Google API
 
 ### **Main Components**
 - **[`main.jsx`](./client/index.html)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
