@@ -6,9 +6,15 @@
 
 ## 📂 Project Structure
 
+
+### **Initial Setup**
+- **[`server/apiController.js`](./server/apiController)**: Need to setup TicketMaster API
+- **[`server/helperFunctions.js`](./server/helperFunctions)**: Need to setup TicketMaster API
+- **[`client/index.html`](./client/index.html)**: Need to setup TicketMaster API
+
 ### **Main Components**
-- **[`main.jsx`](./main.jsx)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
-- **[`App.jsx`](./App.jsx)**: The core of the application, managing state and business logic. It handles:
+- **[`main.jsx`](./client/index.html)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
+- **[`App.jsx`](./client/src/App.jsx)**: The core of the application, managing state and business logic. It handles:
   - Fetching artist images from Spotify.
   - Retrieving concert data from Ticketmaster.
   - Extracting relevant information via helper functions.
@@ -16,19 +22,19 @@
   - Rendering results and updating the UI dynamically.
 
 ### **Components**
-- **[`Nav.jsx`](./Nav.jsx)**: A navigation bar that allows users to set parameters for search, such as max range (miles) and max days apart.
-- **[`Artists.jsx`](./Artists.jsx)**: Handles user input for artist names and displays their corresponding images.
-- **[`HarmonizerButton.jsx`](./HarmonizerButton.jsx)**: The main action button that triggers all API requests and starts the matching process.
-- **[`Map.jsx`](./Map.jsx)**: Uses Google Maps API to display concerts and zoom into a specific event when selected.
+- **[`Nav.jsx`](./client/src/components/Nav.jsx)**: A navigation bar that allows users to set parameters for search, such as max range (miles) and max days apart.
+- **[`Artists.jsx`](./client/src/components/Artists.jsx)**: Handles user input for artist names and displays their corresponding images.
+- **[`HarmonizerButton.jsx`](./client/src/components/HarmonizerButton.jsx)**: The main action button that triggers all API requests and starts the matching process.
+- **[`Map.jsx`](./client/src/components/Map.jsx)**: Uses Google Maps API to display concerts and zoom into a specific event when selected.
 
 ### **Helper Functions**
-- **[`extractDatesFromApiResponse.js`](./extractDatesFromApiResponse.js)**: Processes Ticketmaster API responses, extracts relevant event data, and ensures geolocation accuracy (including Google Geocoding if necessary).
-- **[`findMatchingEvents.js`](./findMatchingEvents.js)**: Determines intersecting concert locations and dates using date and distance filtering, applying the Haversine formula for proximity calculations.
+- **[`extractDatesFromApiResponse.js`](./client/src/helpers/extractDatesFromApiResponse)**: Processes Ticketmaster API responses, extracts relevant event data, and ensures geolocation accuracy (including Google Geocoding if necessary).
+- **[`findMatchingEvents.js`](./client/src/helpers/findMatchingEvents)**: Determines intersecting concert locations and dates using date and distance filtering, applying the Haversine formula for proximity calculations.
 
 ### **Styling**
-- **[`Nav.css`](./Nav.css)**: Styles specifically for the navigation bar.
-- **[`App.css`](./App.css)**: The main global stylesheet containing layout, animations, and map styling.
-- **[`index.css`](./index.css)**: A general reset stylesheet to ensure consistency across browsers.
+- **[`Nav.css`](./client/src/components/Nav.css)**: Styles specifically for the navigation bar.
+- **[`App.css`](./client/src/App.css)**: The main global stylesheet containing layout, animations, and map styling.
+- **[`index.css`](./client/src/index.css)**: A general reset stylesheet to ensure consistency across browsers.
 
 ---
 

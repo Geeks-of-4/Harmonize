@@ -4,8 +4,10 @@ import Token from './db.js'
 import axios from'axios'
 
 export async function getToken(){
-  const client_id = 'b22f740260554be69bfbf430b78c5bdf';
-  const client_secret = '8bf82ad9bdd948aab49569b15374f424';
+  //!insert here
+  const client_id = //* 'create your own spotify api and insert client_id';
+  //!insert here
+  const client_secret = //* 'create your own spotify api and insert client_secret';
   const existingToken = await Token.find()
     // this checks if one exists, if so, it returns a token
     if (existingToken.tokenExpiry > Date.now()) return existingToken.access_token
