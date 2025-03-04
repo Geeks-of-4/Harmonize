@@ -1,3 +1,5 @@
+/* This is the only piece of modular CSS that we have, and this css only applies to the Nav Bar. 
+All other css is in App.css */
 .nav {
     height: 60px; /* Adjust as needed */
     width: 100%;
