@@ -110,7 +110,11 @@ body {
   width: 100%;
   height: 80vh;
 }
-
+/* Poly clips are fun!
+The way this works is that each pair of numbers is an X/Y coordinate that refers to a position relative to the BOX
+it is inside of, so 0/0 is top left corner and 100/100 would be bottom right corner. These coordinates represent 2 opposite 
+trapezoids that are squished up together to form one rectangle. That way we can load one image in each trapezoid and make it 
+look like BATTLE OF THE BANDS or something. */
 .artistContainer.left {
   clip-path: polygon(0 0, 30% 0, 70% 100%, 0 100%);
 }

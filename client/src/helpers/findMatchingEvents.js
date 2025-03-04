@@ -1,3 +1,10 @@
+// This function does a date check FIRST, and then a distance check SECOND.
+// the distance check was written first, so it is at the top of this function, but it gets called later on.
+// honestly it could be it's own helper function if you wanted to make this more legible.
+// anyhow, date checks are pretty easy, each date in array 1, check the date in array 2
+// distance checks are a bit harder and are done in this 'isNearby' function require drawing
+// a circle on the map and seeing if the x/y coordinate is within that circle this was taken 
+// from stack exchange, and I have no idea how haversine math works. Who knows if this is working correctly.
 export function findMatchingEvents(
   eventsArray1,
   eventsArray2,
@@ -37,6 +44,7 @@ export function findMatchingEvents(
   // Milti had a good idea to check the smallest feasible date range
   // For example if artiest 1 starts touring in june, while artist 2 started today, there is no need to compare events between now and june.
   // Same thing for the tail end, one stops before the other, which limits how much you need to compare in this nested for loop.
+  // this isn't implemented, but it's a good idea.
   for (const artist1Event of eventsArray1) {
     // This is a group that will contain all matching events within the date/dist range
     let matchingGroup = [artist1Event];

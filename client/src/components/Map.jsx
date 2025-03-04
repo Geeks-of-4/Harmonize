@@ -1,3 +1,13 @@
+// There is some complex logic here, but keep in mind that there are 2 separate functions in this mess.
+// 1. When the initial load of results comes back from the server, it contains both sets of concerts from both artists.
+// once those results are passed through the extraction and matching functions, they are sent to App.jsx and placed in the "tours" useState.
+// this first use effect has a dependency on that state, and re renders the map. We also take all elements in the tours array, 
+// and for each object in that array, we make a pin and place it on the map with the ticket link, name, etc.
+// 2. When a user clicks on a specific show, we pass that into the second function through an update of the 'siblingIntersect' state
+// once this dependency changes, we re-center the map on that cluster of points. No more, no less.
+// Side note: something is causing the map to re-render multiple times. You can see this when you click a point
+// it flashes >> twice << 🤔
+
 import React, { useEffect, useRef } from 'react';
 
 const Map = ({ tours, siblingIntersect }) => {

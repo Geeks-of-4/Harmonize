@@ -1,3 +1,11 @@
+// This api controller has 2 functions, one for Ticket Master, and one for Spotify.
+// The spotify function retrieves images, while the ticket master gets event data.
+// Both of these were intended to be client side, but it turns out that CORS errors are a thing.
+// The spare keys here for ticket master are because we have not implemented a bottleneck or rate limiter
+// and so occasionally we get flagged for rate limits when we click the button too much for testing. 
+// ! You will need your own keys, because ours will expire eventually.
+// * Also, you should put them in a .env file. We were lazy, don't be.
+
 import axios from 'axios';
 import { getToken } from './helperFunctions.js';
 
@@ -17,7 +25,11 @@ apiController.getTicketMasterData = async (req, res, next) => {
   const currentTime = now.toISOString().split('.')[0] + 'Z'; // Remove milliseconds
   now.setMonth(now.getMonth() + 12);
   const monthRange = now.toISOString().split('.')[0] + 'Z';
-  const apiKey = 'WkcRcUA3LuiGwT0sfqTsU0Mbq4IjW5O1'; //'K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
+  const apiKey = 'VKQZFysTTplKiyen3JtplopCxjAyaEkV'
+  // ! Ticketmaster is being a lil bitch. Spare keys: 🗝️
+  // const apiKey = 'tPGzKMSOa6Qw6gnf5ZgC4WGXlUpJurrA';
+  // const apiKey = 'WkcRcUA3LuiGwT0sfqTsU0Mbq4IjW5O1'; 
+  // const apiKey = 'K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
   const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
   const url1 = `${baseUrl}?keyword=${encodeURIComponent(
     artist1

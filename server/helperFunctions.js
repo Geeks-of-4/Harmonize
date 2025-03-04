@@ -1,3 +1,5 @@
+// This is the helper function to retrieve or create a spotify API key.
+// See the db file for an explanation of why this exists.
 import Token from './db.js'
 import axios from'axios'
 

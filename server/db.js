@@ -1,3 +1,7 @@
+// This DB serves no other purpose than to hold the API keys from spotify. 
+// Oddly enough, all spotify keys expire an hour after creation, so we use 
+// the key for an hour by storing it in the database, and then if it expires, 
+// we make a new one and replace the old one in the DB.  
 import mongoose from 'mongoose';
 
 console.log('🛠️ Initializing MongoDB connection...');

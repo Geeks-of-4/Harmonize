@@ -1,3 +1,6 @@
+// Pretty straight forward on this one. 2 selectors, one for the maximum range (miles) and max time.
+// There are some placeholders for a login at the bottom, which would ideally let users add their 
+// artist pairs to a watch list and get notified if they are ever within range of each other.
 import logo from '../assets/harmonizeLogo.png';
 import './Nav.css';
 

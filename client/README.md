@@ -1,12 +1,73 @@
-# React + Vite
+# 🎶 Harmonize
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Harmonize** is a web application that helps users find concerts where their two favorite artists are performing in the same city within a specified date range and distance. The application pulls data from multiple APIs, including Spotify, Ticketmaster, and Google Maps, to visualize potential concert matches.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Project Structure
 
-## Expanding the ESLint configuration
+### **Main Components**
+- **[`main.jsx`](./main.jsx)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
+- **[`App.jsx`](./App.jsx)**: The core of the application, managing state and business logic. It handles:
+  - Fetching artist images from Spotify.
+  - Retrieving concert data from Ticketmaster.
+  - Extracting relevant information via helper functions.
+  - Finding intersecting tour dates and locations.
+  - Rendering results and updating the UI dynamically.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### **Components**
+- **[`Nav.jsx`](./Nav.jsx)**: A navigation bar that allows users to set parameters for search, such as max range (miles) and max days apart.
+- **[`Artists.jsx`](./Artists.jsx)**: Handles user input for artist names and displays their corresponding images.
+- **[`HarmonizerButton.jsx`](./HarmonizerButton.jsx)**: The main action button that triggers all API requests and starts the matching process.
+- **[`Map.jsx`](./Map.jsx)**: Uses Google Maps API to display concerts and zoom into a specific event when selected.
+
+### **Helper Functions**
+- **[`extractDatesFromApiResponse.js`](./extractDatesFromApiResponse.js)**: Processes Ticketmaster API responses, extracts relevant event data, and ensures geolocation accuracy (including Google Geocoding if necessary).
+- **[`findMatchingEvents.js`](./findMatchingEvents.js)**: Determines intersecting concert locations and dates using date and distance filtering, applying the Haversine formula for proximity calculations.
+
+### **Styling**
+- **[`Nav.css`](./Nav.css)**: Styles specifically for the navigation bar.
+- **[`App.css`](./App.css)**: The main global stylesheet containing layout, animations, and map styling.
+- **[`index.css`](./index.css)**: A general reset stylesheet to ensure consistency across browsers.
+
+---
+
+## 🚀 How It Works
+1. **Enter two artist names** in the input fields.
+2. **Click the "Harmonize" button**, triggering:
+   - API calls to Spotify for artist images.
+   - API calls to Ticketmaster for concert data.
+   - A filtering process to find overlapping events within the user-defined constraints.
+3. **View matching events** in a list and interact with the Google Map to explore concert locations.
+4. **Click an event** to zoom into the corresponding location on the map and get a link to purchase tickets.
+
+---
+
+## ⚙️ Features & Considerations
+- **No Persistent Storage**: Data is fetched dynamically on demand—every click generates fresh results.
+- **Potential API Overload**: A single search may trigger multiple API calls (2 to Spotify, 2 to Ticketmaster, 30+ to Google Maps).
+- **Known Issues**:
+  - Artist image mismatches between Spotify and Ticketmaster due to unsanitized inputs.
+  - Duplicate results appearing in certain cases.
+  - The map occasionally re-renders multiple times when clicking an event.
+
+---
+
+## 🛠️ Future Improvements
+- Implement caching to reduce redundant matching checks.
+- Introduce a user login system to save favorite artist pairs
+- Create a system to send notifications to users when new matches appear.
+- Refactor distance calculations into a separate helper function for better readability.
+- Optimize Google Maps rendering to prevent unnecessary re-renders.
+- Assign Key values to all components to minimize React re-renders. 
+
+---
+
+## 📝 Credits
+This project was built using **React**, **Google Maps API**, **Spotify API**, **Ticketmaster API**, and **Axios**.
+Shout out to the Geeks of 4; Scrumlord Wing, Mergemaster Chris, Fearless Brandon, and Tico
+
+---
+
+🎤 *See your two favorite artists in one city...*  
+Happy harmonizing! 🎵

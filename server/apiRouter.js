@@ -1,3 +1,6 @@
+// Very basic, no routing other than for the ticket master and spotify api calls. 
+// These can likely be merged if you want, but you'd have to modify the front end 
+// to send a single api request instead of 2
 import express from 'express';
 import apiController from './apiController.js';
 

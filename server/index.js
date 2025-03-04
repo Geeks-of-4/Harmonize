@@ -1,3 +1,4 @@
+// Ultra basic, the backend ONLY support post requests to localhost:9001/api/...
 import express from 'express';
 import cors from 'cors';
 import apiRouter from './apiRouter.js';
@@ -6,8 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 9001;
 app.use(express.json()); // Parse JSON request bodies
 
-app.use(cors()); // Allow cross-origin requests (useful for React frontend)
-// http://localhost:5173/
+// Allow cross-origin requests 
+// *THIS IS THE REASON THE SERVER EXISTS TO BEGIN WITH
+app.use(cors()); 
+
+// Handle requests to API
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
