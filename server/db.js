@@ -4,9 +4,9 @@
 // we make a new one and replace the old one in the DB.  
 import mongoose from 'mongoose';
 
+//!setup Mongo DB to save tokens for spotify API
 console.log('🛠️ Initializing MongoDB connection...');
-
-const mongoURI = 'mongodb+srv://bbeuttel:Bsb72487%21@spotifytoken.ufkcl.mongodb.net/?retryWrites=true&w=majority&appName=SpotifyToken';
+const mongoURI = //* insert 'mongodb+srv://'
 
 // Connect to MongoDB
 mongoose

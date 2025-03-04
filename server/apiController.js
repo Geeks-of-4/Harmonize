@@ -25,11 +25,9 @@ apiController.getTicketMasterData = async (req, res, next) => {
   const currentTime = now.toISOString().split('.')[0] + 'Z'; // Remove milliseconds
   now.setMonth(now.getMonth() + 12);
   const monthRange = now.toISOString().split('.')[0] + 'Z';
-  const apiKey = 'VKQZFysTTplKiyen3JtplopCxjAyaEkV'
-  // ! Ticketmaster is being a lil bitch. Spare keys: 🗝️
-  // const apiKey = 'tPGzKMSOa6Qw6gnf5ZgC4WGXlUpJurrA';
-  // const apiKey = 'WkcRcUA3LuiGwT0sfqTsU0Mbq4IjW5O1'; 
-  // const apiKey = 'K2UGwYuaehCHov5Edy6YkJiYUlmKXPRB';
+  //!create Ticketmaster Dev account for apiKey
+  const apiKey = //*insert api here
+  
   const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
   const url1 = `${baseUrl}?keyword=${encodeURIComponent(
     artist1
