@@ -31,49 +31,53 @@ function App() {
   const API_BASE_URL = import.meta.env.VITE_BACKEND_URL
   async function harmonizeClickHandler() {
     const sanitizedArtists = artist.map(sanitizeInput)
+
+    console.log("🎤 Sanitized Artists:", sanitizedArtists);
+
     if (!sanitizedArtists[0] || !sanitizedArtists[1]) return;
     setClickStatus(true);
+
     try {
-      // Get Image Data
       const spotifyResponse = await axios.post(
         `${API_BASE_URL}/spotify`,
         sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      // Update the images
+
       const { image1, image2 } = spotifyResponse.data;
+
       setImageSrc([image1, image2]);
-      // Get Concert Data
+
       const tmResponse = await axios.post(
         `${API_BASE_URL}/TM`,
         sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      // Extract the relevant data from the API response
+
+      console.log("🎟️ Ticketmaster API Response:", tmResponse.data);
       const data = tmResponse.data;
-      const response1ExtractedData = await extractDataFromApiResponse(
-        data.artist1
-      );
-      const response2ExtractedData = await extractDataFromApiResponse(
-        data.artist2
-      );
-      // Find the intersect
-      const matchingEvents = findMatchingEvents(
-        response1ExtractedData,
-        response2ExtractedData,
-        days,
-        miles
-      );
-      // Update the intersect 
+
+      if (!data.artist1 || !data.artist2) {
+        console.warn("⚠️ Ticketmaster API returned unexpected data:", data);
+        setTours([]);
+        return;
+      }
+
+      const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
+      const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
+      const matchingEvents = findMatchingEvents(response1ExtractedData, response2ExtractedData, days, miles);
+
       setTours(matchingEvents);
-      // Force scrolling to hide the nav, so that the results table is fully visible.
+
       document.querySelector('.subMain-container').scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'nearest',
       });
+
     } catch (err) {
-      console.error('unable to fetch api from one or both artist', err);
+      console.error('❌ API Fetch Error:', err);
+      setTours([]);
     }
   }
 

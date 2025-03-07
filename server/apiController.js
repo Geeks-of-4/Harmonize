@@ -7,11 +7,11 @@
 import axios from 'axios';
 import { getToken } from './helpers/getToken.js';
 import dotenv from 'dotenv';
+import { response } from 'express';
 
 const apiController = {};
 
 apiController.getTicketMasterData = async (req, res, next) => {
-  console.log('🎫 Getting ticket master data!');
   if (!Array.isArray(req.body) || req.body.length < 2) {
     return next({
       log: 'Invalid request body: Expected an array with two artist names',
@@ -19,9 +19,14 @@ apiController.getTicketMasterData = async (req, res, next) => {
       message: { error: 'Invalid input. Please provide two artist names.' },
     });
   }
-  const [artist1, artist2] = req.body.map(artist => encodeURIComponent(artist.trim()));
+
+  console.log('🎫 Fetching Ticketmaster data for:', req.body);
+
+  const [artist1, artist2] = req.body.map((artist) =>
+    encodeURIComponent(artist.trim())
+  );
   const now = new Date();
-  const currentTime = now.toISOString().split('.')[0] + 'Z'; // Remove milliseconds
+  const currentTime = now.toISOString().split('.')[0] + 'Z';
   now.setMonth(now.getMonth() + 12);
   const monthRange = now.toISOString().split('.')[0] + 'Z';
   const tmApiKey = process.env.TM_API_KEY;
@@ -33,27 +38,31 @@ apiController.getTicketMasterData = async (req, res, next) => {
   const url2 = `${baseUrl}?keyword=${encodeURIComponent(
     artist2
   )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${tmApiKey}`;
+
   try {
     const [response1, response2] = await Promise.all([
       axios.get(url1),
       axios.get(url2),
     ]);
-    // console.log(response1);
-    // console.log(response2.headers);
+    // TODO: The api response from ticket master is empty? Something about sanitizing the inputs broke the outputs maybe?
+    console.log('🎟️ Ticketmaster Response 1 Status:', response1.status);
+    console.log('🎟️ Ticketmaster Response 2 Status:', response2.status);
+    console.log('🎟️ Ticketmaster Headers 1:', response1.headers);
+    console.log('🎟️ Ticketmaster Headers 2:', response2.headers);
+    console.log('🎟️ Ticketmaster Data 1:', response1.data);
+    console.log('🎟️ Ticketmaster Data 2:', response2.data);
+
     console.log('📫 Sending ticket master response!');
-    return res.status(200).json({
-      artist1: response1.data,
-      artist2: response2.data,
-    });
+    return res
+      .status(200)
+      .json({ artist1: response1.data, artist2: response2.data });
   } catch (error) {
-    console.error(
-      '☠️ getTicketMasterData Controller API Error:',
-      error.message
-    );
+    console.error('☠️ Ticketmaster API Error:', error.message);
+
     return next({
-      log: `getTicketMasterData Controller API Error: ${error.message}`,
-      status: 500,
-      message: { error: 'Failed to fetch Ticket Master data!' },
+      log: `getTicketMasterData API Error: ${error.message}`,
+      status: error.response?.status || 500, // Fallback to 500 if no status
+      message: { error: 'Failed to fetch Ticketmaster data!' },
     });
   }
 };
@@ -74,12 +83,10 @@ apiController.getSpotifyImageData = async (req, res, next) => {
     });
   }
   try {
-    // console.log(url1);
-    // console.log(url2);
+    console.log(url1);
+    console.log(url2);
     // get our access code
     const accessToken = await getToken();
-    // console.log(accessToken);
-    // console.log(accessToken.access_token);
     // make a request to spotify
     const [response1, response2] = await Promise.all([
       axios.get(url1, {
