@@ -1,724 +1,694 @@
 {
   "artists": {
-      "href": "https://api.spotify.com/v1/search?offset=0&limit=20&query=eminem&type=artist",
-      "limit": 20,
-      "next": "https://api.spotify.com/v1/search?offset=20&limit=20&query=eminem&type=artist",
-      "offset": 0,
-      "previous": null,
-      "total": 868,
-      "items": [
+    "href": "https://api.spotify.com/v1/search?offset=0&limit=20&query=eminem&type=artist",
+    "limit": 20,
+    "next": "https://api.spotify.com/v1/search?offset=20&limit=20&query=eminem&type=artist",
+    "offset": 0,
+    "previous": null,
+    "total": 868,
+    "items": [
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+        },
+        "followers": {
+          "href": null,
+          "total": 98009888
+        },
+        "genres": ["rap", "hip hop"],
+        "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+        "id": "7dGJo4pcD2V6oG8kP0tJRR",
+        "images": [
           {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 98009888
-              },
-              "genres": [
-                  "rap",
-                  "hip hop"
-              ],
-              "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
-              "id": "7dGJo4pcD2V6oG8kP0tJRR",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174a00b11c129b27a88fc72f36b",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178a00b11c129b27a88fc72f36b",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Eminem",
-              "popularity": 91,
-              "type": "artist",
-              "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+            "url": "https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b",
+            "height": 640,
+            "width": 640
           },
           {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 96576011
-              },
-              "genres": [
-                  "rap",
-                  "hip hop"
-              ],
-              "href": "https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4",
-              "id": "3TVXtAsR1Inumwj472S9r4",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051744293385d324db8558179afd9",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Drake",
-              "popularity": 97,
-              "type": "artist",
-              "uri": "spotify:artist:3TVXtAsR1Inumwj472S9r4"
+            "url": "https://i.scdn.co/image/ab67616100005174a00b11c129b27a88fc72f36b",
+            "height": 320,
+            "width": 320
           },
           {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/5BEd0FTdSuSQhEBOOcWvf4"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 1104
-              },
-              "genres": [
-                  "norteño-sax",
-                  "norteño"
-              ],
-              "href": "https://api.spotify.com/v1/artists/5BEd0FTdSuSQhEBOOcWvf4",
-              "id": "5BEd0FTdSuSQhEBOOcWvf4",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebadca520e6623aaaeff96acc3",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174adca520e6623aaaeff96acc3",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178adca520e6623aaaeff96acc3",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Eminente",
-              "popularity": 36,
-              "type": "artist",
-              "uri": "spotify:artist:5BEd0FTdSuSQhEBOOcWvf4"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 29332973
-              },
-              "genres": [
-                  "rap"
-              ],
-              "href": "https://api.spotify.com/v1/artists/5K4W6rqBFWDnAN6FQUkS6x",
-              "id": "5K4W6rqBFWDnAN6FQUkS6x",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051746e835a500e791bf9c27a422a",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1786e835a500e791bf9c27a422a",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Kanye West",
-              "popularity": 92,
-              "type": "artist",
-              "uri": "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 100800454
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ",
-              "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb9e528993a2820267b97f6aae",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051749e528993a2820267b97f6aae",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1789e528993a2820267b97f6aae",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "The Weeknd",
-              "popularity": 97,
-              "type": "artist",
-              "uri": "spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/4iONGlZzuklnaC4vbIHYHu"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 11782
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/4iONGlZzuklnaC4vbIHYHu",
-              "id": "4iONGlZzuklnaC4vbIHYHu",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb8783107871efda9d1b3acd38",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051748783107871efda9d1b3acd38",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1788783107871efda9d1b3acd38",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Eminence Symphony Orchestra",
-              "popularity": 33,
-              "type": "artist",
-              "uri": "spotify:artist:4iONGlZzuklnaC4vbIHYHu"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/6fOMl44jA4Sp5b9PpYCkzz"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 10676683
-              },
-              "genres": [
-                  "christian hip hop"
-              ],
-              "href": "https://api.spotify.com/v1/artists/6fOMl44jA4Sp5b9PpYCkzz",
-              "id": "6fOMl44jA4Sp5b9PpYCkzz",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb1cf142a710a2f3d9b7a62da1",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051741cf142a710a2f3d9b7a62da1",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1781cf142a710a2f3d9b7a62da1",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "NF",
-              "popularity": 78,
-              "type": "artist",
-              "uri": "spotify:artist:6fOMl44jA4Sp5b9PpYCkzz"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/5Qi4Bb7a8C0a00NZcA77L0"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 3336930
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/5Qi4Bb7a8C0a00NZcA77L0",
-              "id": "5Qi4Bb7a8C0a00NZcA77L0",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb4f52827861ae9b860a5e62f6",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051744f52827861ae9b860a5e62f6",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1784f52827861ae9b860a5e62f6",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "D12",
-              "popularity": 64,
-              "type": "artist",
-              "uri": "spotify:artist:5Qi4Bb7a8C0a00NZcA77L0"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/1hHhlYmo4C03IoCJ7RnpS2"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 19495
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/1hHhlYmo4C03IoCJ7RnpS2",
-              "id": "1hHhlYmo4C03IoCJ7RnpS2",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebc6cb3d495bd447a30acc83c9",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174c6cb3d495bd447a30acc83c9",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178c6cb3d495bd447a30acc83c9",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Eminence",
-              "popularity": 27,
-              "type": "artist",
-              "uri": "spotify:artist:1hHhlYmo4C03IoCJ7RnpS2"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 46606591
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/246dkjvS1zLTtiykXe5h60",
-              "id": "246dkjvS1zLTtiykXe5h60",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebe17c0aa1714a03d62b5ce4e0",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174e17c0aa1714a03d62b5ce4e0",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178e17c0aa1714a03d62b5ce4e0",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Post Malone",
-              "popularity": 88,
-              "type": "artist",
-              "uri": "spotify:artist:246dkjvS1zLTtiykXe5h60"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 38640473
-              },
-              "genres": [
-                  "hip hop",
-                  "west coast hip hop"
-              ],
-              "href": "https://api.spotify.com/v1/artists/2YZyLoL8N0Wb9xBt1NhZWg",
-              "id": "2YZyLoL8N0Wb9xBt1NhZWg",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000517439ba6dcd4355c03de0b50918",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f17839ba6dcd4355c03de0b50918",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Kendrick Lamar",
-              "popularity": 97,
-              "type": "artist",
-              "uri": "spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/1Mkc7HxpbpZL1v9gGwCkj4"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 4792
-              },
-              "genres": [
-                  "cumbia norteña",
-                  "tejano",
-                  "norteño",
-                  "grupera",
-                  "cumbia"
-              ],
-              "href": "https://api.spotify.com/v1/artists/1Mkc7HxpbpZL1v9gGwCkj4",
-              "id": "1Mkc7HxpbpZL1v9gGwCkj4",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb1e1f16e9a52b9a956072dbb6",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051741e1f16e9a52b9a956072dbb6",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1781e1f16e9a52b9a956072dbb6",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "La Eminencia",
-              "popularity": 34,
-              "type": "artist",
-              "uri": "spotify:artist:1Mkc7HxpbpZL1v9gGwCkj4"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 25821049
-              },
-              "genres": [
-                  "rap"
-              ],
-              "href": "https://api.spotify.com/v1/artists/6l3HvQ5sa6mXTsMTB19rO5",
-              "id": "6l3HvQ5sa6mXTsMTB19rO5",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb4b053c29fd4b317ff825f0dc",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051744b053c29fd4b317ff825f0dc",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1784b053c29fd4b317ff825f0dc",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "J. Cole",
-              "popularity": 85,
-              "type": "artist",
-              "uri": "spotify:artist:6l3HvQ5sa6mXTsMTB19rO5"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/6DPYiyq5kWVQS4RGwxzPC7"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 13728389
-              },
-              "genres": [
-                  "g-funk",
-                  "gangster rap",
-                  "west coast hip hop",
-                  "hip hop",
-                  "rap"
-              ],
-              "href": "https://api.spotify.com/v1/artists/6DPYiyq5kWVQS4RGwxzPC7",
-              "id": "6DPYiyq5kWVQS4RGwxzPC7",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/83d2489cade1dadcdc533ddbcd74993d0ca6d4cb",
-                      "height": 1005,
-                      "width": 1000
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",
-                      "height": 643,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/dd4a7102c5e1897bab2b1fa4bbc086fbe2fc87dc",
-                      "height": 201,
-                      "width": 200
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/85ebf2f6c52139b3384b596063678b47ab0fcb95",
-                      "height": 64,
-                      "width": 64
-                  }
-              ],
-              "name": "Dr. Dre",
-              "popularity": 80,
-              "type": "artist",
-              "uri": "spotify:artist:6DPYiyq5kWVQS4RGwxzPC7"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/4oUcWvCNxqNZv4l7BXlE0y"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 5239
-              },
-              "genres": [
-                  "lo-fi"
-              ],
-              "href": "https://api.spotify.com/v1/artists/4oUcWvCNxqNZv4l7BXlE0y",
-              "id": "4oUcWvCNxqNZv4l7BXlE0y",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5eb3af4f3c1280d72345bb66c57",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab676161000051743af4f3c1280d72345bb66c57",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f1783af4f3c1280d72345bb66c57",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Mount Eminest",
-              "popularity": 34,
-              "type": "artist",
-              "uri": "spotify:artist:4oUcWvCNxqNZv4l7BXlE0y"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/3q7HBObVc0L8jNeTe5Gofh"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 17111227
-              },
-              "genres": [
-                  "east coast hip hop"
-              ],
-              "href": "https://api.spotify.com/v1/artists/3q7HBObVc0L8jNeTe5Gofh",
-              "id": "3q7HBObVc0L8jNeTe5Gofh",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/dd031b9c5d1b6eba4a691cd89c954255aae787f2",
-                      "height": 977,
-                      "width": 781
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/6f0da41419b31d9d2ba55d2df212f59ad0668118",
-                      "height": 801,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/df73c0cebe56cafe705ffdba5085ccbd5680bd16",
-                      "height": 250,
-                      "width": 200
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/1a44043542c997ef835c89e185f0cf79d7402153",
-                      "height": 80,
-                      "width": 64
-                  }
-              ],
-              "name": "50 Cent",
-              "popularity": 83,
-              "type": "artist",
-              "uri": "spotify:artist:3q7HBObVc0L8jNeTe5Gofh"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/7cBsgXLjV7bhKnhYCDxv2f"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 640
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/7cBsgXLjV7bhKnhYCDxv2f",
-              "id": "7cBsgXLjV7bhKnhYCDxv2f",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab67616d0000b273f150303b939b93004d4ade64",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616d00001e02f150303b939b93004d4ade64",
-                      "height": 300,
-                      "width": 300
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616d00004851f150303b939b93004d4ade64",
-                      "height": 64,
-                      "width": 64
-                  }
-              ],
-              "name": "エミネンス交響楽団",
-              "popularity": 28,
-              "type": "artist",
-              "uri": "spotify:artist:7cBsgXLjV7bhKnhYCDxv2f"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/15UsOTVnJzReFVN1VCnxy4"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 49238929
-              },
-              "genres": [
-                  "emo rap"
-              ],
-              "href": "https://api.spotify.com/v1/artists/15UsOTVnJzReFVN1VCnxy4",
-              "id": "15UsOTVnJzReFVN1VCnxy4",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebf0c20db5ef6c6fbe5135d2e4",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174f0c20db5ef6c6fbe5135d2e4",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178f0c20db5ef6c6fbe5135d2e4",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "XXXTENTACION",
-              "popularity": 86,
-              "type": "artist",
-              "uri": "spotify:artist:15UsOTVnJzReFVN1VCnxy4"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 14199232
-              },
-              "genres": [
-                  "g-funk",
-                  "west coast hip hop",
-                  "gangster rap",
-                  "hip hop",
-                  "rap"
-              ],
-              "href": "https://api.spotify.com/v1/artists/7hJcb9fa4alzcOq3EaNPoG",
-              "id": "7hJcb9fa4alzcOq3EaNPoG",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebc19a88576ebe6fcbb325c297",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174c19a88576ebe6fcbb325c297",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178c19a88576ebe6fcbb325c297",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Snoop Dogg",
-              "popularity": 83,
-              "type": "artist",
-              "uri": "spotify:artist:7hJcb9fa4alzcOq3EaNPoG"
-          },
-          {
-              "external_urls": {
-                  "spotify": "https://open.spotify.com/artist/7i6k4LTCHGqHl2RlhhvAsw"
-              },
-              "followers": {
-                  "href": null,
-                  "total": 402
-              },
-              "genres": [],
-              "href": "https://api.spotify.com/v1/artists/7i6k4LTCHGqHl2RlhhvAsw",
-              "id": "7i6k4LTCHGqHl2RlhhvAsw",
-              "images": [
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000e5ebdd7c333f472160a5f67a096b",
-                      "height": 640,
-                      "width": 640
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab67616100005174dd7c333f472160a5f67a096b",
-                      "height": 320,
-                      "width": 320
-                  },
-                  {
-                      "url": "https://i.scdn.co/image/ab6761610000f178dd7c333f472160a5f67a096b",
-                      "height": 160,
-                      "width": 160
-                  }
-              ],
-              "name": "Emizemi",
-              "popularity": 16,
-              "type": "artist",
-              "uri": "spotify:artist:7i6k4LTCHGqHl2RlhhvAsw"
+            "url": "https://i.scdn.co/image/ab6761610000f178a00b11c129b27a88fc72f36b",
+            "height": 160,
+            "width": 160
           }
-      ]
+        ],
+        "name": "Eminem",
+        "popularity": 91,
+        "type": "artist",
+        "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
+        },
+        "followers": {
+          "href": null,
+          "total": 96576011
+        },
+        "genres": ["rap", "hip hop"],
+        "href": "https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4",
+        "id": "3TVXtAsR1Inumwj472S9r4",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051744293385d324db8558179afd9",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Drake",
+        "popularity": 97,
+        "type": "artist",
+        "uri": "spotify:artist:3TVXtAsR1Inumwj472S9r4"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/5BEd0FTdSuSQhEBOOcWvf4"
+        },
+        "followers": {
+          "href": null,
+          "total": 1104
+        },
+        "genres": ["norteño-sax", "norteño"],
+        "href": "https://api.spotify.com/v1/artists/5BEd0FTdSuSQhEBOOcWvf4",
+        "id": "5BEd0FTdSuSQhEBOOcWvf4",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebadca520e6623aaaeff96acc3",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174adca520e6623aaaeff96acc3",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178adca520e6623aaaeff96acc3",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Eminente",
+        "popularity": 36,
+        "type": "artist",
+        "uri": "spotify:artist:5BEd0FTdSuSQhEBOOcWvf4"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x"
+        },
+        "followers": {
+          "href": null,
+          "total": 29332973
+        },
+        "genres": ["rap"],
+        "href": "https://api.spotify.com/v1/artists/5K4W6rqBFWDnAN6FQUkS6x",
+        "id": "5K4W6rqBFWDnAN6FQUkS6x",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb6e835a500e791bf9c27a422a",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051746e835a500e791bf9c27a422a",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1786e835a500e791bf9c27a422a",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Kanye West",
+        "popularity": 92,
+        "type": "artist",
+        "uri": "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ"
+        },
+        "followers": {
+          "href": null,
+          "total": 100800454
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ",
+        "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb9e528993a2820267b97f6aae",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051749e528993a2820267b97f6aae",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1789e528993a2820267b97f6aae",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "The Weeknd",
+        "popularity": 97,
+        "type": "artist",
+        "uri": "spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/4iONGlZzuklnaC4vbIHYHu"
+        },
+        "followers": {
+          "href": null,
+          "total": 11782
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/4iONGlZzuklnaC4vbIHYHu",
+        "id": "4iONGlZzuklnaC4vbIHYHu",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb8783107871efda9d1b3acd38",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051748783107871efda9d1b3acd38",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1788783107871efda9d1b3acd38",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Eminence Symphony Orchestra",
+        "popularity": 33,
+        "type": "artist",
+        "uri": "spotify:artist:4iONGlZzuklnaC4vbIHYHu"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/6fOMl44jA4Sp5b9PpYCkzz"
+        },
+        "followers": {
+          "href": null,
+          "total": 10676683
+        },
+        "genres": ["christian hip hop"],
+        "href": "https://api.spotify.com/v1/artists/6fOMl44jA4Sp5b9PpYCkzz",
+        "id": "6fOMl44jA4Sp5b9PpYCkzz",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb1cf142a710a2f3d9b7a62da1",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051741cf142a710a2f3d9b7a62da1",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1781cf142a710a2f3d9b7a62da1",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "NF",
+        "popularity": 78,
+        "type": "artist",
+        "uri": "spotify:artist:6fOMl44jA4Sp5b9PpYCkzz"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/5Qi4Bb7a8C0a00NZcA77L0"
+        },
+        "followers": {
+          "href": null,
+          "total": 3336930
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/5Qi4Bb7a8C0a00NZcA77L0",
+        "id": "5Qi4Bb7a8C0a00NZcA77L0",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb4f52827861ae9b860a5e62f6",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051744f52827861ae9b860a5e62f6",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1784f52827861ae9b860a5e62f6",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "D12",
+        "popularity": 64,
+        "type": "artist",
+        "uri": "spotify:artist:5Qi4Bb7a8C0a00NZcA77L0"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/1hHhlYmo4C03IoCJ7RnpS2"
+        },
+        "followers": {
+          "href": null,
+          "total": 19495
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/1hHhlYmo4C03IoCJ7RnpS2",
+        "id": "1hHhlYmo4C03IoCJ7RnpS2",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebc6cb3d495bd447a30acc83c9",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174c6cb3d495bd447a30acc83c9",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178c6cb3d495bd447a30acc83c9",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Eminence",
+        "popularity": 27,
+        "type": "artist",
+        "uri": "spotify:artist:1hHhlYmo4C03IoCJ7RnpS2"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60"
+        },
+        "followers": {
+          "href": null,
+          "total": 46606591
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/246dkjvS1zLTtiykXe5h60",
+        "id": "246dkjvS1zLTtiykXe5h60",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebe17c0aa1714a03d62b5ce4e0",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174e17c0aa1714a03d62b5ce4e0",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178e17c0aa1714a03d62b5ce4e0",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Post Malone",
+        "popularity": 88,
+        "type": "artist",
+        "uri": "spotify:artist:246dkjvS1zLTtiykXe5h60"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg"
+        },
+        "followers": {
+          "href": null,
+          "total": 38640473
+        },
+        "genres": ["hip hop", "west coast hip hop"],
+        "href": "https://api.spotify.com/v1/artists/2YZyLoL8N0Wb9xBt1NhZWg",
+        "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000517439ba6dcd4355c03de0b50918",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f17839ba6dcd4355c03de0b50918",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Kendrick Lamar",
+        "popularity": 97,
+        "type": "artist",
+        "uri": "spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/1Mkc7HxpbpZL1v9gGwCkj4"
+        },
+        "followers": {
+          "href": null,
+          "total": 4792
+        },
+        "genres": ["cumbia norteña", "tejano", "norteño", "grupera", "cumbia"],
+        "href": "https://api.spotify.com/v1/artists/1Mkc7HxpbpZL1v9gGwCkj4",
+        "id": "1Mkc7HxpbpZL1v9gGwCkj4",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb1e1f16e9a52b9a956072dbb6",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051741e1f16e9a52b9a956072dbb6",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1781e1f16e9a52b9a956072dbb6",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "La Eminencia",
+        "popularity": 34,
+        "type": "artist",
+        "uri": "spotify:artist:1Mkc7HxpbpZL1v9gGwCkj4"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5"
+        },
+        "followers": {
+          "href": null,
+          "total": 25821049
+        },
+        "genres": ["rap"],
+        "href": "https://api.spotify.com/v1/artists/6l3HvQ5sa6mXTsMTB19rO5",
+        "id": "6l3HvQ5sa6mXTsMTB19rO5",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb4b053c29fd4b317ff825f0dc",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051744b053c29fd4b317ff825f0dc",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1784b053c29fd4b317ff825f0dc",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "J. Cole",
+        "popularity": 85,
+        "type": "artist",
+        "uri": "spotify:artist:6l3HvQ5sa6mXTsMTB19rO5"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/6DPYiyq5kWVQS4RGwxzPC7"
+        },
+        "followers": {
+          "href": null,
+          "total": 13728389
+        },
+        "genres": [
+          "g-funk",
+          "gangster rap",
+          "west coast hip hop",
+          "hip hop",
+          "rap"
+        ],
+        "href": "https://api.spotify.com/v1/artists/6DPYiyq5kWVQS4RGwxzPC7",
+        "id": "6DPYiyq5kWVQS4RGwxzPC7",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/83d2489cade1dadcdc533ddbcd74993d0ca6d4cb",
+            "height": 1005,
+            "width": 1000
+          },
+          {
+            "url": "https://i.scdn.co/image/170254ebdd747f4e7045df1cae8f11a42dc1a547",
+            "height": 643,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/dd4a7102c5e1897bab2b1fa4bbc086fbe2fc87dc",
+            "height": 201,
+            "width": 200
+          },
+          {
+            "url": "https://i.scdn.co/image/85ebf2f6c52139b3384b596063678b47ab0fcb95",
+            "height": 64,
+            "width": 64
+          }
+        ],
+        "name": "Dr. Dre",
+        "popularity": 80,
+        "type": "artist",
+        "uri": "spotify:artist:6DPYiyq5kWVQS4RGwxzPC7"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/4oUcWvCNxqNZv4l7BXlE0y"
+        },
+        "followers": {
+          "href": null,
+          "total": 5239
+        },
+        "genres": ["lo-fi"],
+        "href": "https://api.spotify.com/v1/artists/4oUcWvCNxqNZv4l7BXlE0y",
+        "id": "4oUcWvCNxqNZv4l7BXlE0y",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5eb3af4f3c1280d72345bb66c57",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab676161000051743af4f3c1280d72345bb66c57",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f1783af4f3c1280d72345bb66c57",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Mount Eminest",
+        "popularity": 34,
+        "type": "artist",
+        "uri": "spotify:artist:4oUcWvCNxqNZv4l7BXlE0y"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/3q7HBObVc0L8jNeTe5Gofh"
+        },
+        "followers": {
+          "href": null,
+          "total": 17111227
+        },
+        "genres": ["east coast hip hop"],
+        "href": "https://api.spotify.com/v1/artists/3q7HBObVc0L8jNeTe5Gofh",
+        "id": "3q7HBObVc0L8jNeTe5Gofh",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/dd031b9c5d1b6eba4a691cd89c954255aae787f2",
+            "height": 977,
+            "width": 781
+          },
+          {
+            "url": "https://i.scdn.co/image/6f0da41419b31d9d2ba55d2df212f59ad0668118",
+            "height": 801,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/df73c0cebe56cafe705ffdba5085ccbd5680bd16",
+            "height": 250,
+            "width": 200
+          },
+          {
+            "url": "https://i.scdn.co/image/1a44043542c997ef835c89e185f0cf79d7402153",
+            "height": 80,
+            "width": 64
+          }
+        ],
+        "name": "50 Cent",
+        "popularity": 83,
+        "type": "artist",
+        "uri": "spotify:artist:3q7HBObVc0L8jNeTe5Gofh"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/7cBsgXLjV7bhKnhYCDxv2f"
+        },
+        "followers": {
+          "href": null,
+          "total": 640
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/7cBsgXLjV7bhKnhYCDxv2f",
+        "id": "7cBsgXLjV7bhKnhYCDxv2f",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab67616d0000b273f150303b939b93004d4ade64",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616d00001e02f150303b939b93004d4ade64",
+            "height": 300,
+            "width": 300
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616d00004851f150303b939b93004d4ade64",
+            "height": 64,
+            "width": 64
+          }
+        ],
+        "name": "エミネンス交響楽団",
+        "popularity": 28,
+        "type": "artist",
+        "uri": "spotify:artist:7cBsgXLjV7bhKnhYCDxv2f"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/15UsOTVnJzReFVN1VCnxy4"
+        },
+        "followers": {
+          "href": null,
+          "total": 49238929
+        },
+        "genres": ["emo rap"],
+        "href": "https://api.spotify.com/v1/artists/15UsOTVnJzReFVN1VCnxy4",
+        "id": "15UsOTVnJzReFVN1VCnxy4",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebf0c20db5ef6c6fbe5135d2e4",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174f0c20db5ef6c6fbe5135d2e4",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178f0c20db5ef6c6fbe5135d2e4",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "XXXTENTACION",
+        "popularity": 86,
+        "type": "artist",
+        "uri": "spotify:artist:15UsOTVnJzReFVN1VCnxy4"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG"
+        },
+        "followers": {
+          "href": null,
+          "total": 14199232
+        },
+        "genres": [
+          "g-funk",
+          "west coast hip hop",
+          "gangster rap",
+          "hip hop",
+          "rap"
+        ],
+        "href": "https://api.spotify.com/v1/artists/7hJcb9fa4alzcOq3EaNPoG",
+        "id": "7hJcb9fa4alzcOq3EaNPoG",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebc19a88576ebe6fcbb325c297",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174c19a88576ebe6fcbb325c297",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178c19a88576ebe6fcbb325c297",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Snoop Dogg",
+        "popularity": 83,
+        "type": "artist",
+        "uri": "spotify:artist:7hJcb9fa4alzcOq3EaNPoG"
+      },
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/7i6k4LTCHGqHl2RlhhvAsw"
+        },
+        "followers": {
+          "href": null,
+          "total": 402
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/7i6k4LTCHGqHl2RlhhvAsw",
+        "id": "7i6k4LTCHGqHl2RlhhvAsw",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/ab6761610000e5ebdd7c333f472160a5f67a096b",
+            "height": 640,
+            "width": 640
+          },
+          {
+            "url": "https://i.scdn.co/image/ab67616100005174dd7c333f472160a5f67a096b",
+            "height": 320,
+            "width": 320
+          },
+          {
+            "url": "https://i.scdn.co/image/ab6761610000f178dd7c333f472160a5f67a096b",
+            "height": 160,
+            "width": 160
+          }
+        ],
+        "name": "Emizemi",
+        "popularity": 16,
+        "type": "artist",
+        "uri": "spotify:artist:7i6k4LTCHGqHl2RlhhvAsw"
+      }
+    ]
   }
 }

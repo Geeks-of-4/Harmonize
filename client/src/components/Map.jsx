@@ -1,117 +1,90 @@
-// There is some complex logic here, but keep in mind that there are 2 separate functions in this mess.
-// 1. When the initial load of results comes back from the server, it contains both sets of concerts from both artists.
-// once those results are passed through the extraction and matching functions, they are sent to App.jsx and placed in the "tours" useState.
-// this first use effect has a dependency on that state, and re renders the map. We also take all elements in the tours array, 
-// and for each object in that array, we make a pin and place it on the map with the ticket link, name, etc.
-// 2. When a user clicks on a specific show, we pass that into the second function through an update of the 'siblingIntersect' state
-// once this dependency changes, we re-center the map on that cluster of points. No more, no less.
-// Side note: something is causing the map to re-render multiple times. You can see this when you click a point
-// it flashes >> twice << 🤔
-
+import dotenv from 'dotenv';
 import React, { useEffect, useRef } from 'react';
 
+const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+const googleMapsMapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID;
+
+const loadGoogleMapsScript = (callback) => {
+  if (window.google && window.google.maps) {
+    callback();
+    return;
+  }
+
+  if (document.querySelector('script[src*="maps.googleapis.com"]')) {
+    document.querySelector('script[src*="maps.googleapis.com"]').addEventListener('load', callback);
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}`;
+  script.async = true;
+  script.defer = true;
+  script.onload = () => {
+    if (window.google && window.google.maps) {
+      callback();
+    } else {
+      console.error("Google Maps failed to load.");
+    }
+  };
+  document.head.appendChild(script);
+};
+
 const Map = ({ tours, siblingIntersect }) => {
-  // console.log('🗺️ Mounting Map Component!');
   const mapRef = useRef(null);
   const mapInstance = useRef(null);
 
-  // * This useEffect is used to create the initial map, and update it based on an API response
   useEffect(() => {
-    // console.log('🚶‍♀️‍➡️ Map Use Effect Updated.')
-    async function loadMap() {
-      // console.log('📦 Load Map Async Function Invoked.')
-      // we are getting errors that the map is trying to render before it knows what it is, because google hasnt loaded yet
-      if (!window.google || !mapRef.current) return; // so this line prevents that
-      // import the google maps library, and then wait for it to save to the map object
-      const { Map, InfoWindow } = await window.google.maps.importLibrary(
-        'maps'
-      );
-      const { AdvancedMarkerElement } = await window.google.maps.importLibrary(
-        'marker'
-      );
-      const { LatLngBounds } = await window.google.maps.importLibrary('core');
+    loadGoogleMapsScript(() => {
+      if (!window.google || !mapRef.current) return;
 
-      // then update the map to show this spot by default (sydney aus, atm)
-      mapInstance.current = new Map(mapRef.current, {
-        center: { lat: 39.66118664405381, lng: -95.69956654456912 }, // center of US to start
-        zoom: 4, // show all of USA
-        mapId: 'c9801136fa90cb36',
-      });
+      const { Map, InfoWindow, LatLngBounds, AdvancedMarkerElement } =
+        window.google.maps;
 
-      // * This sections is used to center the map on the results from the API fetch.
-      // If tours are empty, do not proceed
+      if (!mapInstance.current) {
+        mapInstance.current = new Map(mapRef.current, {
+          center: { lat: 39.661, lng: -95.699 },
+          zoom: 4,
+          mapId: googleMapsMapId,
+        });
+      }
+
       if (tours.length === 0) return;
-      // we creating a bounds object to contain the outer bounds of the markers
+
       const bounds = new LatLngBounds();
       const infoWindow = new InfoWindow();
-      // render the tours to the map for each artist
+
       tours
         .flat()
         .forEach(
           ({ artist, event_date, venue_name, city, lat, lng, ticket_url }) => {
-            // convert the string data to float decimals
             const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
-            // console.log('📍 Map Markers Updated!')
             const marker = new AdvancedMarkerElement({
               position,
               map: mapInstance.current,
             });
-            // SO google is fucking dumb, and we have to give the marker all of the style data it needs to render in HTML, from here.
             const contentString = `
-              <div style="
-                font-family: 'Anton', sans-serif; 
-                background-color: #19002e; 
-                color: #ccc;  
-                border-radius: 8px; 
-                max-width: 250px; 
-                text-align: center;
-                padding-bottom: 40px;
-                padding-right: 10px;
-              ">
-                <span style="letter-spacing: 1px; font-size: 1.4rem;">${artist}</span><br>
-                <span style="font-size: 1rem;">${event_date}</span><br>
-                <span style="font-size: 0.9rem;">${venue_name}</span><br>
-                <span style="font-size: 0.9rem;">${city || ''}</span><br>
-                <a href="${ticket_url}" target="_blank" 
-                  style="
-                    display:inline-block; 
-                    margin-top: 8px; 
-                    background: #4a0072; 
-                    color: white; 
-                    padding: 8px 12px; 
-                    text-decoration: none; 
-                    border-radius: 5px; 
-                    transition: background 0.3s ease-in-out;
-                    letter-spacing: 1px;
-                  " 
-                  onmouseover="this.style.background='#6d3782'" 
-                  onmouseout="this.style.background='#4a0072'">
-                  Buy Tickets
-                </a>
-              </div>
-            `;
-
-            // add an event listener to each marker in order to render a render window.
-            marker.addListener('gmp-click', () => {
+              <div style="font-family: 'Anton', sans-serif; background-color: #19002e; color: #ccc; border-radius: 8px; max-width: 250px; text-align: center;">
+              <span style="letter-spacing: 1px; font-size: 1.4rem;">${artist}</span><br>
+              <span style="font-size: 1rem;">${event_date}</span><br>
+              <span style="font-size: 0.9rem;">${venue_name}</span><br>
+              <span style="font-size: 0.9rem;">${city || ''}</span><br>
+              <a href="${ticket_url}" target="_blank" style="display:inline-block; margin-top: 8px; background: #4a0072; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px; transition: background 0.3s;">
+              Buy Tickets</a></div>`;
+            marker.addListener('click', () => {
               infoWindow.setContent(contentString);
-              infoWindow.open({
-                anchor: marker,
-                map: mapInstance.current,
-              });
+              infoWindow.open(mapInstance.current, marker);
             });
-            // each time we add a point we extend the outer boundary
+
             bounds.extend(position);
           }
         );
-      // then we fit the map to show all markers (but not if we skipped adding markers, like when tours is empty)
+
       if (!bounds.isEmpty()) {
         mapInstance.current.fitBounds(bounds);
       }
-    }
-    loadMap();
+    });
   }, [tours]);
 
-  // * This useEffect is used to update the map zoom based on a click on the results table
   useEffect(() => {
     if (!mapInstance.current || siblingIntersect.length === 0) return;
 

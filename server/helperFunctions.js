@@ -2,12 +2,13 @@
 // See the db file for an explanation of why this exists.
 import Token from './db.js'
 import axios from'axios'
+import dotenv from 'dotenv'
 
 export async function getToken(){
   //!insert here
-  const client_id = //* 'create your own spotify api and insert client_id';
+  const client_id = process.env.SPOTIFY_CLIENT_ID;
   //!insert here
-  const client_secret = //* 'create your own spotify api and insert client_secret';
+  const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
   const existingToken = await Token.find()
     // this checks if one exists, if so, it returns a token
     if (existingToken.tokenExpiry > Date.now()) return existingToken.access_token

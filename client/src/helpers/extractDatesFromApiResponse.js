@@ -1,4 +1,4 @@
-// Ho boy, so this one is a bit complicated. The general goal is to get the subset of results from an artist that are 
+// Ho boy, so this one is a bit complicated. The general goal is to get the subset of results from an artist that are
 // within X miles and Y date of another event, but this means I have a nested for loop that is checking every event against
 // every other event to find those that qualify.
 // The first couple iterations of this code had a TON of duplicates, and eventually I just put them in a set to de duplicate them.
@@ -6,7 +6,7 @@
 // However, it definitely does not do that at the moment.
 // Side Note: There are still duplicates in here, somewhere. If you test "knocked loose" against "sleep token" with 100 miles and 7 days
 // you will see a number of "2 events in Derby" over and over again. who knows why... ¯\_(ツ)_/¯
-// anyhow, the logic here 
+// anyhow, the logic here
 // *Extracts Events: Retrieves event data from the provided API response.
 // Creates Event List: Extracts an array of events from the _embedded.events object or returns an empty array if none exist.
 // Processes Each Event: Iterates through each event and extracts key details like:
@@ -23,6 +23,7 @@
 // Handles API Response:
 // If successful, returns the coordinates.
 // If unsuccessful, logs an error and returns null.
+import dotenv from 'dotenv';
 import axios from 'axios';
 // Extract the venues, dates, and artist name from the api response
 export async function extractDataFromApiResponse(eventData) {
@@ -42,13 +43,12 @@ export async function extractDataFromApiResponse(eventData) {
       let lng = location.longitude;
 
       // make sure lat/long exist, if not, fetch it from google
-      // ! i have a feeling this will make the api response unbearably slow... maybe
       if (!lat || !lng) {
         // so google will accept some pretty trashy address lines, so we are appending whatever we have
         const formattedAddress = `${venue.address?.line1 || ''}, ${
           venue.city?.name || ''
         }, ${venue.state?.stateCode || ''} ${venue.postalCode || ''}`;
-        console.log(`📍 Fetching lat/lng for: ${formattedAddress}`);
+        // console.log(`📍 Fetching lat/lng for: ${formattedAddress}`);
 
         const decodedAddress = await getLatLngFromAddress(formattedAddress);
         if (decodedAddress) {
@@ -79,9 +79,9 @@ export async function extractDataFromApiResponse(eventData) {
 
 // this is the helper function we call to get the Decoded Address
 // side note: it turns out the event data from ticket master is pretty good, and this API doesn't really do much.
-// still, it works as expected, and occasionally adds a lat/long to an address that didn't have one. 
+// still, it works as expected, and occasionally adds a lat/long to an address that didn't have one.
 async function getLatLngFromAddress(address) {
-  const apiKey = 'AIzaSyBhHsZZpF0lVjUtjHlzNjGTrHBr4ZM5nO0';
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
   const encodedAddress = encodeURIComponent(address);
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
 
@@ -89,7 +89,7 @@ async function getLatLngFromAddress(address) {
     const response = await axios.get(url);
     const data = response.data;
     if (data.status === 'OK') {
-      console.log('🗺️ We dun geocoded a thing...');
+      // console.log('🗺️ We dun geocoded a thing...');
       return data.results[0].geometry.location;
     } else {
       console.error('Geocoding API error:', data);

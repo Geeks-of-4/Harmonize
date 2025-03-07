@@ -3,11 +3,10 @@
 // Both of these were intended to be client side, but it turns out that CORS errors are a thing.
 // The spare keys here for ticket master are because we have not implemented a bottleneck or rate limiter
 // and so occasionally we get flagged for rate limits when we click the button too much for testing. 
-// ! You will need your own keys, because ours will expire eventually.
-// * Also, you should put them in a .env file. We were lazy, don't be.
 
 import axios from 'axios';
 import { getToken } from './helperFunctions.js';
+import dotenv from 'dotenv'
 
 const apiController = {};
 
@@ -25,8 +24,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
   const currentTime = now.toISOString().split('.')[0] + 'Z'; // Remove milliseconds
   now.setMonth(now.getMonth() + 12);
   const monthRange = now.toISOString().split('.')[0] + 'Z';
-  //!create Ticketmaster Dev account for apiKey
-  const apiKey = //*insert api here
+  const apiKey = process.env.TM_API_KEY;
   
   const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
   const url1 = `${baseUrl}?keyword=${encodeURIComponent(
@@ -40,7 +38,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
       axios.get(url1),
       axios.get(url2),
     ]);
-    console.log(response1);
+    // console.log(response1);
     // console.log(response2.headers);
     console.log('📫 Sending ticket master response!');
     return res.status(200).json({
@@ -76,12 +74,12 @@ apiController.getSpotifyImageData = async (req, res, next) => {
     });
   }
   try {
-    console.log(url1);
-    console.log(url2);
+    // console.log(url1);
+    // console.log(url2);
     // get our access code
     const accessToken = await getToken();
-    console.log(accessToken);
-    console.log(accessToken.access_token);
+    // console.log(accessToken);
+    // console.log(accessToken.access_token);
     // make a request to spotify
     const [response1, response2] = await Promise.all([
       axios.get(url1, {

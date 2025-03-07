@@ -13,29 +13,21 @@ import { findMatchingEvents } from './helpers/findMatchingEvents';
 import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
+import dotenv from 'dotenv'
 
 function App() {
-  // State that controls "No Results Found" message in the Intersect box. (Not working as expected)
   const [clickStatus, setClickStatus] = useState(false);
-  // State that receives input from the artist search boxes.
   const [artist, setInputArtist] = useState(['', '']);
-  // State that receives input from the spotify image search. It is probably smarter to move the 
-  // placeholders into the artist component itself instead of keeping it here.
   const [imageSrc, setImageSrc] = useState([
     placeholderImage1,
     placeholderImage2,
   ]);
-  // State that receives input from the nav bar max miles range.
   const [miles, setMiles] = useState(100);
-  // State that receives input from the nav bar max days between events range.
   const [days, setDays] = useState(7);
-  // State that receives the combined output of the Ticket Master api fetch AFTER 
-  // it's processed by the extractor helper function
   const [tours, setTours] = useState([]);
-  // State that receives the selected event from the intersect table, 
-  // which focuses the map on a selected event.
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL
   // Nothing on the page happens until you click the harmonize button. 
   // Then all hell breaks loose. This triggers 2 api calls to ticket master,
   // 2 api calls to spotify, sometimes 30+ calls to google maps api.
@@ -47,7 +39,7 @@ function App() {
     try {
       // Get Image Data
       const spotifyResponse = await axios.post(
-        'http://localhost:9001/api/spotify',
+        `${API_BASE_URL}/spotify`,
         [artist[0], artist[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -56,7 +48,7 @@ function App() {
       setImageSrc([image1, image2]);
       // Get Concert Data
       const tmResponse = await axios.post(
-        'http://localhost:9001/api/TM',
+        `${API_BASE_URL}/TM`,
         [artist[0], artist[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -128,7 +120,7 @@ function App() {
                 key={index}
                 className='intersect-button'
                 onClick={() => {
-                  console.log(group);
+                  // console.log(group);
                   setSiblingIntersect(group);
                   window.scrollTo({
                     top: document.body.scrollHeight,

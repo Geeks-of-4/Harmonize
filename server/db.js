@@ -1,12 +1,21 @@
-// This DB serves no other purpose than to hold the API keys from spotify. 
-// Oddly enough, all spotify keys expire an hour after creation, so we use 
-// the key for an hour by storing it in the database, and then if it expires, 
-// we make a new one and replace the old one in the DB.  
+// This DB serves no other purpose than to hold the API keys from spotify.
+// Oddly enough, all spotify keys expire an hour after creation, so we use
+// the key for an hour by storing it in the database, and then if it expires,
+// we make a new one and replace the old one in the DB.
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-//!setup Mongo DB to save tokens for spotify API
+// Load environment variables
+dotenv.config();
+
 console.log('🛠️ Initializing MongoDB connection...');
-const mongoURI = //* insert 'mongodb+srv://'
+
+const mongoURI =
+  process.env.NODE_ENV === 'production'
+    ? process.env.MONGO_URI_PROD // Use Cloud DB in production
+    : process.env.MONGO_URI_DEV; // Use Local DB in development
+
+console.log(`🛠️ Connecting to MongoDB at: ${mongoURI}`);
 
 // Connect to MongoDB
 mongoose
@@ -16,7 +25,7 @@ mongoose
 
 // Define a schema for Spotify token data
 const TokenSchema = new mongoose.Schema({
-  access_token: String, 
+  access_token: String,
   token_type: String,
   expires_in: Number,
   token_expiry: Number,
