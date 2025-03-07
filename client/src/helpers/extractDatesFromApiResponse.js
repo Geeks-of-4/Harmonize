@@ -23,7 +23,6 @@
 // Handles API Response:
 // If successful, returns the coordinates.
 // If unsuccessful, logs an error and returns null.
-import dotenv from 'dotenv';
 import axios from 'axios';
 // Extract the venues, dates, and artist name from the api response
 export async function extractDataFromApiResponse(eventData) {
@@ -81,7 +80,7 @@ export async function extractDataFromApiResponse(eventData) {
 // side note: it turns out the event data from ticket master is pretty good, and this API doesn't really do much.
 // still, it works as expected, and occasionally adds a lat/long to an address that didn't have one.
 async function getLatLngFromAddress(address) {
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY;
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   const encodedAddress = encodeURIComponent(address);
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
 

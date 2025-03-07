@@ -13,11 +13,12 @@ import { findMatchingEvents } from './helpers/findMatchingEvents';
 import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
-import dotenv from 'dotenv'
+import { sanitizeInput } from './helpers/inputSanitizer';
+
 
 function App() {
   const [clickStatus, setClickStatus] = useState(false);
-  const [artist, setInputArtist] = useState(['', '']);
+  const [artist, setInputArtist] = useState(['carl cox', 'armin van buuren']);
   const [imageSrc, setImageSrc] = useState([
     placeholderImage1,
     placeholderImage2,
@@ -28,19 +29,15 @@ function App() {
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
   const API_BASE_URL = import.meta.env.VITE_BACKEND_URL
-  // Nothing on the page happens until you click the harmonize button. 
-  // Then all hell breaks loose. This triggers 2 api calls to ticket master,
-  // 2 api calls to spotify, sometimes 30+ calls to google maps api.
-  // notably there is no need to store data (because its not relevant as time moves on) 
-  // so every click generates results on demand. 
   async function harmonizeClickHandler() {
-    if (!artist[0] || !artist[1]) return;
+    const sanitizedArtists = artist.map(sanitizeInput)
+    if (!sanitizedArtists[0] || !sanitizedArtists[1]) return;
     setClickStatus(true);
     try {
       // Get Image Data
       const spotifyResponse = await axios.post(
         `${API_BASE_URL}/spotify`,
-        [artist[0], artist[1]],
+        sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
       // Update the images
@@ -49,7 +46,7 @@ function App() {
       // Get Concert Data
       const tmResponse = await axios.post(
         `${API_BASE_URL}/TM`,
-        [artist[0], artist[1]],
+        sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
       // Extract the relevant data from the API response

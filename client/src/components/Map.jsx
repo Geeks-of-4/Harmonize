@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import React, { useEffect, useRef } from 'react';
 
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -11,19 +10,21 @@ const loadGoogleMapsScript = (callback) => {
   }
 
   if (document.querySelector('script[src*="maps.googleapis.com"]')) {
-    document.querySelector('script[src*="maps.googleapis.com"]').addEventListener('load', callback);
+    document
+      .querySelector('script[src*="maps.googleapis.com"]')
+      .addEventListener('load', callback);
     return;
   }
 
   const script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker`;
   script.async = true;
   script.defer = true;
   script.onload = () => {
     if (window.google && window.google.maps) {
       callback();
     } else {
-      console.error("Google Maps failed to load.");
+      console.error('Google Maps failed to load.');
     }
   };
   document.head.appendChild(script);
@@ -37,16 +38,14 @@ const Map = ({ tours, siblingIntersect }) => {
     loadGoogleMapsScript(() => {
       if (!window.google || !mapRef.current) return;
 
-      const { Map, InfoWindow, LatLngBounds, AdvancedMarkerElement } =
-        window.google.maps;
+      const { Map, InfoWindow, LatLngBounds } = window.google.maps;
+      const { AdvancedMarkerElement } = window.google.marker;
 
-      if (!mapInstance.current) {
-        mapInstance.current = new Map(mapRef.current, {
-          center: { lat: 39.661, lng: -95.699 },
-          zoom: 4,
-          mapId: googleMapsMapId,
-        });
-      }
+      mapInstance.current = new Map(mapRef.current, {
+        center: { lat: 39.661, lng: -95.699 },
+        zoom: 4,
+        mapId: googleMapsMapId,
+      });
 
       if (tours.length === 0) return;
 
@@ -70,6 +69,7 @@ const Map = ({ tours, siblingIntersect }) => {
               <span style="font-size: 0.9rem;">${city || ''}</span><br>
               <a href="${ticket_url}" target="_blank" style="display:inline-block; margin-top: 8px; background: #4a0072; color: white; padding: 8px 12px; text-decoration: none; border-radius: 5px; transition: background 0.3s;">
               Buy Tickets</a></div>`;
+
             marker.addListener('click', () => {
               infoWindow.setContent(contentString);
               infoWindow.open(mapInstance.current, marker);

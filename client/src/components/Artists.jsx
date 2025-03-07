@@ -2,6 +2,8 @@
 // but passing in an explicit position in the use states through the artist ID prop.
 // What this lets us do, is potentially plan to have more than to artists be visible at a time. 
 // You would only need to run a map function to create the artists instead of explicitly creating them.
+import { sanitizeInput } from './../helpers/inputSanitizer';
+// TODO Input sanitization has stripped to character spaces from the display text, so we need different display text
 const Artists = ({ artistId, setInputArtist, imageSrc, artist, className }) => {
   return (
     <div>
@@ -15,9 +17,10 @@ const Artists = ({ artistId, setInputArtist, imageSrc, artist, className }) => {
           type='text'
           value={artist}
           onChange={(event) => {
+            const sanitizedInput = sanitizeInput(event.target.value)
             setInputArtist((prevArtists) => {
               const updatedArtists = [...prevArtists];
-              updatedArtists[artistId] = event.target.value;
+              updatedArtists[artistId] = sanitizedInput;
               return updatedArtists;
             });
           }}

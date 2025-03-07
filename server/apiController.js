@@ -2,11 +2,11 @@
 // The spotify function retrieves images, while the ticket master gets event data.
 // Both of these were intended to be client side, but it turns out that CORS errors are a thing.
 // The spare keys here for ticket master are because we have not implemented a bottleneck or rate limiter
-// and so occasionally we get flagged for rate limits when we click the button too much for testing. 
+// and so occasionally we get flagged for rate limits when we click the button too much for testing.
 
 import axios from 'axios';
-import { getToken } from './helperFunctions.js';
-import dotenv from 'dotenv'
+import { getToken } from './helpers/getToken.js';
+import dotenv from 'dotenv';
 
 const apiController = {};
 
@@ -19,20 +19,20 @@ apiController.getTicketMasterData = async (req, res, next) => {
       message: { error: 'Invalid input. Please provide two artist names.' },
     });
   }
-  const [artist1, artist2] = req.body;
+  const [artist1, artist2] = req.body.map(artist => encodeURIComponent(artist.trim()));
   const now = new Date();
   const currentTime = now.toISOString().split('.')[0] + 'Z'; // Remove milliseconds
   now.setMonth(now.getMonth() + 12);
   const monthRange = now.toISOString().split('.')[0] + 'Z';
-  const apiKey = process.env.TM_API_KEY;
-  
+  const tmApiKey = process.env.TM_API_KEY;
+
   const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
   const url1 = `${baseUrl}?keyword=${encodeURIComponent(
     artist1
-  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${apiKey}`;
+  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${tmApiKey}`;
   const url2 = `${baseUrl}?keyword=${encodeURIComponent(
     artist2
-  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${apiKey}`;
+  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${tmApiKey}`;
   try {
     const [response1, response2] = await Promise.all([
       axios.get(url1),
