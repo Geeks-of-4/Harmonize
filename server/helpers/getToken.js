@@ -17,6 +17,7 @@ export async function getToken() {
   }
 
   const existingToken = await Token.findOne();
+
   if (
     existingToken &&
     existingToken.token_expiry > Math.floor(Date.now() / 1000)
@@ -24,6 +25,7 @@ export async function getToken() {
     console.log('👻 Using cached token.'); //:', existingToken.access_token);
     return existingToken.access_token;
   }
+
   // if we do not fine a token, we do this:
   try {
     const response = await axios.post(
@@ -46,15 +48,14 @@ export async function getToken() {
       {
         access_token: response.data.access_token,
         token_type: response.data.token_type,
-        token_expiry:
-          Math.floor(Date.now() / 1000) + response.data.expires_in * 5,
+        token_expiry: Math.floor(Date.now() / 1000) + response.data.expires_in,
       },
       { upsert: true, new: true }
     );
 
     console.log('🛠️ Token save operation result:', updatedToken);
 
-    return updatedToken;
+    return updatedToken.access_token;
   } catch (error) {
     console.error('❌ Failed to fetch Spotify token:', error.message);
     return null;

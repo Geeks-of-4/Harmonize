@@ -7,27 +7,27 @@ import { fetchTicketmasterData } from './helpers/ticketMasterAPICall.js';
 const apiController = {};
 
 apiController.getTicketMasterData = async (req, res, next) => {
-  if (!Array.isArray(req.body) || req.body.length < 2) {
+  if (!Array.isArray(req.body) || req.body.length < 1) {
     return next({
-      log: 'Invalid request body: Expected an array with two artist names',
+      log: 'Invalid request body: Expected an array with at least 1 artist name.',
       status: 400,
-      message: { error: 'Invalid input. Please provide two artist names.' },
+      message: {
+        error: 'Invalid input. Please provide at least one artist name.',
+      },
     });
   }
 
-  const [artist1, artist2] = req.body.map((artist) => artist.toLowerCase());
+  const artists = req.body.map((artist) => artist.toLowerCase());
 
   try {
     console.log('📀 Checking cache for Ticketmaster data...');
 
     // Check Cache First for data for either artist
     const cachedArtists = await TicketmasterCache.find({
-      artistName: { $in: [artist1, artist2] },
+      artistName: { $in: artists },
     });
 
-    let cacheData = Object.fromEntries(
-      req.body.map((artist) => [artist.toLowerCase(), null])
-    );
+    let cacheData = Object.fromEntries(artists.map((artist) => [artist, null]));
 
     if (cachedArtists.length) {
       console.log('🎯 Ticket Master Cache Hit!', cachedArtists);
@@ -35,25 +35,24 @@ apiController.getTicketMasterData = async (req, res, next) => {
         cacheData[entry.artistName] = entry;
       });
 
-      // If both artists are found in cache, return them immediately
-      if (cacheData[artist1] || cacheData[artist2]) {
-        console.log('🔁 Returning cached Ticketmaster data: ');
-        console.log('🔍 Cached Artist 1 Status:', cacheData[artist1].status);
-        console.log('🔍 Cached Artist 2 Status:', cacheData[artist2].status);
-
-        return res.status(200).json({
-          artist1: cacheData[artist1],
-          artist2: cacheData[artist2],
+      // If all artists are found in cache, return them immediately
+      if (artists.every((artist) => cacheData[artist])) {
+        console.log('🔁 Returning fully cached Ticketmaster data.');
+        // This is just logging the status of each artist:
+        Object.entries(cacheData).forEach(([artist, data], index) => {
+          console.log(
+            `🔍 Cached Artist ${index + 1} (${artist}) Status:`,
+            data?.status || 'Not Found'
+          );
         });
+        return res.status(200).json(cacheData);
       }
     }
 
     console.log('🥾 Ticket Master Cache miss!');
 
     // Prep data for TM API Request for the remaining missing artists
-    const artistsToFetch = [];
-    if (!cacheData[artist1]) artistsToFetch.push(artist1);
-    if (!cacheData[artist2]) artistsToFetch.push(artist2);
+    const artistsToFetch = artists.filter((artist) => !cacheData[artist]);
 
     let freshResponses = [];
     if (artistsToFetch.length > 0) {
@@ -80,7 +79,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
       }
     }
 
-    // Save Artist1 and Artist2 data to Mongo DB
+    // Save fetched data to Mongo DB
     await TicketmasterCache.bulkWrite(
       Object.values(newCacheData)
         .filter((data) => data)
@@ -98,10 +97,13 @@ apiController.getTicketMasterData = async (req, res, next) => {
     // console.log('🔍 Ticket Master Return Data:', newCacheData);
 
     // Return results
-    return res.status(200).json({
-      artist1: newCacheData[artist1],
-      artist2: newCacheData[artist2],
-    });
+    return res
+      .status(200)
+      .json(
+        Object.fromEntries(
+          artists.map((artist) => [artist, newCacheData[artist] || null])
+        )
+      );
   } catch (error) {
     console.error('☠️ Ticketmaster API Error:', error.message);
 
@@ -114,67 +116,61 @@ apiController.getTicketMasterData = async (req, res, next) => {
 };
 
 apiController.getSpotifyImageData = async (req, res, next) => {
-  // Spotify API Post Request for access token
-  const [artist1, artist2] = req.body.map((artist) => artist.toLowerCase());
-
-  const baseUrl = 'https://api.spotify.com/v1/search?q=';
-  const url1 = `${baseUrl}${encodeURIComponent(artist1)}&type=artist`;
-  const url2 = `${baseUrl}${encodeURIComponent(artist2)}&type=artist`;
-
-  if (!Array.isArray(req.body) || req.body.length < 2) {
+  if (!Array.isArray(req.body) || req.body.length < 1) {
     return next({
-      log: 'Invalid request body: Expected an array with two artist names',
+      log: 'Invalid request body: Expected an array with at least 1 artist name.',
       status: 400,
-      message: { error: 'Invalid input. Please provide two artist names.' },
+      message: { error: 'Invalid input. Please provide at least one artist name.' },
     });
   }
 
+  const artists = req.body.map((artist) => artist.toLowerCase());
+  
   try {
     console.log('📀 Checking cache for Spotify artist images...');
     // console.log(url1);
     // console.log(url2);
-
+    
     // Step 1: Check MongoDB Cache for one or both artists
     const cachedArtists = await SpotifyCache.find({
-      artistName: { $in: [artist1, artist2] },
+      artistName: { $in: artists },
     });
-
-    let cacheData = { [artist1]: null, [artist2]: null };
-
+    
+    let cacheData = Object.fromEntries(artists.map((artist) => [artist, null]));
+    
     if (cachedArtists.length) {
       console.log('🎯 Spotify Cache Hit!', cachedArtists);
       cachedArtists.forEach((entry) => {
         cacheData[entry.artistName] = entry.imageUrl;
       });
+      
+      // Step 2: If both artists are found, return them immediately
+      if (artists.every(artist => cacheData[artist])) {
+        console.log('🔁 Returning fully cached Spotify images.');
+        return res.status(200).json(cacheData);
+      }
     }
-
-    // Step 2: If both artists are found, return them immediately
-    if (cacheData[artist1] && cacheData[artist2]) {
-      console.log('🔁 Returning cached Spotify images.');
-      return res
-        .status(200)
-        .json({ image1: cacheData[artist1], image2: cacheData[artist2] });
-    }
-
-    console.log('🥾 Cache miss! Fetching from Spotify...');
-
+    
+    console.log('🥾 Cache miss! Fetching missing artist images from Spotify...');
+    
     // Step 3: Fetch missing artist(s) from Spotify
-    const artistsToFetch = [];
-    if (!cacheData[artist1]) artistsToFetch.push(artist1);
-    if (!cacheData[artist2]) artistsToFetch.push(artist2);
-
+    const artistsToFetch = artists.filter(artist => !cacheData[artist]);
+    
     if (artistsToFetch.length > 0) {
       const accessToken = await getToken();
       const fetchPromises = artistsToFetch.map(async (artist) => {
-        const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-          artist
-        )}&type=artist`;
-        const response = await axios.get(url, {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        });
+        const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(artist)}&type=artist`;
+        try {
+          const response = await axios.get(url, {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          });
 
-        const imageUrl = response.data.artists.items[0]?.images[0]?.url || '';
-        return { artist, imageUrl };
+          const imageUrl = response.data.artists.items[0]?.images[0]?.url || '';
+          return { artist, imageUrl };
+        } catch (error) {
+          console.warn(`⚠️ Failed to fetch image for ${artist}:`, error.message);
+          return { artist, imageUrl: null };
+        }
       });
 
       const freshResponses = await Promise.all(fetchPromises);
@@ -183,21 +179,21 @@ apiController.getSpotifyImageData = async (req, res, next) => {
       for (const { artist, imageUrl } of freshResponses) {
         cacheData[artist] = imageUrl;
 
-        await SpotifyCache.findOneAndUpdate(
-          { artistName: artist.toLowerCase() },
-          { imageUrl, lastUpdated: new Date() },
-          { upsert: true, new: true }
-        );
+        if (imageUrl) {
+          await SpotifyCache.findOneAndUpdate(
+            { artistName: artist.toLowerCase() },
+            { imageUrl, lastUpdated: new Date() },
+            { upsert: true, new: true }
+          );
+        }
       }
     }
 
     console.log('📥 Cached new Spotify artist images.');
 
     // Step 5: Return a combination of cached & fresh data
-    return res
-      .status(200)
-      .json({ image1: cacheData[artist1], image2: cacheData[artist2] });
-
+    return res.status(200).json(cacheData);
+    
   } catch (error) {
     console.error('❌ Failed to fetch Spotify Image data:', error.message);
     return next({ status: 500, message: 'Failed to fetch Spotify Image data' });
