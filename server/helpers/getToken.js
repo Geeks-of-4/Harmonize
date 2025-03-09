@@ -21,7 +21,7 @@ export async function getToken() {
     existingToken &&
     existingToken.token_expiry > Math.floor(Date.now() / 1000)
   ) {
-    console.log('👻 Using cached token:', existingToken.access_token);
+    console.log('👻 Using cached token.'); //:', existingToken.access_token);
     return existingToken.access_token;
   }
   // if we do not fine a token, we do this:
