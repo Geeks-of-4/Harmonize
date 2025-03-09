@@ -1,20 +1,18 @@
 // Just about all of the business logic is run from this page. This one component houses all others,
 // as there was no need to do nested components. As a result, this object is the state controller, and it has many.
 // Notably, because we do not sanitize the artist input, its totally possible that spotify displays one artists image
-// while the ticket master results displays concerts for someone else entirely. 
+// while the ticket master results displays concerts for someone else entirely.
 import { useState } from 'react';
 import axios from 'axios';
 import Artists from './components/Artists';
 import Map from './components/Map';
 import Nav from './components/Nav';
 import './App.css';
-import { extractDataFromApiResponse } from './helpers/extractDatesFromApiResponse';
 import { findMatchingEvents } from './helpers/findMatchingEvents';
 import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
 import { sanitizeInput } from './helpers/inputSanitizer';
-
 
 function App() {
   const [clickStatus, setClickStatus] = useState(false);
@@ -28,47 +26,68 @@ function App() {
   const [tours, setTours] = useState([]);
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
-  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
   async function harmonizeClickHandler() {
-    const sanitizedArtists = artist.map(sanitizeInput)
 
-    console.log("🎤 Sanitized Artists:", sanitizedArtists);
-
+    // Exit early if no input data was given
+    const sanitizedArtists = artist.map(sanitizeInput);
     if (!sanitizedArtists[0] || !sanitizedArtists[1]) return;
+    console.log('🎤 Sanitized Artists:', sanitizedArtists);
     setClickStatus(true);
 
     try {
+      // Get Image Data
       const spotifyResponse = await axios.post(
         `${API_BASE_URL}/spotify`,
-        sanitizedArtists,
+        [sanitizedArtists[0],sanitizedArtists[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
 
+      // Update the images if data exists
       const { image1, image2 } = spotifyResponse.data;
 
       setImageSrc([image1, image2]);
 
+      // Get Concert Data
       const tmResponse = await axios.post(
         `${API_BASE_URL}/TM`,
-        sanitizedArtists,
+        [sanitizedArtists[0],sanitizedArtists[1]],
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      console.log("🎟️ Ticketmaster API Response:", tmResponse.data);
-      const data = tmResponse.data;
+      console.log('🎟️ Ticketmaster API Response:', tmResponse.data);
 
-      if (!data.artist1 || !data.artist2) {
-        console.warn("⚠️ Ticketmaster API returned unexpected data:", data);
-        setTours([]);
+      // Validate API responses before updating state
+      if (
+        !tmResponse.data.artist1?._embedded?.events?.length &&
+        !tmResponse.data.artist2?._embedded?.events?.length
+      ) {
+        console.warn('⚠️ No events found, preventing empty state update.');
+        setClickStatus(false);
         return;
       }
 
-      const response1ExtractedData = await extractDataFromApiResponse(data.artist1);
-      const response2ExtractedData = await extractDataFromApiResponse(data.artist2);
-      const matchingEvents = findMatchingEvents(response1ExtractedData, response2ExtractedData, days, miles);
+      console.log("Object structure:", Object.keys( tmResponse.data.artist1));
 
+      // Find matching events
+      const matchingEvents = findMatchingEvents(
+        tmResponse.data.artist1,
+        tmResponse.data.artist2,
+        days,
+        miles
+      );
+      
+      // Prevent empty state update
+      if (matchingEvents.length === 0) {
+        console.warn('⚠️ No matching events found.');
+        setClickStatus(false);
+        return; 
+      }
+
+      // Update the intersect state if matches exist
       setTours(matchingEvents);
 
+      // Scroll to results
       document.querySelector('.subMain-container').scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -77,7 +96,7 @@ function App() {
 
     } catch (err) {
       console.error('❌ API Fetch Error:', err);
-      setTours([]);
+      setClickStatus(false);
     }
   }
 

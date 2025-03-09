@@ -33,7 +33,17 @@ const TokenSchema = new mongoose.Schema({
 
 console.log('📜 Token schema defined.');
 
-const Token = mongoose.model('Token', TokenSchema);
-console.log('✅ Repo model created.');
+const TicketmasterCacheSchema = new mongoose.Schema({
+  artistName: { type: String, required: true, unique: true },
+  events: { type: Array, required: true }, // Array of event objects
+  status: { type: String, enum: ['success', 'empty_response', 'api_error'], required: true },
+  lastUpdated: { type: Date, default: Date.now, expires: '30d' }, // Auto-delete after 30 days
+});
 
-export default Token;
+console.log('🎫 Ticket Master schema defined.');
+
+const Token = mongoose.model('Token', TokenSchema);
+const TicketmasterCache = mongoose.model('TicketmasterCache', TicketmasterCacheSchema);
+
+
+export {Token, TicketmasterCache};

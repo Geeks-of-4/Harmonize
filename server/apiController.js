@@ -1,13 +1,8 @@
-// This api controller has 2 functions, one for Ticket Master, and one for Spotify.
-// The spotify function retrieves images, while the ticket master gets event data.
-// Both of these were intended to be client side, but it turns out that CORS errors are a thing.
-// The spare keys here for ticket master are because we have not implemented a bottleneck or rate limiter
-// and so occasionally we get flagged for rate limits when we click the button too much for testing.
-
 import axios from 'axios';
 import { getToken } from './helpers/getToken.js';
-import dotenv from 'dotenv';
-import { response } from 'express';
+import { TicketmasterCache } from './db.js';
+import { processResponse } from './helpers/processApiResp.js';
+import { fetchTicketmasterData } from './helpers/ticketMasterAPICall.js';
 
 const apiController = {};
 
@@ -20,48 +15,98 @@ apiController.getTicketMasterData = async (req, res, next) => {
     });
   }
 
-  console.log('🎫 Fetching Ticketmaster data for:', req.body);
-
-  const [artist1, artist2] = req.body.map((artist) =>
-    encodeURIComponent(artist.trim())
-  );
-  const now = new Date();
-  const currentTime = now.toISOString().split('.')[0] + 'Z';
-  now.setMonth(now.getMonth() + 12);
-  const monthRange = now.toISOString().split('.')[0] + 'Z';
-  const tmApiKey = process.env.TM_API_KEY;
-
-  const baseUrl = 'https://app.ticketmaster.com/discovery/v2/events.json';
-  const url1 = `${baseUrl}?keyword=${encodeURIComponent(
-    artist1
-  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${tmApiKey}`;
-  const url2 = `${baseUrl}?keyword=${encodeURIComponent(
-    artist2
-  )}&startDateTime=${currentTime}&endDateTime=${monthRange}&apikey=${tmApiKey}`;
+  const [artist1, artist2] = req.body.map((artist) => artist.toLowerCase());
 
   try {
-    const [response1, response2] = await Promise.all([
-      axios.get(url1),
-      axios.get(url2),
-    ]);
-    // TODO: The api response from ticket master is empty? Something about sanitizing the inputs broke the outputs maybe?
-    console.log('🎟️ Ticketmaster Response 1 Status:', response1.status);
-    console.log('🎟️ Ticketmaster Response 2 Status:', response2.status);
-    console.log('🎟️ Ticketmaster Headers 1:', response1.headers);
-    console.log('🎟️ Ticketmaster Headers 2:', response2.headers);
-    console.log('🎟️ Ticketmaster Data 1:', response1.data);
-    console.log('🎟️ Ticketmaster Data 2:', response2.data);
+    console.log('📀 Checking cache for Ticketmaster data...');
 
-    console.log('📫 Sending ticket master response!');
-    return res
-      .status(200)
-      .json({ artist1: response1.data, artist2: response2.data });
+    // Check Cache First for data for either artist
+    const cachedArtists = await TicketmasterCache.find({
+      artistName: { $in: [artist1, artist2] },
+    });
+
+    let cacheData = Object.fromEntries(req.body.map((artist) => [artist.toLowerCase(), null]));
+
+
+    if (cachedArtists.length) {
+      console.log('🎯 Cache Hit!', cachedArtists);
+      cachedArtists.forEach((entry) => {
+        cacheData[entry.artistName] = entry;
+      });
+
+      // If both artists are found in cache, return them immediately
+      if (cacheData.artist1 || cacheData.artist2) {
+        console.log('🔁 Returning cached Ticketmaster data: ');
+        console.log('🔍 Cached Artist 1 Status:', cacheData.artist1.status);
+        console.log('🔍 Cached Artist 2 Status:', cacheData.artist2.status);
+
+        return res.status(200).json({
+          artist1: cacheData.artist1,
+          artist2: cacheData.artist2,
+        });
+      }
+    }
+
+    console.log('🥾 Cache miss!');
+
+    // Prep data for TM API Request for the remaining missing artists
+    const artistsToFetch = [];
+    if (!cacheData.artist1) artistsToFetch.push(artist1);
+    if (!cacheData.artist2) artistsToFetch.push(artist2);
+
+    let freshResponses = [];
+    if (artistsToFetch.length > 0) {
+      console.log('🎫 Fetching fresh Ticketmaster data for:', artistsToFetch);
+      freshResponses = await fetchTicketmasterData(artistsToFetch);
+    }
+
+    // Warning: This console log is friggen huge...
+    // console.log('🎟️ Raw Ticketmaster API Response:', freshResponses);
+
+    const newCacheData = { ...cacheData };
+
+    for (const response of freshResponses) {
+      const artistName = response.value.artist
+      const processedData = await processResponse(response, artistName, 1);
+
+      // Prevent Duplicate Storage (Only Save if Different)
+      if (
+        !newCacheData[artistName] ||
+        JSON.stringify(newCacheData[artistName].events) !==
+          JSON.stringify(processedData.events)
+      ) {
+        newCacheData[artistName] = processedData;
+      }
+    }
+
+    // Save Artist1 and Artist2 data to Mongo DB
+    await TicketmasterCache.bulkWrite(
+      Object.values(newCacheData)
+        .filter((data) => data)
+        .map((data) => ({
+          updateOne: {
+            filter: { artistName: data.artistName },
+            update: { $set: data },
+            upsert: true,
+          },
+        }))
+    );
+    console.log('📥 Cached new Ticketmaster data.');
+
+    // Warning, this console log is fucking huge...
+    console.log('🔍 newCacheData Before Return:', newCacheData);
+
+    // Return results
+    return res.status(200).json({
+      artist1: newCacheData.artist1,
+      artist2: newCacheData.artist2,
+    });
   } catch (error) {
     console.error('☠️ Ticketmaster API Error:', error.message);
 
     return next({
       log: `getTicketMasterData API Error: ${error.message}`,
-      status: error.response?.status || 500, // Fallback to 500 if no status
+      status: error.response?.status || 500,
       message: { error: 'Failed to fetch Ticketmaster data!' },
     });
   }
@@ -71,8 +116,8 @@ apiController.getSpotifyImageData = async (req, res, next) => {
   // Spotify API Post Request for access token
   const [artist1, artist2] = req.body;
   const baseUrl = 'https://api.spotify.com/v1/search?q=';
-  const url1 = `${baseUrl}${encodeURI(artist1)}&type=artist`;
-  const url2 = `${baseUrl}${encodeURI(artist2)}&type=artist`;
+  const url1 = `${baseUrl}${encodeURIComponent(artist1)}&type=artist`;
+  const url2 = `${baseUrl}${encodeURIComponent(artist2)}&type=artist`;
 
   // const accessToken = {"access_token": "BQAap0nXlZH_CEGMKLCjupPuBHqyZ8rI9IDY50scVTAROUvw44Vl5D684mEET-CRM-nCjuSy0CZGk_RjNKI6T82IBBGaRNeSUu32tZxGyTHyAg6gq7Q5zCYSwzFZ-AroqafYzSCi6hM", "token_type": "Bearer", "expires_in": 3600}
   if (!Array.isArray(req.body) || req.body.length < 2) {

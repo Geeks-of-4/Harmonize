@@ -14,6 +14,8 @@ apiRouter.post(
   validateArtists,
   (req, res, next) => {
     console.log('📡 Incoming POST request!');
+    console.log('Sanitized Request Body:', req.body);
+    
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
@@ -27,8 +29,10 @@ apiRouter.post(
   '/spotify',
   validateArtists,
   (req, res, next) => {
-    const errors = validationResult(req);
     console.log('📡 Incoming POST request!');
+    console.log('Sanitized Request Body:', req.body);
+
+    const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
     next();
