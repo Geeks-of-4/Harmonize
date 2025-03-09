@@ -17,7 +17,7 @@ const loadGoogleMapsScript = (callback) => {
   }
 
   const script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
   script.async = true;
   script.defer = true;
   script.onload = () => {
@@ -38,8 +38,7 @@ const Map = ({ tours, siblingIntersect }) => {
     loadGoogleMapsScript(() => {
       if (!window.google || !mapRef.current) return;
 
-      const { Map, InfoWindow, LatLngBounds } = window.google.maps;
-      const { AdvancedMarkerElement } = window.google.marker;
+      const { Map, InfoWindow, LatLngBounds, Marker } = window.google.maps;
 
       mapInstance.current = new Map(mapRef.current, {
         center: { lat: 39.661, lng: -95.699 },
@@ -57,7 +56,7 @@ const Map = ({ tours, siblingIntersect }) => {
         .forEach(
           ({ artist, event_date, venue_name, city, lat, lng, ticket_url }) => {
             const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
-            const marker = new AdvancedMarkerElement({
+            const marker = new Marker({
               position,
               map: mapInstance.current,
             });
