@@ -27,7 +27,6 @@ apiController.getTicketMasterData = async (req, res, next) => {
 
     let cacheData = Object.fromEntries(req.body.map((artist) => [artist.toLowerCase(), null]));
 
-
     if (cachedArtists.length) {
       console.log('🎯 Cache Hit!', cachedArtists);
       cachedArtists.forEach((entry) => {
@@ -35,14 +34,14 @@ apiController.getTicketMasterData = async (req, res, next) => {
       });
 
       // If both artists are found in cache, return them immediately
-      if (cacheData.artist1 || cacheData.artist2) {
+      if (cacheData[artist1] || cacheData[artist2]) {
         console.log('🔁 Returning cached Ticketmaster data: ');
-        console.log('🔍 Cached Artist 1 Status:', cacheData.artist1.status);
-        console.log('🔍 Cached Artist 2 Status:', cacheData.artist2.status);
+        console.log('🔍 Cached Artist 1 Status:', cacheData[artist1].status);
+        console.log('🔍 Cached Artist 2 Status:', cacheData[artist2].status);
 
         return res.status(200).json({
-          artist1: cacheData.artist1,
-          artist2: cacheData.artist2,
+          artist1: cacheData[artist1],
+          artist2: cacheData[artist2],
         });
       }
     }
@@ -51,8 +50,8 @@ apiController.getTicketMasterData = async (req, res, next) => {
 
     // Prep data for TM API Request for the remaining missing artists
     const artistsToFetch = [];
-    if (!cacheData.artist1) artistsToFetch.push(artist1);
-    if (!cacheData.artist2) artistsToFetch.push(artist2);
+    if (!cacheData[artist1]) artistsToFetch.push(artist1);
+    if (!cacheData[artist2]) artistsToFetch.push(artist2);
 
     let freshResponses = [];
     if (artistsToFetch.length > 0) {
@@ -98,8 +97,8 @@ apiController.getTicketMasterData = async (req, res, next) => {
 
     // Return results
     return res.status(200).json({
-      artist1: newCacheData.artist1,
-      artist2: newCacheData.artist2,
+      artist1: newCacheData[artist1],
+      artist2: newCacheData[artist2],
     });
   } catch (error) {
     console.error('☠️ Ticketmaster API Error:', error.message);

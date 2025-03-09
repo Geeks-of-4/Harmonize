@@ -55,12 +55,12 @@ function App() {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      console.log('🎟️ Ticketmaster API Response:', tmResponse.data);
+      console.log('🎟️ Ticketmaster API Response:', tmResponse);
 
       // Validate API responses before updating state
       if (
-        !tmResponse.data.artist1?._embedded?.events?.length &&
-        !tmResponse.data.artist2?._embedded?.events?.length
+        !tmResponse.data.artist1.events?.length &&
+        !tmResponse.data.artist2.events?.length
       ) {
         console.warn('⚠️ No events found, preventing empty state update.');
         setClickStatus(false);
@@ -71,8 +71,8 @@ function App() {
 
       // Find matching events
       const matchingEvents = findMatchingEvents(
-        tmResponse.data.artist1,
-        tmResponse.data.artist2,
+        tmResponse.data.artist1.events,
+        tmResponse.data.artist2.events,
         days,
         miles
       );
