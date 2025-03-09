@@ -27,7 +27,6 @@ mongoose
 const TokenSchema = new mongoose.Schema({
   access_token: String,
   token_type: String,
-  expires_in: Number,
   token_expiry: Number,
 });
 
