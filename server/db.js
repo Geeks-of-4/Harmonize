@@ -27,7 +27,6 @@ mongoose
 const TokenSchema = new mongoose.Schema({
   access_token: String,
   token_type: String,
-  expires_in: Number,
   token_expiry: Number,
 });
 
@@ -42,8 +41,17 @@ const TicketmasterCacheSchema = new mongoose.Schema({
 
 console.log('🎫 Ticket Master schema defined.');
 
+const SpotifyCacheSchema = new mongoose.Schema({
+  artistName: { type: String, required: true, unique: true },
+  imageUrl: { type: String, required: true },
+  lastUpdated: { type: Date, default: Date.now, expires: '30d' }  // Auto-delete after 30 days
+});
+
+console.log('🎵 Spotify Cache schema defined.');
+
 const Token = mongoose.model('Token', TokenSchema);
 const TicketmasterCache = mongoose.model('TicketmasterCache', TicketmasterCacheSchema);
+const SpotifyCache = mongoose.model('SpotifyCache', SpotifyCacheSchema);
 
 
-export {Token, TicketmasterCache};
+export {Token, TicketmasterCache, SpotifyCache};

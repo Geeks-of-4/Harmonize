@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+//TODO: It appears that the results are limited to 20, which may mean we need to deal with pagination of some sort
 export const fetchTicketmasterData = async (artists) => {
   if (!Array.isArray(artists)) {
     throw new Error("❌ fetchTicketmasterData expects an array of artist names.");
