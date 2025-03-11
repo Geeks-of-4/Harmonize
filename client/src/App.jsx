@@ -5,25 +5,11 @@ import Map from './components/Map';
 import Nav from './components/Nav';
 import './App.css';
 import HarmonizerButton from './components/HarmonizerButton';
-import placeholderImage1 from './assets/Placeholder1.webp';
-import placeholderImage2 from './assets/Placeholder2.webp';
 import { sanitizeInput } from './helpers/inputSanitizer';
 
 function App() {
   const [clickStatus, setClickStatus] = useState(false);
   const [artists, setInputArtists] = useState(['', '']);
-  const [imageSrc, setImageSrc] = useState([
-    placeholderImage1,
-    placeholderImage2,
-    placeholderImage1,
-    placeholderImage2,
-    placeholderImage1,
-    placeholderImage2,
-    placeholderImage1,
-    placeholderImage2,
-    placeholderImage1,
-    placeholderImage2,
-  ]);
   const [miles, setMiles] = useState(100);
   const [days, setDays] = useState(7);
   const [tours, setTours] = useState([]);
@@ -50,7 +36,6 @@ function App() {
   };
 
   async function harmonizeClickHandler() {
-    console.log('🎤 Current artists state:', artists);
     // Exit early if no input data was given
     const sanitizedArtists = artists
       .map(sanitizeInput)
@@ -62,26 +47,10 @@ function App() {
     }
 
     console.log('🎤 Sanitized Artists:', sanitizedArtists);
+
     setClickStatus(true);
 
     try {
-      // Get Image Data
-      const spotifyResponse = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/spotify`,
-        { artists: sanitizedArtists },
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-
-      // Update the images if data exists
-      const updatedImages = artists.map(
-        (artist) => spotifyResponse.data[artist].imageUrl
-      );
-      setImageSrc(updatedImages);
-
-      console.log(
-        `Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/TM`
-      );
-
       // Get Concert Data
       const tmResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/TM`,
@@ -148,7 +117,6 @@ function App() {
               key={index}
               artistId={index}
               setInputArtist={(value) => updateArtist(index, value)}
-              imageSrc={imageSrc[index] || placeholderImage1}
               artist={artist}
             />
           ))}
