@@ -69,8 +69,8 @@ function App() {
     }
     console.log('🎤 Sanitized Artists:', sanitizedArtists);
     setClickStatus(true);
-
     try {
+      console.log(`Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/spotify`)
       // Get Image Data
       const spotifyResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/spotify`,
@@ -84,6 +84,7 @@ function App() {
       );
       setImageSrc(updatedImages);
 
+      console.log(`Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/TM`)
       // Get Concert Data
       const tmResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/TM`,
