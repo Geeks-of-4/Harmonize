@@ -52,3 +52,13 @@ app
   .on('error', (err) => {
     console.error('❌ Server error:', err);
   });
+
+//TODO: Remove this after shit is working on railway.
+// Global Error Logging
+process.on('uncaughtException', (err) => {
+  console.error('🔥 Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('⚠️ Unhandled Rejection at:', promise, 'reason:', reason);
+});
