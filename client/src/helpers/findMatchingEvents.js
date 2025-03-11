@@ -1,10 +1,4 @@
-// This function does a date check FIRST, and then a distance check SECOND.
-// the distance check was written first, so it is at the top of this function, but it gets called later on.
-// honestly it could be it's own helper function if you wanted to make this more legible.
-// anyhow, date checks are pretty easy, each date in array 1, check the date in array 2
-// distance checks are a bit harder and are done in this 'isNearby' function require drawing
-// a circle on the map and seeing if the x/y coordinate is within that circle this was taken 
-// from stack exchange, and I have no idea how haversine math works. Who knows if this is working correctly.
+// TODO: This need to be extracted to the server side, and sent as the response.
 export function findMatchingEvents(
   eventsArray1,
   eventsArray2,

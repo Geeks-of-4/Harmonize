@@ -12,8 +12,16 @@ import { sanitizeInput } from './helpers/inputSanitizer';
 
 function App() {
   const [clickStatus, setClickStatus] = useState(false);
-  const [artists, setInputArtists] = useState(['carl cox', 'armin van buuren']);
+  const [artists, setInputArtists] = useState(['', '']);
   const [imageSrc, setImageSrc] = useState([
+    placeholderImage1,
+    placeholderImage2,
+    placeholderImage1,
+    placeholderImage2,
+    placeholderImage1,
+    placeholderImage2,
+    placeholderImage1,
+    placeholderImage2,
     placeholderImage1,
     placeholderImage2,
   ]);
@@ -22,18 +30,50 @@ function App() {
   const [tours, setTours] = useState([]);
   const [siblingIntersect, setSiblingIntersect] = useState([]);
 
-  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+  const updateArtist = (index, value) => {
+    const sanitizedValue = sanitizeInput(value);
+
+    setInputArtists((prevArtists) => {
+      const updatedArtists = [...prevArtists];
+      updatedArtists[index] = sanitizedValue;
+
+      // If at least 2 artists are entered and we haven't reached 10 yet, add a new blank input
+      if (
+        updatedArtists.length < 10 &&
+        updatedArtists.length >= 2 &&
+        updatedArtists[updatedArtists.length - 1] !== ''
+      ) {
+        updatedArtists.push('');
+      }
+
+      // while (
+      //   updatedArtists.length > 2 &&
+      //   updatedArtists[updatedArtists.length - 1] === ''
+      // ) {
+      //   updatedArtists.pop();
+      // }
+
+      return updatedArtists;
+    });
+  };
+
   async function harmonizeClickHandler() {
     // Exit early if no input data was given
-    const sanitizedArtists = artists.map(sanitizeInput);
-    if (sanitizedArtists.length < 2) return;
+    const sanitizedArtists = artists
+      .map(sanitizeInput)
+      .filter((artist) => artist.trim() !== ''); // Remove empty strings
+
+    if (sanitizedArtists.length < 2) {
+      console.warn('⚠️ At least two artists are required.');
+      return;
+    }
     console.log('🎤 Sanitized Artists:', sanitizedArtists);
     setClickStatus(true);
 
     try {
       // Get Image Data
       const spotifyResponse = await axios.post(
-        `${API_BASE_URL}/spotify`,
+        `${import.meta.env.VITE_BACKEND_URL}/spotify`,
         sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -46,12 +86,12 @@ function App() {
 
       // Get Concert Data
       const tmResponse = await axios.post(
-        `${API_BASE_URL}/TM`,
+        `${import.meta.env.VITE_BACKEND_URL}/TM`,
         sanitizedArtists,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      console.log('🎟️ Ticketmaster API Response:', tmResponse);
+      // console.log('🎟️ Ticketmaster API Response:', tmResponse);
 
       // Validate API responses before updating state
       if (!tmResponse.data || Object.keys(tmResponse.data).length === 0) {
@@ -112,30 +152,15 @@ function App() {
               harmonizeClickHandler();
             }}
           />
-          {/* So this is what we would replace the code below with to be able to render more than 2 artists */}
-          {/* {artists.map((artist, index) => (
+          {artists.map((artist, index) => (
             <Artists
               key={index}
               artistId={index}
-              setInputArtist={setInputArtists}
+              setInputArtist={(value) => updateArtist(index, value)}
               imageSrc={imageSrc[index] || placeholderImage1}
               artist={artist}
             />
-          ))} */}
-          <Artists
-            artistId={0}
-            setInputArtist={setInputArtists}
-            imageSrc={imageSrc[0]}
-            artist={artists[0]}
-            className='left'
-          />
-          <Artists
-            artistId={1}
-            setInputArtist={setInputArtists}
-            imageSrc={imageSrc[1]}
-            artist={artists[1]}
-            className='right'
-          />
+          ))}
         </div>
         <div className='intersect'>
           {tours.length === 0 && clickStatus === false ? (
@@ -149,17 +174,18 @@ function App() {
           ) : (
             tours.map((group, index) => (
               <button
-                key={index}
-                className='intersect-button'
-                onClick={() => {
-                  // console.log(group);
-                  setSiblingIntersect(group);
-                  window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth',
-                  });
-                }}
+              key={index}
+              className='intersect-button'
+              onClick={() => {
+                // console.log(group);
+                setSiblingIntersect(group);
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: 'smooth',
+                });
+              }}
               >
+                {/* TODO: This needs to be converted to a table, I think. Sorted by highest # of overlapping artists */}
                 {`${group.length} events in ${group[0].city}`}
               </button>
             ))
