@@ -18,12 +18,6 @@ app.use(
 );
 
 // Handle requests to API
-app.use((req, res, next) => {
-  console.log(`📡 Incoming request: ${req.method} ${req.url}`);
-  console.log('📤 Request body:', req.body);
-});
-
-// a second .use to pass to api router is required to fufill requests, since I want to keep the console logs.
 app.use(apiRouter);
 
 // catch-all route handler for any requests to an unknown route
