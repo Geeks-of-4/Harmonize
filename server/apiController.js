@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { getToken } from './helpers/getToken.js';
 import { TicketmasterCache, SpotifyCache } from './db.js';
+import { getToken } from './helpers/getToken.js';
 import { processResponse } from './helpers/processApiResp.js';
 import { fetchTicketmasterData } from './helpers/ticketMasterAPICall.js';
+import { findMatchingEvents } from './helpers/findMatchingEvents.js';
 
 const apiController = {};
 
@@ -45,7 +46,8 @@ apiController.getTicketMasterData = async (req, res, next) => {
             data?.status || 'Not Found'
           );
         });
-        return res.status(200).json(cacheData);
+        req.ticketmasterData = cacheData;
+        return next();
       }
     }
 
@@ -97,13 +99,12 @@ apiController.getTicketMasterData = async (req, res, next) => {
     // console.log('🔍 Ticket Master Return Data:', newCacheData);
 
     // Return results
-    return res
-      .status(200)
-      .json(
-        Object.fromEntries(
-          artists.map((artist) => [artist, newCacheData[artist] || null])
-        )
-      );
+    req.ticketmasterData = Object.fromEntries(
+      artists.map((artist) => [artist, newCacheData[artist] || null])
+    );
+
+    next();    
+
   } catch (error) {
     console.error('☠️ Ticketmaster API Error:', error.message);
 
@@ -199,5 +200,37 @@ apiController.getSpotifyImageData = async (req, res, next) => {
     return next({ status: 500, message: 'Failed to fetch Spotify Image data' });
   }
 };
+
+apiController.getMatchingEvents = async (req, res, next) => {
+  try {
+    const { ticketmasterData } = req;
+
+    if (!ticketmasterData || Object.keys(ticketmasterData).length < 2) {
+      console.warn('⚠️ Not enough artists to match events.');
+      return res.status(200).json({ artists: ticketmasterData, matches: [] });
+    }
+
+    console.log(`🔍 Matching events across ${Object.keys(ticketmasterData).length} artists...`);
+
+    const matches = findMatchingEvents(
+      ticketmasterData, 
+      req.body.daysMaximum || 7, 
+      req.body.rangeMaximum || 100
+    );
+
+    return res.status(200).json({ artists: ticketmasterData, matches });
+
+  } catch (error) {
+    console.error('☠️ Error in getMatchingEvents:', error.message);
+    return next({
+      log: `getMatchingEvents API Error: ${error.message}`,
+      status: 500,
+      message: { error: 'Failed to match events!' },
+    });
+  }
+};
+
+
+
 
 export default apiController;

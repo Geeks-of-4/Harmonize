@@ -21,7 +21,8 @@ apiRouter.post(
       return res.status(400).json({ errors: errors.array() });
     next();
   },
-  apiController.getTicketMasterData
+  apiController.getTicketMasterData,
+  apiController.getMatchingEvents,
 );
 
 // Route to fetch Spotify Image Data
