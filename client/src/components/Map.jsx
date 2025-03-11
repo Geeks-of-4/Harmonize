@@ -3,8 +3,6 @@ import React, { useEffect, useRef } from 'react';
 const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const googleMapsMapId = import.meta.env.VITE_GOOGLE_MAPS_MAP_ID;
 
-console.log(googleMapsApiKey);
-console.log(googleMapsMapId);
 const loadGoogleMapsScript = (callback) => {
   if (window.google && window.google.maps) {
     callback();
