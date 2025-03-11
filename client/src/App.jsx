@@ -58,6 +58,7 @@ function App() {
   };
 
   async function harmonizeClickHandler() {
+    console.log('🎤 Current artists state:', artists);
     // Exit early if no input data was given
     const sanitizedArtists = artists
       .map(sanitizeInput)
@@ -71,6 +72,7 @@ function App() {
     setClickStatus(true);
     try {
       console.log(`Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/spotify`)
+      console.log('📤 Sending artists:', JSON.stringify(sanitizedArtists));
       // Get Image Data
       const spotifyResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/spotify`,
@@ -92,7 +94,7 @@ function App() {
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      // console.log('🎟️ Ticketmaster API Response:', tmResponse);
+      console.log('🎟️ Ticketmaster API Response:', tmResponse);
 
       // Validate API responses before updating state
       if (!tmResponse.data || Object.keys(tmResponse.data).length === 0) {
@@ -178,7 +180,7 @@ function App() {
               key={index}
               className='intersect-button'
               onClick={() => {
-                // console.log(group);
+                console.log(group);
                 setSiblingIntersect(group);
                 window.scrollTo({
                   top: document.body.scrollHeight,
