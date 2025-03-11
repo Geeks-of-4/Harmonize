@@ -45,6 +45,10 @@ app.use((err, req, res, next) => {
 });
 
 // port listening to start the server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-});
+app
+  .listen(PORT, () => {
+    console.log(`🚀 Server is running on port ${PORT}`);
+  })
+  .on('error', (err) => {
+    console.error('❌ Server error:', err);
+  });
