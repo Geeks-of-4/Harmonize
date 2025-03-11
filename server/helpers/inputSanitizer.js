@@ -1,12 +1,22 @@
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 
 export const validateArtists = [
-  body().isArray().withMessage('Request body must be an array'),
-  body().custom((artists) => {
-    if (artists.length < 1) throw new Error('At least one artist name is required.');
-    if (!artists.every(artist => typeof artist === 'string' && artist.trim().length > 0 && artist.length <= 50)) {
-      throw new Error('Each artist name must be a non-empty string, max 50 chars');
-    }
-    return true;
-  }),
+  body('artists')
+    .exists()
+    .withMessage('❌ "artists" field is required')
+    .isArray({ min: 1 })
+    .withMessage('❌ "artists" must be a non-empty array'),
+  body('artists.*')
+    .isString()
+    .trim()
+    .notEmpty()
+    .withMessage('❌ Each artist must be a non-empty string'),
+  body('daysMaximum')
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage('❌ "daysMaximum" must be a positive number'),
+  body('rangeMaximum')
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage('❌ "rangeMaximum" must be a positive number'),
 ];

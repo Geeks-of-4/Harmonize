@@ -8,17 +8,17 @@ import { findMatchingEvents } from './helpers/findMatchingEvents.js';
 const apiController = {};
 
 apiController.getTicketMasterData = async (req, res, next) => {
-  if (!Array.isArray(req.body) || req.body.length < 1) {
+  const { artists, daysMaximum = 7, rangeMaximum = 100 } = req.body;
+
+  if (!Array.isArray(artists) || artists.length < 1) {
     return next({
-      log: 'Invalid request body: Expected an array with at least 1 artist name.',
+      log: 'Invalid request body: Expected at least one artist name.',
       status: 400,
       message: {
         error: 'Invalid input. Please provide at least one artist name.',
       },
     });
   }
-
-  const artists = req.body.map((artist) => artist.toLowerCase());
 
   try {
     console.log('📀 Checking cache for Ticketmaster data...');
@@ -103,8 +103,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
       artists.map((artist) => [artist, newCacheData[artist] || null])
     );
 
-    next();    
-
+    next();
   } catch (error) {
     console.error('☠️ Ticketmaster API Error:', error.message);
 
@@ -116,51 +115,99 @@ apiController.getTicketMasterData = async (req, res, next) => {
   }
 };
 
-apiController.getSpotifyImageData = async (req, res, next) => {
-  if (!Array.isArray(req.body) || req.body.length < 1) {
+apiController.getMatchingEvents = async (req, res, next) => {
+  console.log(
+    '🔍 Ticketmaster Data Before Matching:',
+    JSON.stringify(req.ticketmasterData, null, 2)
+  );
+
+  const { daysMaximum = 7, rangeMaximum = 100 } = req.body;
+  const { ticketmasterData } = req;
+  const formattedData = Object.fromEntries(
+    Object.entries(req.ticketmasterData).map(([artist, data]) => [
+      artist,
+      data.events,
+    ])
+  );
+
+  try {
+    if (!ticketmasterData || Object.keys(ticketmasterData).length < 2) {
+      console.warn('⚠️ Not enough artists to match events.');
+      return res.status(200).json({ artists: ticketmasterData, matches: [] });
+    }
+
+    console.log(
+      `🔍 Matching events across ${
+        Object.keys(ticketmasterData).length
+      } artists...`
+    );
+
+    const matches = findMatchingEvents(
+      formattedData,
+      daysMaximum,
+      rangeMaximum
+    );
+
+    return res.status(200).json({ artists: ticketmasterData, matches });
+  } catch (error) {
+    console.error('☠️ Error in getMatchingEvents:', error.message);
     return next({
-      log: 'Invalid request body: Expected an array with at least 1 artist name.',
-      status: 400,
-      message: { error: 'Invalid input. Please provide at least one artist name.' },
+      log: `getMatchingEvents API Error: ${error.message}`,
+      status: 500,
+      message: { error: 'Failed to match events!' },
     });
   }
+};
 
-  const artists = req.body.map((artist) => artist.toLowerCase());
+apiController.getSpotifyImageData = async (req, res, next) => {
+  if (!req.body.artists || !Array.isArray(req.body.artists) || req.body.artists.length < 1) {
+    return next({
+      log: 'Invalid request body: Expected an object with an "artists" array containing at least 1 artist name.',
+      status: 400,
+      message: { error: 'Invalid input. Please provide an "artists" array with at least one artist name.' },
+    });
+  }
   
+  const artists = req.body.artists.map((artist) => artist.toLowerCase());
+
   try {
     console.log('📀 Checking cache for Spotify artist images...');
     // console.log(url1);
     // console.log(url2);
-    
+
     // Step 1: Check MongoDB Cache for one or both artists
     const cachedArtists = await SpotifyCache.find({
       artistName: { $in: artists },
     });
-    
+
     let cacheData = Object.fromEntries(artists.map((artist) => [artist, null]));
-    
+
     if (cachedArtists.length) {
       console.log('🎯 Spotify Cache Hit!', cachedArtists);
       cachedArtists.forEach((entry) => {
         cacheData[entry.artistName] = entry.imageUrl;
       });
-      
+
       // Step 2: If both artists are found, return them immediately
-      if (artists.every(artist => cacheData[artist])) {
+      if (artists.every((artist) => cacheData[artist])) {
         console.log('🔁 Returning fully cached Spotify images.');
         return res.status(200).json(cacheData);
       }
     }
-    
-    console.log('🥾 Cache miss! Fetching missing artist images from Spotify...');
-    
+
+    console.log(
+      '🥾 Cache miss! Fetching missing artist images from Spotify...'
+    );
+
     // Step 3: Fetch missing artist(s) from Spotify
-    const artistsToFetch = artists.filter(artist => !cacheData[artist]);
-    
+    const artistsToFetch = artists.filter((artist) => !cacheData[artist]);
+
     if (artistsToFetch.length > 0) {
       const accessToken = await getToken();
       const fetchPromises = artistsToFetch.map(async (artist) => {
-        const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(artist)}&type=artist`;
+        const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+          artist
+        )}&type=artist`;
         try {
           const response = await axios.get(url, {
             headers: { Authorization: `Bearer ${accessToken}` },
@@ -169,7 +216,10 @@ apiController.getSpotifyImageData = async (req, res, next) => {
           const imageUrl = response.data.artists.items[0]?.images[0]?.url || '';
           return { artist, imageUrl };
         } catch (error) {
-          console.warn(`⚠️ Failed to fetch image for ${artist}:`, error.message);
+          console.warn(
+            `⚠️ Failed to fetch image for ${artist}:`,
+            error.message
+          );
           return { artist, imageUrl: null };
         }
       });
@@ -194,43 +244,10 @@ apiController.getSpotifyImageData = async (req, res, next) => {
 
     // Step 5: Return a combination of cached & fresh data
     return res.status(200).json(cacheData);
-    
   } catch (error) {
     console.error('❌ Failed to fetch Spotify Image data:', error.message);
     return next({ status: 500, message: 'Failed to fetch Spotify Image data' });
   }
 };
-
-apiController.getMatchingEvents = async (req, res, next) => {
-  try {
-    const { ticketmasterData } = req;
-
-    if (!ticketmasterData || Object.keys(ticketmasterData).length < 2) {
-      console.warn('⚠️ Not enough artists to match events.');
-      return res.status(200).json({ artists: ticketmasterData, matches: [] });
-    }
-
-    console.log(`🔍 Matching events across ${Object.keys(ticketmasterData).length} artists...`);
-
-    const matches = findMatchingEvents(
-      ticketmasterData, 
-      req.body.daysMaximum || 7, 
-      req.body.rangeMaximum || 100
-    );
-
-    return res.status(200).json({ artists: ticketmasterData, matches });
-
-  } catch (error) {
-    console.error('☠️ Error in getMatchingEvents:', error.message);
-    return next({
-      log: `getMatchingEvents API Error: ${error.message}`,
-      status: 500,
-      message: { error: 'Failed to match events!' },
-    });
-  }
-};
-
-
-
 
 export default apiController;

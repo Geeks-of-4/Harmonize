@@ -1,3 +1,5 @@
+// Arthur thinks it might be useful to convert this into a matrix to compare lat/longs for proximity
+
 export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
   console.log('🧩 Find Matching Events Invoked.');
 

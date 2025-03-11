@@ -4,7 +4,6 @@ import Artists from './components/Artists';
 import Map from './components/Map';
 import Nav from './components/Nav';
 import './App.css';
-import { findMatchingEvents } from './helpers/findMatchingEvents';
 import HarmonizerButton from './components/HarmonizerButton';
 import placeholderImage1 from './assets/Placeholder1.webp';
 import placeholderImage2 from './assets/Placeholder2.webp';
@@ -46,13 +45,6 @@ function App() {
         updatedArtists.push('');
       }
 
-      // while (
-      //   updatedArtists.length > 2 &&
-      //   updatedArtists[updatedArtists.length - 1] === ''
-      // ) {
-      //   updatedArtists.pop();
-      // }
-
       return updatedArtists;
     });
   };
@@ -68,29 +60,36 @@ function App() {
       console.warn('⚠️ At least two artists are required.');
       return;
     }
+
     console.log('🎤 Sanitized Artists:', sanitizedArtists);
     setClickStatus(true);
+
     try {
-      console.log(`Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/spotify`)
-      console.log('📤 Sending artists:', JSON.stringify(sanitizedArtists));
       // Get Image Data
       const spotifyResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/spotify`,
-        sanitizedArtists,
+        { artists: sanitizedArtists },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
       // Update the images if data exists
       const updatedImages = artists.map(
-        (artist) => spotifyResponse.data[artist]
+        (artist) => spotifyResponse.data[artist].imageUrl
       );
       setImageSrc(updatedImages);
 
-      console.log(`Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/TM`)
+      console.log(
+        `Sending request to: , ${import.meta.env.VITE_BACKEND_URL}/TM`
+      );
+
       // Get Concert Data
       const tmResponse = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/TM`,
-        sanitizedArtists,
+        {
+          artists: sanitizedArtists,
+          daysMaximum: days,
+          rangeMaximum: miles,
+        },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -103,35 +102,24 @@ function App() {
         return;
       }
 
-      console.log('Object structure:', Object.keys(tmResponse.data));
+      const { artists, matches } = tmResponse.data;
 
-      const artistEvents = Object.values(tmResponse.data)
-        .filter((artist) => artist && artist.events) // Ensure valid data
-        .map((artist) => artist.events);
-
-      // Find matching events
-      let matchingEvents = [];
-      for (let i = 0; i < artistEvents.length - 1; i++) {
-        for (let j = i + 1; j < artistEvents.length; j++) {
-          const matches = findMatchingEvents(
-            artistEvents[i],
-            artistEvents[j],
-            days,
-            miles
-          );
-          matchingEvents.push(...matches);
-        }
+      if (!artists || Object.keys(artists).length === 0) {
+        console.warn('⚠️ No artist event data found.');
+        setClickStatus(false);
+        return;
       }
 
-      // Prevent empty state update
-      if (matchingEvents.length === 0) {
+      console.log('Object structure:', Object.keys(tmResponse.data));
+
+      if (!matches || matches.length === 0) {
         console.warn('⚠️ No matching events found.');
         setClickStatus(false);
         return;
       }
 
       // Update the intersect state if matches exist
-      setTours(matchingEvents);
+      setTours(matches);
 
       // Scroll to results
       document.querySelector('.subMain-container').scrollIntoView({
@@ -175,21 +163,22 @@ function App() {
               <p>💀 No results found...</p>
             </div>
           ) : (
-            tours.map((group, index) => (
+            tours.map((event, index) => (
               <button
-              key={index}
-              className='intersect-button'
-              onClick={() => {
-                console.log(group);
-                setSiblingIntersect(group);
-                window.scrollTo({
-                  top: document.body.scrollHeight,
-                  behavior: 'smooth',
-                });
-              }}
+                key={index}
+                className='intersect-button'
+                onClick={() => {
+                  setSiblingIntersect([event]);
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth',
+                  });
+                }}
               >
                 {/* TODO: This needs to be converted to a table, I think. Sorted by highest # of overlapping artists */}
-                {`${group.length} events in ${group[0].city}`}
+                {`${event.artists.join(', ')} at ${event.venue_name} on ${
+                  event.event_date
+                }`}
               </button>
             ))
           )}
