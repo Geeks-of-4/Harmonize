@@ -7,12 +7,18 @@ const app = express();
 const PORT = process.env.PORT || 9001;
 app.use(express.json()); // Parse JSON request bodies
 
-// Allow cross-origin requests 
-// *THIS IS THE REASON THE SERVER EXISTS TO BEGIN WITH
-app.use(cors()); 
+// Allow cross-origin requests
+app.use(
+  cors({
+    origin: 'https://harmonize.ataraxi.st',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true,
+  })
+);
 
 // Handle requests to API
-app.use('/api', apiRouter);
+app.use(apiRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => {
@@ -34,11 +40,10 @@ app.use((err, req, res, next) => {
 });
 
 // port listening to start the server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-});
-
-
-
-
-
+app
+  .listen(PORT, () => {
+    console.log(`🚀 Server is running on port ${PORT}`);
+  })
+  .on('error', (err) => {
+    console.error('❌ Server error:', err);
+  });

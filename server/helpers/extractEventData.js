@@ -29,7 +29,7 @@ export async function extractEventData(eventData) {
       }
 
       return {
-        artist: event.name,
+        event: event.name,
         event_date,
         venue_name: venue.name || 'Unknown Venue',
         city: venue.city?.name || 'Unknown City',
