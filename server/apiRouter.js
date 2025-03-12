@@ -3,7 +3,7 @@
 // to send a single api request instead of 2
 import express from 'express';
 import apiController from './apiController.js';
-import { body, validationResult } from 'express-validator';
+import { validationResult } from 'express-validator';
 import { validateArtists } from './helpers/inputSanitizer.js';
 
 const apiRouter = express.Router();
@@ -15,13 +15,14 @@ apiRouter.post(
   (req, res, next) => {
     console.log('📡 Incoming POST request!');
     console.log('Sanitized Request Body:', req.body);
-    
     const errors = validationResult(req);
-    if (!errors.isEmpty())
+    if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
+    }
     next();
   },
-  apiController.getTicketMasterData
+  apiController.getTicketMasterData,
+  apiController.getMatchingEvents
 );
 
 // Route to fetch Spotify Image Data

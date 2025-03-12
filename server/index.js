@@ -8,11 +8,21 @@ const PORT = process.env.PORT || 9001;
 app.use(express.json()); // Parse JSON request bodies
 
 // Allow cross-origin requests
+const allowedOrigins = [
+  'http://127.0.0.1:5173', // ✅ Localhost for Vite Dev Server
+  'http://localhost:5173', // ✅ Localhost for Dev
+  'https://harmonize.ataraxi.st', // ✅ Production Domain
+];
+
 app.use(
   cors({
-    origin: 'https://harmonize.ataraxi.st',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`🚫 CORS Policy Blocked: ${origin} is not allowed`));
+      }
+    },
     credentials: true,
   })
 );
