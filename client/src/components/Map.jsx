@@ -54,15 +54,20 @@ const Map = ({ tours, siblingIntersect }) => {
       tours
         .flat()
         .forEach(
-          ({ artist, event_date, venue_name, city, lat, lng, ticket_url }) => {
+          ({ artists, event_date, venue_name, city, lat, lng, ticket_url }) => {
             const position = { lat: parseFloat(lat), lng: parseFloat(lng) };
             const marker = new Marker({
               position,
               map: mapInstance.current,
             });
+
+            const artistNames = Array.isArray(artists) && artists.length > 0 
+            ? artists.join(', ') 
+            : 'Unknown Artists';
+
             const contentString = `
               <div style="font-family: 'Anton', sans-serif; background-color: #19002e; color: #ccc; border-radius: 8px; max-width: 250px; text-align: center;">
-              <span style="letter-spacing: 1px; font-size: 1.4rem;">${artist}</span><br>
+              <span style="letter-spacing: 1px; font-size: 1.4rem;">${artistNames}</span><br>
               <span style="font-size: 1rem;">${event_date}</span><br>
               <span style="font-size: 0.9rem;">${venue_name}</span><br>
               <span style="font-size: 0.9rem;">${city || ''}</span><br>

@@ -61,7 +61,6 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
                 rangeMaximum
               )
             ) {
-              console.log('✅ Match Found! ', event1, event2);
 
               // Create a unique key for the event: Venue + Date
               const eventKey = `${event1.venue_name}_${event1.event_date}`;

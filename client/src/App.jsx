@@ -46,8 +46,6 @@ function App() {
       return;
     }
 
-    console.log('🎤 Sanitized Artists:', sanitizedArtists);
-
     setClickStatus(true);
 
     try {
@@ -61,8 +59,6 @@ function App() {
         },
         { headers: { 'Content-Type': 'application/json' } }
       );
-
-      console.log('🎟️ Ticketmaster API Response:', tmResponse);
 
       // Validate API responses before updating state
       if (!tmResponse.data || Object.keys(tmResponse.data).length === 0) {
@@ -79,7 +75,7 @@ function App() {
         return;
       }
 
-      console.log('Object structure:', Object.keys(tmResponse.data));
+      // console.log('Object structure:', Object.keys(tmResponse.data));
 
       if (!matches || matches.length === 0) {
         console.warn('⚠️ No matching events found.');
@@ -87,15 +83,21 @@ function App() {
         return;
       }
 
+      
       // Update the intersect state if matches exist
       setTours(matches);
-
+      console.log('Tours: ', tours)
+      console.log('Matches: ', matches)
+      console.log('Sibling Intersect: ', siblingIntersect)
+      
       // Scroll to results
       document.querySelector('.subMain-container').scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'nearest',
       });
+
+      
     } catch (err) {
       console.error('❌ API Fetch Error:', err);
       setClickStatus(false);

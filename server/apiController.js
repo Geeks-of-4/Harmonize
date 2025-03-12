@@ -148,6 +148,7 @@ apiController.getMatchingEvents = async (req, res, next) => {
       rangeMaximum
     );
 
+    console.log('🐦‍🔥 Matches: ', matches)
     return res.status(200).json({ artists: ticketmasterData, matches });
   } catch (error) {
     console.error('☠️ Error in getMatchingEvents:', error.message);
