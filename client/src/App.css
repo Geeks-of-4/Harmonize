@@ -97,64 +97,49 @@ body {
 }
 
 .artist-box {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  /* display: flex;
+  flex-direction: column; */
   width: 100%;
   height: 80vh;
   overflow: hidden;
 }
 
 .artistContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-grow: 1;
-  min-height: 0;
+  position: absolute;
   width: 100%;
-  height: auto;
-  position: relative;
+  height: 100%;
 }
-
-/* .artistContainer.left {
-  align-self: flex-start;
-  margin-left: 2%;
-}
-
-.artistContainer.right {
-  align-self: flex-end;
-  margin-right: 2%;
-} */
 
 .artistContainer img {
   width: 100%;
   height: 100%;
-  max-height: 100%;
   object-fit: cover;
   object-position: center;
-  flex-grow: 1;
-  object-position: center 25%;
+}
+
+.artist-inputs-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1vh;
+  z-index: 10;
+  padding-left: 1vw;
+  padding-top: 1vh;
 }
 
 .input {
   padding: 5px; 
-  font-size: 15px; 
   border: 1px solid #ccc; 
   outline: none; 
   z-index: 1;
   width: 30%;
   text-align: center;
-  position: absolute;
   opacity: 0.6;
-  font-size: 2rem;
+  font-size: 1rem;
   bottom: 5%;
-}
-
-.input.left {
-  left: 2%;
-}
-
-.input.right {
-  right: 2%;
+  width: 10rem;
 }
 
 .input:focus {
@@ -166,23 +151,21 @@ The way this works is that each pair of numbers is an X/Y coordinate that refers
 it is inside of, so 0/0 is top left corner and 100/100 would be bottom right corner. These coordinates represent 2 opposite 
 trapezoids that are squished up together to form one rectangle. That way we can load one image in each trapezoid and make it 
 look like BATTLE OF THE BANDS or something. */
-/* .artistContainer.left {
+.artistContainer.left {
   clip-path: polygon(0 0, 30% 0, 70% 100%, 0 100%);
 }
 
 .artistContainer.right {
   clip-path: polygon(30% 0, 100% 0, 100% 100%, 70% 100%);
-} */
+}
 
 
-/* .artistContainer.left img {
-  animation: shiftRight 120s ease-out forwards;
-  transform: translateX(-20%);
+.artistContainer.left img {
+  transform: translateX(-30%);
 }
 .artistContainer.right img {
-  animation: shiftLeft 120s ease-out forwards;
-  transform: translateX(20%);
-} */
+  transform: translateX(30%);
+}
 
 .intersect {
   width: 100%;
@@ -194,6 +177,7 @@ look like BATTLE OF THE BANDS or something. */
   max-width: 100%;
   max-height: 100%;
 }
+
 .intersect p {
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -223,7 +207,6 @@ look like BATTLE OF THE BANDS or something. */
   width: 100%;
 }
 
-/* Fix Map placement - should be on the right */
 #map {
   width: 100%;
   height: 100%;
@@ -282,5 +265,45 @@ look like BATTLE OF THE BANDS or something. */
 
 /* Style the close button */
 .gm-ui-hover-effect {
-  filter: invert(1); /* Make the close button white */
+  filter: invert(1); 
+}
+
+@keyframes leftEnter {
+  from { transform: translate(-30%, 100%); opacity: 0; } 
+  to { transform: translate(-30%, 0); opacity: 1; } 
+}
+
+@keyframes leftExit {
+  from { transform: translate(-30%, 0); opacity: 1; }
+  to { transform: translate(-30%, -100%); opacity: 0; }
+}
+
+@keyframes rightEnter {
+  from { transform: translate(30%, -100%); opacity: 0; } 
+  to { transform: translate(30%, 0); opacity: 1; } 
+}
+
+@keyframes rightExit {
+  from { transform: translate(30%, 0); opacity: 1; }
+  to { transform: translate(30%, 100%); opacity: 0; }
+}
+
+.artist-image.swipe-left.entering {
+  animation: leftEnter 0.5s ease-out forwards;
+  position: absolute;
+}
+
+.artist-image.swipe-left.exiting {
+  animation: leftExit 0.5s ease-in forwards;
+  position: absolute;
+}
+
+.artist-image.swipe-right.entering {
+  animation: rightEnter 0.5s ease-out forwards;
+  position: absolute;
+}
+
+.artist-image.swipe-right.exiting {
+  animation: rightExit 0.5s ease-in forwards;
+  position: absolute;
 }
