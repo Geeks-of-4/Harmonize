@@ -1,3 +1,10 @@
+/**
+ * API Controller
+ * 
+ * Handles all API endpoints for the Harmonize application.
+ * Manages data fetching, caching, and processing for both Ticketmaster and Spotify APIs.
+ */
+
 import axios from 'axios';
 import { TicketmasterCache, SpotifyCache } from './db.js';
 import { getToken } from './helpers/getToken.js';
@@ -7,9 +14,20 @@ import { findMatchingEvents } from './helpers/findMatchingEvents.js';
 
 const apiController = {};
 
+/**
+ * getTicketMasterData
+ * 
+ * Fetches concert data from Ticketmaster API with caching support.
+ * First checks the cache for existing data, then fetches fresh data for missing artists.
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
 apiController.getTicketMasterData = async (req, res, next) => {
   const { artists, daysMaximum = 7, rangeMaximum = 100 } = req.body;
 
+  // Validate request body
   if (!Array.isArray(artists) || artists.length < 1) {
     return next({
       log: 'Invalid request body: Expected at least one artist name.',
@@ -23,7 +41,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
   try {
     console.log('📀 Checking cache for Ticketmaster data...');
 
-    // Check Cache First for data for either artist
+    // Check cache for existing artist data
     const cachedArtists = await TicketmasterCache.find({
       artistName: { $in: artists },
     });
@@ -36,10 +54,9 @@ apiController.getTicketMasterData = async (req, res, next) => {
         cacheData[entry.artistName] = entry;
       });
 
-      // If all artists are found in cache, return them immediately
+      // Return cached data if all artists are found
       if (artists.every((artist) => cacheData[artist])) {
         console.log('🔁 Returning fully cached Ticketmaster data.');
-        // This is just logging the status of each artist:
         Object.entries(cacheData).forEach(([artist, data], index) => {
           console.log(
             `🔍 Cached Artist ${index + 1} (${artist}) Status:`,
@@ -53,7 +70,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
 
     console.log('🥾 Ticket Master Cache miss!');
 
-    // Prep data for TM API Request for the remaining missing artists
+    // Fetch fresh data for missing artists
     const artistsToFetch = artists.filter((artist) => !cacheData[artist]);
 
     let freshResponses = [];
@@ -62,16 +79,14 @@ apiController.getTicketMasterData = async (req, res, next) => {
       freshResponses = await fetchTicketmasterData(artistsToFetch);
     }
 
-    // Warning: This console log is friggen huge...
-    // console.log('🎟️ Raw Ticketmaster API Response:', freshResponses);
-
     const newCacheData = { ...cacheData };
 
+    // Process and cache fresh responses
     for (const response of freshResponses) {
       const artistName = response.value.artist;
       const processedData = await processResponse(response, artistName, 1);
 
-      // Prevent Duplicate Storage (Only Save if Different)
+      // Only update cache if data has changed
       if (
         !newCacheData[artistName] ||
         JSON.stringify(newCacheData[artistName].events) !==
@@ -81,7 +96,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
       }
     }
 
-    // Save fetched data to Mongo DB
+    // Update cache in MongoDB
     await TicketmasterCache.bulkWrite(
       Object.values(newCacheData)
         .filter((data) => data)
@@ -95,10 +110,7 @@ apiController.getTicketMasterData = async (req, res, next) => {
     );
     console.log('📥 Cached new Ticketmaster data.');
 
-    // Warning, this console log is fucking huge...
-    // console.log('🔍 Ticket Master Return Data:', newCacheData);
-
-    // Return results
+    // Return combined results
     req.ticketmasterData = Object.fromEntries(
       artists.map((artist) => [artist, newCacheData[artist] || null])
     );
@@ -115,6 +127,16 @@ apiController.getTicketMasterData = async (req, res, next) => {
   }
 };
 
+/**
+ * getMatchingEvents
+ * 
+ * Finds matching concert events based on date and location criteria.
+ * Processes the Ticketmaster data to find events that meet the specified constraints.
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
 apiController.getMatchingEvents = async (req, res, next) => {
   console.log(
     '🔍 Ticketmaster Data Before Matching:',
@@ -131,6 +153,7 @@ apiController.getMatchingEvents = async (req, res, next) => {
   );
 
   try {
+    // Validate minimum artist count
     if (!ticketmasterData || Object.keys(ticketmasterData).length < 2) {
       console.warn('⚠️ Not enough artists to match events.');
       return res.status(200).json({ artists: ticketmasterData, matches: [] });
@@ -142,6 +165,7 @@ apiController.getMatchingEvents = async (req, res, next) => {
       } artists...`
     );
 
+    // Find matching events
     const matches = findMatchingEvents(
       formattedData,
       daysMaximum,
@@ -160,7 +184,18 @@ apiController.getMatchingEvents = async (req, res, next) => {
   }
 };
 
+/**
+ * getSpotifyImageData
+ * 
+ * Fetches artist images from Spotify API with caching support.
+ * First checks the cache for existing images, then fetches fresh data for missing artists.
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function
+ */
 apiController.getSpotifyImageData = async (req, res, next) => {
+  // Validate request body
   if (!req.body.artists || !Array.isArray(req.body.artists) || req.body.artists.length < 1) {
     return next({
       log: 'Invalid request body: Expected an object with an "artists" array containing at least 1 artist name.',
@@ -173,10 +208,8 @@ apiController.getSpotifyImageData = async (req, res, next) => {
 
   try {
     console.log('📀 Checking cache for Spotify artist images...');
-    // console.log(url1);
-    // console.log(url2);
 
-    // Step 1: Check MongoDB Cache for one or both artists
+    // Check cache for existing artist images
     const cachedArtists = await SpotifyCache.find({
       artistName: { $in: artists },
     });
@@ -189,7 +222,7 @@ apiController.getSpotifyImageData = async (req, res, next) => {
         cacheData[entry.artistName] = entry.imageUrl;
       });
 
-      // Step 2: If both artists are found, return them immediately
+      // Return cached data if all artists are found
       if (artists.every((artist) => cacheData[artist])) {
         console.log('🔁 Returning fully cached Spotify images.');
         return res.status(200).json(cacheData);
@@ -200,7 +233,7 @@ apiController.getSpotifyImageData = async (req, res, next) => {
       '🥾 Cache miss! Fetching missing artist images from Spotify...'
     );
 
-    // Step 3: Fetch missing artist(s) from Spotify
+    // Fetch fresh data for missing artists
     const artistsToFetch = artists.filter((artist) => !cacheData[artist]);
 
     if (artistsToFetch.length > 0) {
@@ -227,7 +260,7 @@ apiController.getSpotifyImageData = async (req, res, next) => {
 
       const freshResponses = await Promise.all(fetchPromises);
 
-      // Step 4: Save new images to cache
+      // Update cache with fresh data
       for (const { artist, imageUrl } of freshResponses) {
         cacheData[artist] = imageUrl;
 
@@ -243,7 +276,7 @@ apiController.getSpotifyImageData = async (req, res, next) => {
 
     console.log('📥 Cached new Spotify artist images.');
 
-    // Step 5: Return a combination of cached & fresh data
+    // Return combined results
     return res.status(200).json(cacheData);
   } catch (error) {
     console.error('❌ Failed to fetch Spotify Image data:', error.message);

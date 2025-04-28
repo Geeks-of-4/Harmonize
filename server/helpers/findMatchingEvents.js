@@ -1,4 +1,14 @@
-// Arthur thinks it might be useful to convert this into a matrix to compare lat/longs for proximity
+/**
+ * findMatchingEvents
+ * 
+ * Finds concert events that match based on date and location criteria.
+ * Uses the Haversine formula to calculate distances between venues.
+ * 
+ * @param {Object} artistEventsMap - Map of artist names to their concert events
+ * @param {number} daysMaximum - Maximum days between concerts
+ * @param {number} rangeMaximum - Maximum distance in miles between venues
+ * @returns {Array} Array of matching events with combined artist information
+ */
 
 export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
   console.log('🧩 Find Matching Events Invoked.');
@@ -7,6 +17,18 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
   const matches = [];
   const seenEvents = new Map(); // Stores unique events with multiple artists
 
+  /**
+   * isNearby
+   * 
+   * Calculates if two locations are within the specified range using the Haversine formula.
+   * 
+   * @param {number} lat1 - Latitude of first location
+   * @param {number} lon1 - Longitude of first location
+   * @param {number} lat2 - Latitude of second location
+   * @param {number} lon2 - Longitude of second location
+   * @param {number} rangeMaximum - Maximum allowed distance in miles
+   * @returns {boolean} True if locations are within range
+   */
   function isNearby(lat1, lon1, lat2, lon2, rangeMaximum) {
     console.log('😚 Is Nearby Invoked.');
     const R = 3958.8; // Earth radius in miles
@@ -17,7 +39,7 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
     const deltaLat = (Math.PI / 180) * (lat2 - lat1);
     const deltaLon = (Math.PI / 180) * (lon2 - lon1);
 
-    // Haversine formula
+    // Haversine formula for calculating great-circle distance
     const a =
       Math.sin(deltaLat / 2) ** 2 +
       Math.cos(radLat1) * Math.cos(radLat2) * Math.sin(deltaLon / 2) ** 2;
@@ -36,6 +58,7 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
       const eventsArray1 = artistEventsMap[artist1];
       const eventsArray2 = artistEventsMap[artist2];
 
+      // Skip if either artist has no events
       if (!eventsArray1?.length || !eventsArray2?.length) {
         console.warn(`⚠️ Skipping ${artist1} and ${artist2}: One or both have no events.`);
         continue;
@@ -43,15 +66,19 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
 
       console.log(`🔗 Checking matches between ${artist1} and ${artist2}...`);
 
+      // Compare each event from artist1 with each event from artist2
       for (const event1 of eventsArray1) {
         for (const event2 of eventsArray2) {
+          // Calculate days between events
           const event1Date = new Date(event1.event_date);
           const event2Date = new Date(event2.event_date);
           const daysDifference = Math.abs(
             (event2Date - event1Date) / (1000 * 60 * 60 * 24)
           );
 
+          // Check if events are within date range
           if (daysDifference <= daysMaximum) {
+            // Check if venues are within distance range
             if (
               isNearby(
                 parseFloat(event1.lat),
@@ -61,7 +88,6 @@ export function findMatchingEvents(artistEventsMap, daysMaximum, rangeMaximum) {
                 rangeMaximum
               )
             ) {
-
               // Create a unique key for the event: Venue + Date
               const eventKey = `${event1.venue_name}_${event1.event_date}`;
 

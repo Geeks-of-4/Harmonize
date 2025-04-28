@@ -1,19 +1,34 @@
-// Ultra basic, the backend ONLY support post requests to localhost:9001/api/...
+/**
+ * Main Server Entry Point
+ * 
+ * Sets up and configures the Express server for the Harmonize application.
+ * Handles middleware setup, CORS configuration, and error handling.
+ * 
+ * The server only supports POST requests to localhost:9001/api/...
+ */
+
 import express from 'express';
 import cors from 'cors';
 import apiRouter from './apiRouter.js';
 
+// Initialize Express application
 const app = express();
 const PORT = process.env.PORT || 9001;
-app.use(express.json()); // Parse JSON request bodies
 
-// Allow cross-origin requests
+// Middleware to parse JSON request bodies
+app.use(express.json());
+
+/**
+ * CORS Configuration
+ * Defines allowed origins for cross-origin requests
+ */
 const allowedOrigins = [
   'http://127.0.0.1:5173', // ✅ Localhost for Vite Dev Server
   'http://localhost:5173', // ✅ Localhost for Dev
   'https://harmonize.ataraxi.st', // ✅ Production Domain
 ];
 
+// Configure CORS middleware with custom origin validation
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -27,16 +42,22 @@ app.use(
   })
 );
 
-// Handle requests to API
+// Mount API routes
 app.use(apiRouter);
 
-// catch-all route handler for any requests to an unknown route
+/**
+ * 404 Handler
+ * Catches any requests to unknown routes
+ */
 app.use((req, res) => {
   console.log(`😖 404 Response Sent! (${req.method} ${req.originalUrl})`);
   res.status(404).send('404 Page Not Found');
 });
 
-// global error handler
+/**
+ * Global Error Handler
+ * Catches and processes any unhandled errors in the application
+ */
 app.use((err, req, res, next) => {
   console.log('❌ Error triggered:', err.message || 'Unknown error');
   const defaultError = {
@@ -49,7 +70,10 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).send(errorObj.message);
 });
 
-// port listening to start the server
+/**
+ * Start Server
+ * Initializes the server on the specified port
+ */
 app
   .listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);

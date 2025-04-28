@@ -1,5 +1,14 @@
-// There is no functionality here other than the the activation of the onclick method in app.jsx.
-// I will say that the css is a bit fragile on this, because it has a fixed position above the artists 
+/**
+ * HarmonizerButton Component
+ * 
+ * A styled button component that triggers the main harmonization process.
+ * The button uses a custom image asset and is positioned above the artist display.
+ * 
+ * Note: The CSS positioning is currently fixed, which may need to be made more flexible
+ * in future updates to improve responsiveness.
+ * 
+ * @param {Function} onClick - Callback function to handle button click events
+ */
 
 import harmonizeButton from '../assets/Harmonize.png';
 

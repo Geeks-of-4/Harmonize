@@ -1,12 +1,32 @@
+/**
+ * Event Data Extractor
+ * 
+ * Processes raw Ticketmaster API event data and extracts relevant information.
+ * Handles geocoding of venue addresses when coordinates are missing.
+ */
+
 import axios from 'axios';
 
+/**
+ * extractEventData
+ * 
+ * Processes an array of events from Ticketmaster API response.
+ * Extracts venue information, dates, and coordinates.
+ * Falls back to Google Maps Geocoding API if coordinates are missing.
+ * 
+ * @param {Object} eventData - Raw event data from Ticketmaster API
+ * @returns {Promise<Array>} Array of processed event objects
+ */
 export async function extractEventData(eventData) {
+  // Validate input data
   if (!eventData || !Array.isArray(eventData._embedded?.events)) {
     return []; // Return empty array if no valid events exist
   }
 
+  // Process each event in parallel
   const processedEvents = await Promise.all(
     eventData._embedded.events.map(async (event) => {
+      // Extract venue information
       const venue = event._embedded?.venues?.[0] || {};
       const location = venue.location || {};
       const event_date = event.dates?.start?.localDate || 'Unknown Date';
@@ -15,7 +35,7 @@ export async function extractEventData(eventData) {
       let lat = location.latitude;
       let lng = location.longitude;
 
-      // If lat/lng are missing, try to fetch them using Google Maps API
+      // If coordinates are missing, use Google Maps Geocoding API
       if (!lat || !lng) {
         const formattedAddress = `${venue.address?.line1 || ''}, ${venue.city?.name || ''}, ${venue.state?.stateCode || ''} ${venue.postalCode || ''}`;
         const decodedAddress = await getLatLngFromAddress(formattedAddress);
@@ -28,6 +48,7 @@ export async function extractEventData(eventData) {
         }
       }
 
+      // Return processed event object
       return {
         event: event.name,
         event_date,
@@ -43,7 +64,14 @@ export async function extractEventData(eventData) {
   return processedEvents.filter(Boolean); // Remove null entries
 }
 
-// Function to get lat/lng using Google Maps API (if needed)
+/**
+ * getLatLngFromAddress
+ * 
+ * Uses Google Maps Geocoding API to convert an address to coordinates.
+ * 
+ * @param {string} address - Address to geocode
+ * @returns {Promise<Object|null>} Object containing lat/lng or null if geocoding fails
+ */
 async function getLatLngFromAddress(address) {
   const apiKey = process.env.GOOGLE_MAPS_API_KEY;
   const encodedAddress = encodeURIComponent(address);
