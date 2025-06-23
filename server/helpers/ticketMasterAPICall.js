@@ -1,6 +1,7 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-
+dotenv.config();
 //TODO: It appears that the results are limited to 20, which may mean we need to deal with pagination of some sort
 export const fetchTicketmasterData = async (artists) => {
   if (!Array.isArray(artists)) {

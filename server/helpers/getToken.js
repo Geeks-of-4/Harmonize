@@ -2,6 +2,8 @@ import { Token } from '../db.js';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 export async function getToken() {
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET;

@@ -8,9 +8,15 @@
 
 
 ### **Initial Setup**
-- **[`server/apiController.js`](./server/apiController)**: Need to setup TicketMaster API
-- **[`server/helperFunctions.js`](./server/helperFunctions)**: Need to setup Spotify API
-- **[`client/index.html`](./client/index.html)**: Need to setup Google API
+
+- First setup a .env file to store APIs, will need to setup a .env in both the client and server folders
+- Client:
+  - **[`Map.jsx`](./client/src/components/Map.jsx)**: Need to setup Google API at <a href="https://console.cloud.google.com/">Google Cloud Console
+
+- Server
+  - **[`server/apiController.js`](./server/apiController.js)**: Need to setup TicketMaster API at <a href="https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/">Ticketmaster Developer
+  - **[`server/helperFunctions.js`](./server/helperFunctions.js)**: Need to setup Spotify API at <a href="https://developer.spotify.com/documentation/web-api">Spotify for Developers
+  - **[`db.js`](./server/db.js)**: Need to setup Mongo DB
 
 ### **Main Components**
 - **[`main.jsx`](./client/index.html)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
