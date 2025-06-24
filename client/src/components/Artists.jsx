@@ -28,7 +28,7 @@ const Artists = ({ artistId, setInputArtist, artist }) => {
         setImageSrc(placeholderImage); 
         return;
       }
-
+      // Provide URL for backend, default is set to http://localhost:9001
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/spotify`,
