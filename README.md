@@ -9,14 +9,34 @@
 
 ### **Initial Setup**
 
-- First setup a .env file to store APIs, will need to setup a .env in both the client and server folders
-- Client:
-  - **[`Map.jsx`](./client/src/components/Map.jsx)**: Need to setup Google API at <a href="https://console.cloud.google.com/">Google Cloud Console
+- First setup a .env file to store APIs, will need to setup a .env in both the client and server folders.
+-  Will also need to create accounts for MongoDB, Google Cloud Console, Spotify for Developers, and Ticketmaster Developer.
+- Client .env:
+  - **[`Map.jsx`](./client/src/components/Map.jsx)**: Need to setup Maps JavaScript API <a href="https://console.cloud.google.com/">Google Cloud Console</a>
+  - Example: <br>
+     VITE_GOOGLE_MAPS_API_KEY =(insert Google Map API)
+     <br>
+     VITE_GOOGLE_MAPS_MAP_ID = (insert Google Map ID)
+     <br>
+     VITE_BACKEND_URL =(insert server address)
 
-- Server
-  - **[`server/apiController.js`](./server/apiController.js)**: Need to setup TicketMaster API at <a href="https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/">Ticketmaster Developer
-  - **[`server/helperFunctions.js`](./server/helperFunctions.js)**: Need to setup Spotify API at <a href="https://developer.spotify.com/documentation/web-api">Spotify for Developers
-  - **[`db.js`](./server/db.js)**: Need to setup Mongo DB
+- Server .env:
+  - **[`server/apiController.js`](./server/apiController.js)**: Need to setup TicketMaster API at <a href="https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/">Ticketmaster Developer</a>
+  - **[`server/helperFunctions.js`](./server/helperFunctions.js)**: Need to setup Spotify API at <a href="https://developer.spotify.com/documentation/web-api">Spotify for Developers</a>
+  - **[`db.js`](./server/db.js)**: Need to setup MongoDB at <a href="https://www.mongodb.com/">MongoDB</a>
+   - Example: <br>
+    MONGO_URI_DEV = (insert MONGO URI)
+     <br>
+    TM_API_KEY = (insert TicketMaster API Key)
+     <br>
+    SPOTIFY_CLIENT_ID = (insert Spotify API Key)
+    <br>
+    SPOTIFY_CLIENT_SECRET = (inset Spotify Client Secret)
+
+
+
+
+
 
 ### **Main Components**
 - **[`main.jsx`](./client/index.html)**: Entry point of the React application. It renders the `App` component inside `StrictMode` to enforce best practices.
