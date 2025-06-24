@@ -30,7 +30,7 @@
     TM_API_KEY = (insert TicketMaster API Key)
      <br>
     SPOTIFY_CLIENT_ID = (insert Spotify API Key)
-    <br>
+     <br>
     SPOTIFY_CLIENT_SECRET = (inset Spotify Client Secret)
 
 
